@@ -3,6 +3,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pandas as pd
 import pickle
+import xgboost
+
+xgboost_version = xgboost.__version__
 
 # Load your dataset
 dataset_path = 'heart.csv'  # Specify the path to your dataset file
