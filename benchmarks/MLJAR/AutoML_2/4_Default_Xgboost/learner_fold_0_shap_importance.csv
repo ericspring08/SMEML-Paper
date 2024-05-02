@@ -1,0 +1,14 @@
+feature,shap_importance
+ca,2.290376
+cp,1.951512
+thal,1.3876642
+slope,1.208885
+sex,1.0329696
+age,1.0322194
+oldpeak,0.99365604
+chol,0.8643228
+thalach,0.81868124
+trestbps,0.46366984
+exang,0.44393522
+restecg,0.37990838
+fbs,0.070855096
