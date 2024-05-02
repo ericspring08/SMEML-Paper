@@ -17,5 +17,7 @@ predictions = rf_model.predict(test)
 
 print(rf_model)
 print(rf_model.model_performance(test))
+# Save the model
+h2o.save_model(rf_model, path="model", force=True)
 
 h2o.cluster().shutdown()

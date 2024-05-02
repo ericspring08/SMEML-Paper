@@ -1,0 +1,16 @@
+if (cp > 0.5) and (age <= 56.5) and (oldpeak <= 3.55) then class: 1 (proba: 90.95%) | based on 232 samples
+
+if (cp <= 0.5) and (ca > 0.5) and (trestbps > 109.0) then class: 0 (proba: 96.95%) | based on 197 samples
+
+if (cp > 0.5) and (age > 56.5) and (sex > 0.5) then class: 0 (proba: 58.0%) | based on 100 samples
+
+if (cp <= 0.5) and (ca <= 0.5) and (thal <= 2.5) then class: 1 (proba: 74.44%) | based on 90 samples
+
+if (cp <= 0.5) and (ca <= 0.5) and (thal > 2.5) then class: 0 (proba: 83.1%) | based on 71 samples
+
+if (cp > 0.5) and (age > 56.5) and (sex <= 0.5) then class: 1 (proba: 86.44%) | based on 59 samples
+
+if (cp <= 0.5) and (ca > 0.5) and (trestbps <= 109.0) then class: 0 (proba: 64.29%) | based on 14 samples
+
+if (cp > 0.5) and (age <= 56.5) and (oldpeak > 3.55) then class: 0 (proba: 100.0%) | based on 5 samples
+
