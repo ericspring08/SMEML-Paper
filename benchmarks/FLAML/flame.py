@@ -8,11 +8,11 @@ import xgboost
 xgboost_version = xgboost.__version__
 
 # Load your dataset
-dataset_path = 'heart.csv'  # Specify the path to your dataset file
+dataset_path = '../../MTF/SAHeart.csv'  # Specify the path to your dataset file
 data = pd.read_csv(dataset_path)
 
-X = data.drop(columns=["target"])  # Adjust the column name as per your dataset
-y = data["target"]  # Adjust the column name as per your dataset
+X = data.drop(columns=["chd"])  # Adjust the column name as per your dataset
+y = data["chd"]  # Adjust the column name as per your dataset
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
