@@ -1,5 +1,5 @@
 DATASETS
-generated_dataset
+generated_datasets
 .venv
 .DS_STORE
 __pycache__
