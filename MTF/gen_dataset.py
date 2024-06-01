@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import argparse as ap
-from sklearn.preprocessing import OneHotEncoder, StandardScaler, MinMaxScaler, RobustScaler
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 from models import classifiers
@@ -53,7 +53,7 @@ for col in df.columns:
     else:
         categorical_features.append(col)
 
-scaler = StandardScaler()
+scaler = MinMaxScaler()
 
 # replace with mode for unknown values
 df = df.fillna(df.mode().iloc[0])

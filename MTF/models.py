@@ -7,7 +7,6 @@ from sklearn.neighbors import RadiusNeighborsClassifier
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.linear_model import Perceptron
 from sklearn.linear_model import PassiveAggressiveClassifier
-from sklearn.svm import NuSVC
 from sklearn.neighbors import NearestCentroid
 from sklearn.neural_network import MLPClassifier
 from sklearn.linear_model import LogisticRegressionCV
@@ -29,6 +28,9 @@ from sklearn.ensemble import AdaBoostClassifier
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 from catboost import CatBoostClassifier
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import ComplementNB
+from sklearn.naive_bayes import CategoricalNB
 import numpy as np
 
 classifiers = np.array([
@@ -61,5 +63,8 @@ classifiers = np.array([
     DecisionTreeClassifier(),
     LabelSpreading(kernel='rbf'),
     LabelPropagation(kernel='rbf'),
-    DummyClassifier(strategy='most_frequent')
+    DummyClassifier(strategy='most_frequent'),
+    # MultinomialNB(verbose=False),
+    # ComplementNB(verbose=False),
+    # CategoricalNB(verbose=False)
 ], dtype=object)
