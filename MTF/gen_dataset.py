@@ -17,9 +17,6 @@ parser.add_argument('-o', '--output', type=str,
 
 args = parser.parse_args()
 
-# create output directory if it does not exist
-if not os.path.exists(args.output):
-    os.makedirs(args.output)
 
 # Load dataset
 df = pd.read_csv(args.input)
@@ -38,6 +35,7 @@ unique_values = target.unique()
 
 # check if the target is binary
 if len(unique_values) > 2:
+    print('Target is not binary')
     raise ValueError('Target must be binary')
 else:
     # convert to binary
@@ -91,9 +89,12 @@ for clf in classifiers:
         }
         print(f'[{clf.__class__.__name__}] score: {perf} time: {time_elapsed}')
     except Exception as e:
-        print(e)
         results[clf.__class__.__name__] = np.nan
+        print(f'[{clf.__class__.__name__}] failed')
 
+# create output directory if it does not exist
+if not os.path.exists(args.output):
+    os.makedirs(args.output)
 # convert to dataframe
 results = pd.DataFrame(results).T
 # column names

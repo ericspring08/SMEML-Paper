@@ -1,6 +1,8 @@
 DATASETS
+generated_dataset
 .venv
 .DS_STORE
 __pycache__
 catboost_info
 kaggle.json
+.env
