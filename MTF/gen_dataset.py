@@ -21,10 +21,9 @@ args = parser.parse_args()
 # Load dataset
 df = pd.read_csv(args.input)
 
-# limit to 10K rows
-if len(df) > 10000:
-    df = df.sample(n=10000)
-
+# check if dataset is greater than 10000
+if df.shape[0] > 10000:
+    df = df.sample(10000)
 # extract last column as target
 target = df.iloc[:, -1]
 df.drop(df.columns[-1], axis=1, inplace=True)
