@@ -1,5 +1,7 @@
 DATASETS
 generated_datasets
+generated_datasets_attributes
+attributes.csv
 .venv
 .DS_STORE
 __pycache__
