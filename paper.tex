@@ -89,6 +89,59 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 
 \subsection{Survey}
 
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\begin{longtable}{|l|l|l|l|l|}
+\hline
+\textbf{Factor} & \textbf{H2O} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} \\
+\hline
+\endfirsthead
+
+\multicolumn{5}{c}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+\hline
+\textbf{Factor} & \textbf{H2O AutoML} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} \\
+\hline
+\endhead
+
+\hline \multicolumn{5}{|r|}{\textit{Continued on next page}} \\
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+\textbf{Ease of Use} & Easy-to-use GUI and API & Python library, requires coding experience & Very user-friendly web interface, detailed API & Simple API \\
+\hline
+\textbf{Supported Algorithms} & Linear, Tree, DNN, Clustering, etc. & Genetic Programming & Linear, Tree, LightGBM, CatBoost, Clustering, etc. (no DNN) & Linear, Tree, Clustering - More limited and lightweight \\
+\hline
+\textbf{Feature Engineering} & Basic & Basic & Advanced - includes feature interactions & Limited \\
+\hline
+\textbf{Time Management} & Time Constraints are Settable & Generations and population size & Time constraints are Settable & Optimized for quick results \\
+\textbf{Ensemble Methods} & Yes & Yes & Yes & Yes \\
+\hline
+\textbf{Hyperparameter Tuning} & Automated & Genetic algorithm & Automated and customizable & Automated and efficient tuning \\
+\hline
+\textbf{Model Interpretability} & SHAP, LIME, PDPs, MOJO & POJO, etc. & Basic & SHAP, LIME, PDPs, etc. & Basic (permutation importance) \\
+\hline
+\hline
+\textbf{Scalability} & Good (distributed computing) & Limited & Good & Good (resource-efficient) \\
+\hline
+\textbf{Customization} & High & Moderate & High & Low-Moderate \\
+\hline
+
+\end{longtable}
+
+\end{document}
+
+
 
 \section{Methodology}
 
