@@ -8,30 +8,86 @@ from models import classifiers
 import time
 import os
 
+possible_target_columns = [
+    "target",
+    "class",
+    "label",
+    "output",
+    "result",
+    "score",
+    "value",
+    "response",
+    "prediction",
+    "predict",
+    "outcome",
+    "y",
+    "yhat",
+    "disease",
+    "classification",
+    "heart",
+    "cancer",
+    "diagnosis",
+    "status",
+    "grade",
+    "rating",
+    "death",
+    "survival",
+    "risk",
+    "quality",
+    "failure",
+    "success",
+    "pass",
+    "fail",
+    "positive",
+    "negative",
+    "win",
+    "lose",
+    "kidney",
+    "diabetes",
+    "renal",
+    "chickenpox",
+    "influenza",
+    "congenital",
+    "infection",
+    "infect",
+    "infectious",
+    "virus",
+    "bacteria"
+]
+
 
 def gen_dataset(input, output):
     # Load dataset
     try:
         df = pd.read_csv(input)
 
-# check if dataset is greater than 10000
-        if df.shape[0] > 2000:
-            df = df.sample(2000)
-# extract last column as target
-        target = df.iloc[:, -1]
-        df.drop(df.columns[-1], axis=1, inplace=True)
+        columns = df.columns
+        if len(columns) <= 2:
+            print('Dataset has less than 2 columns')
+            return "Dataset has less than 2 columns"
 
-# convert target to binary
-# get the unique values
+        has_target_column = False
+        target_column = ""
+        for i, column in enumerate(columns):
+            print("Column: ", column)
+            if column.lower() in possible_target_columns and df[column].nunique() == 2:
+                target_column = column
+                has_target_column = True
+                break
+
+        if not has_target_column:
+            print('No target column found')
+            return "No target column found"
+
+        target = df[target_column]
         unique_values = target.unique()
 
-# check if the target is binary
-        if len(unique_values) > 2:
-            print('Target is not binary')
-            return "Target is not binary"
-        else:
-            # convert to binary
-            target = target.apply(lambda x: 1 if x == unique_values[0] else 0)
+        target = target.apply(lambda x: 1 if x == unique_values[0] else 0)
+
+        if df.shape[0] > 2000:
+            df = df.sample(2000)
+
+        df.drop(df.columns[-1], axis=1, inplace=True)
 
         numerical_features = []
         categorical_features = []

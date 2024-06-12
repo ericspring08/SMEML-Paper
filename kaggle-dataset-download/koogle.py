@@ -10,8 +10,8 @@ api.authenticate()
 datasets = []
 start_page = 1
 page_count = 10
-topics = ['disease', 'covid', 'coronavirus',
-          'virus', 'infection', "cancer", 'heart', 'lungs']
+topics = ["kidney", "diabetes", "renal",
+          "chickenpox", "influenza", "congenital"]
 for i in range(start_page, start_page + page_count + 1):
     for j in range(len(topics)):
         dataset_page = api.dataset_list(

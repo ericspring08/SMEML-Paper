@@ -20,11 +20,6 @@ def get_attributes(data_path):
     print("Output distribution: ", max(
         data.iloc[:, -1].value_counts(normalize=True)))
 
-    # Get the percenage of missing values in dataset
-    attributes['missing_values'] = data.isnull().sum().sum() / \
-        (data.shape[0] * data.shape[1])
-    print("Missing values: ", data.isnull().sum().sum())
-
     # get percentage of numerical and categorical columns
     numerical_features = 0
     binary_categorical = 0
@@ -84,22 +79,24 @@ def get_attributes(data_path):
     attributes['z_score_std'] = z_score_std
     print("Z-score std: ", z_score_std)
 
-    # correlation matrix of the dataset
-    corr_matrix = data.corr()
+    if data.shape[0] * data.shape[1] > 100000:
+        attributes['average_correlation'] = np.nan
+        attributes['correlation_std'] = np.nan
+    else:
+        # correlation matrix of the dataset
+        corr_matrix = data.corr()
 
-    # get the average correlation of the dataset (excluding the diagonal values)
-    corr_values = []
+        # get the average correlation of the dataset (excluding the diagonal values)
+        corr_values = []
 
-    for i in range(corr_matrix.shape[0]):
-        for j in range(corr_matrix.shape[1]):
-            if i != j:
-                corr_values.append(corr_matrix.iloc[i, j])
+        for i in range(corr_matrix.shape[0]):
+            for j in range(corr_matrix.shape[1]):
+                if i != j:
+                    corr_values.append(corr_matrix.iloc[i, j])
 
-    attributes['average_correlation'] = np.mean(corr_values)
-    print("Average correlation: ", np.mean(corr_values))
-    attributes['correlation_std'] = np.mean(np.std(corr_values))
-    print("Correlation std: ", np.mean(np.std(corr_values)))
-
-    print(attributes)
+        attributes['average_correlation'] = np.mean(corr_values)
+        print("Average correlation: ", np.mean(corr_values))
+        attributes['correlation_std'] = np.mean(np.std(corr_values))
+        print("Correlation std: ", np.mean(np.std(corr_values)))
 
     return attributes

@@ -27,7 +27,7 @@ output_folder = args.output
 # read the datasets folder
 datasets = os.listdir(datasets_folder)
 
-columns = ["num_rows", "num_cols", "output_distribution", "missing_values",
+columns = ["num_rows", "num_cols", "output_distribution",
            "numerical_columns", "binary_categorical",
            "categorical_average_count", "average_iqr", "average_q1",
            "average_q3", "iqr_std", "q1_std", "q3_std",
@@ -35,6 +35,7 @@ columns = ["num_rows", "num_cols", "output_distribution", "missing_values",
            "correlation_std", "dataset"]
 
 attributes_df = pd.DataFrame(columns=columns)
+
 
 for index, dataset in enumerate(datasets):
     if dataset.endswith('.csv'):

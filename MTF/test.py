@@ -10,56 +10,84 @@ datasets_folder = "../kaggle-dataset-download/DATASETS/"
 # read the datasets folder
 datasets = os.listdir(datasets_folder)
 
-columns = ["num_rows", "num_cols", "output_distribution", "missing_values",
-           "numerical_columns", "binary_categorical",
-           "categorical_average_count", "average_iqr", "average_q1",
-           "average_q3", "iqr_std", "q1_std", "q3_std",
-           "z_score_average", "z_score_std", "average_correlation",
-           "correlation_std", "dataset"]
-
-attributes_df = pd.DataFrame(columns=columns)
-
 count_target_by_name = 0
 count_target_by_last = 0
 combined = 0
+
+target_names = []
 
 for index, dataset in enumerate(datasets):
     if dataset.endswith('.csv'):
         # check if are column names
         try:
             df = pd.read_csv(datasets_folder + dataset)
-            columns = df.columns
 
-            possible_target_columns = ["target", "class", "label", "output", "y", "target_variable", "disease", "diag",
-                                       "diagnosis", "result", "status", "outcome", "response", "response_variable", "dependent_variable", "dependent"]
+        except Exception as e:
+            print("Error: ", e)
+            continue
+        if df.empty:
+            continue
 
-            # lowercase every column name
-            columns = [column.lower() for column in columns]
+        columns = df.columns
 
-            target_column_val = "None"
-            # check if there is a possible target column
-            for target_column in possible_target_columns:
-                if target_column in columns:
-                    if df[target_column].nunique() == 2:
-                        count_target_by_name += 1
-                        target_column_val = df[target_column].unique()
-                        break
+        possible_target_columns = [
+            "target",
+            "class",
+            "label",
+            "output",
+            "result",
+            "score",
+            "value",
+            "response",
+            "prediction",
+            "predict",
+            "outcome",
+            "y",
+            "yhat",
+            "disease",
+            "classification",
+            "heart",
+            "cancer",
+            "diagnosis",
+            "status",
+            "grade",
+            "rating",
+            "death",
+            "survival",
+            "risk",
+            "quality",
+            "failure",
+            "success",
+            "pass",
+            "fail",
+            "positive",
+            "negative",
+            "win",
+            "lose",
+            "kidney",
+            "diabetes",
+            "renal",
+            "chickenpox",
+            "influenza",
+            "congenital",
+            "infection",
+            "infect",
+            "infectious",
+            "virus",
+            "bacteria"
+        ]
 
-            # check if last column is binary
-            last_column = df.columns[-1]
+        # lowercase every column name
+        has_target_column = False
+        for i, column in enumerate(columns):
+            print("Column: ", column)
+            if column.lower() in possible_target_columns and df[column].nunique() == 2:
+                has_target_column = True
+                target_names.append(column)
+                break
 
-            if df[last_column].nunique() == 2:
-                count_target_by_last += 1
+        if has_target_column:
+            count_target_by_name += 1
 
-            print(
-                f"Dataset {index + 1}/{len(datasets)}: {dataset} - {df.shape} - {target_column} - {count_target_by_last} - {count_target_by_name} - {combined}")
-
-            # if either
-            if any(target_column in columns for target_column in possible_target_columns) or df[last_column].nunique() == 2:
-                combined += 1
-        except:
-            pass
-
-print(f"Count target by last column: {count_target_by_last}")
-print(f"Count target by name: {count_target_by_name}")
-print(f"Combined: {combined}")
+print("Count target by name: ", count_target_by_name)
+print("Target names: ", target_names)
