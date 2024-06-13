@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor, XGBClassifier
 from sklearn.multioutput import MultiOutputRegressor
-from sklearn.ensemble import StackingClassifier
+from sklearn.ensemble import VotingClassifier
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 import os
@@ -66,14 +66,14 @@ class SMEML:
 
         results = smeml_model.predict(input)
 
-        top_3 = np.argsort(results[0])[-5:]
+        top = np.argsort(results[0])[-10:]
 
         X_train, X_test, y_train, y_test = train_test_split(
             self.X, self.y, test_size=0.2, random_state=42)
 
         models = []
         # get the top 3 classifiers
-        for i in top_3:
+        for i in top:
             model = classifiers[i]
 
             # train the classifier
@@ -83,16 +83,12 @@ class SMEML:
             accuracy = model.score(X_test, y_test)
             print(model, accuracy)
 
-            models.append(model)
+            models.append((model, accuracy))
 
-        final_stacked_model = StackingClassifier(
-            estimators=[(classifier_names[i], model) for i, model in zip(top_3, models)], final_estimator=XGBClassifier(verbosity=0))
+        # get best model
+        best_model = max(models, key=lambda x: x[1])
 
-        final_stacked_model.fit(X_train, y_train)
-
-        final_accuracy = final_stacked_model.score(X_test, y_test)
-
-        print("Final stacked model accuracy: ", final_accuracy)
+        print("Best model: ", best_model[0], best_model[1])
 
         return results, attributes
 

@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 
 # load the dataset
-df = pd.read_csv('./datasets/heart.csv')
+df = pd.read_csv('./benchmark_datasets/heart.csv')
 
 X = df.drop('target', axis=1)
 y = df['target']
