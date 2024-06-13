@@ -98,20 +98,20 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 
 \begin{document}
 
-\begin{longtable}{|l|l|l|l|l|}
+\begin{longtable}{|l|l|l|l|l|l|l|}
 \hline
-\textbf{Factor} & \textbf{H2O} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} & \textbf{LightAutoML} & \textbf{GAMA} \\
+\textbf{Factor} & \textbf{H2O AutoML} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} & \textbf{LightAutoML} & \textbf{GAMA} \\
 \hline
 \endfirsthead
 
-\multicolumn{5}{c}%
+\multicolumn{7}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
 \textbf{Factor} & \textbf{H2O AutoML} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} & \textbf{LightAutoML} & \textbf{GAMA} \\
 \hline
 \endhead
 
-\hline \multicolumn{5}{|r|}{\textit{Continued on next page}} \\
+\hline \multicolumn{7}{|r|}{\textit{Continued on next page}} \\
 \hline
 \endfoot
 
@@ -125,12 +125,12 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 \textbf{Feature Engineering} & Basic & Basic & Advanced - includes feature interactions & Limited & Advanced (automatic) & Basic \\
 \hline
 \textbf{Time Management} & Time Constraints are Settable & Generations and population size & Time constraints are Settable & Optimized for quick results & Settable time constraints & Settable time constraints\\
+\hline
 \textbf{Ensemble Methods} & Yes (stacking + blending) & Yes (stacking) & Yes (stacking + blending) & No & Yes (stacking) & Yes (stacking) \\
 \hline
 \textbf{Hyperparameter Tuning} & Automated & Genetic algorithm & Automated and customizable & Automated and efficient tuning & Automated & Automated \\
 \hline
 \textbf{Model Interpretability} & SHAP, LIME, PDPs, MOJO & POJO, etc. & Basic & SHAP, LIME, PDPs, etc. & Basic (permutation importance) & SHAP, PDPs, etc. & Basic (feature importance) \\
-\hline
 \hline
 \textbf{Scalability} & Good (distributed computing) & Limited & Good & Good (resource-efficient) & Good (distributing computing) & Moderate \\
 \hline
@@ -139,13 +139,9 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 
 \end{longtable}
 
-\end{document}
-
-
-
 \section{Methodology}
 
-\subsection{Data Collection}
+\subsection{Data Collection} 
 
 \subsection{Model Elimination}
 
