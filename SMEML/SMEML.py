@@ -1,9 +1,13 @@
 import pickle as pkl
 import numpy as np
 from sklearn.model_selection import train_test_split
-from xgboost import XGBRegressor
+from xgboost import XGBRegressor, XGBClassifier
 from sklearn.multioutput import MultiOutputRegressor
+from sklearn.ensemble import StackingClassifier
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
 import os
+from SMEML.models import classifiers
 
 classifier_names = [
     'SVC',
@@ -47,6 +51,10 @@ class SMEML:
     def train(self, X, y):
         self.X = X
         self.y = y
+
+        # fill nan values
+        self.preprocess()
+
         attributes = self.get_dataset_attributes()
 
         # train the model
@@ -58,9 +66,33 @@ class SMEML:
 
         results = smeml_model.predict(input)
 
-        top_3 = np.argsort(results[0])[-3:]
+        top_3 = np.argsort(results[0])[-5:]
 
-        print("Top 3 classifiers: ", [classifier_names[i] for i in top_3])
+        X_train, X_test, y_train, y_test = train_test_split(
+            self.X, self.y, test_size=0.2, random_state=42)
+
+        models = []
+        # get the top 3 classifiers
+        for i in top_3:
+            model = classifiers[i]
+
+            # train the classifier
+            model.fit(X_train, y_train)
+
+            # get the accuracy of the classifier
+            accuracy = model.score(X_test, y_test)
+            print(model, accuracy)
+
+            models.append(model)
+
+        final_stacked_model = StackingClassifier(
+            estimators=[(classifier_names[i], model) for i, model in zip(top_3, models)], final_estimator=XGBClassifier(verbosity=0))
+
+        final_stacked_model.fit(X_train, y_train)
+
+        final_accuracy = final_stacked_model.score(X_test, y_test)
+
+        print("Final stacked model accuracy: ", final_accuracy)
 
         return results, attributes
 
@@ -160,3 +192,38 @@ class SMEML:
             print("Correlation std: ", np.mean(np.std(corr_values)))
 
         return attributes
+
+    def preprocess(self):
+        columns = self.X.columns
+
+        categorical_features = self.X.select_dtypes(include=['object']).columns
+        numerical_features = self.X.select_dtypes(
+            include=['int64', 'float64']).columns
+
+        # fill missing values
+        for col in columns:
+            if col in categorical_features:
+                self.X[col] = self.X[col].fillna(
+                    self.X[col].mode()[0])
+            else:
+                self.X[col] = self.X[col].fillna(
+                    self.X[col].mean())
+
+        # scale
+        scaler = MinMaxScaler()
+
+# replace with mode for unknown values
+        df = self.X.fillna(self.X.mode().iloc[0])
+
+        preprocessor = ColumnTransformer(
+            transformers=[('ohe',
+                           OneHotEncoder(handle_unknown='ignore',
+                                         sparse_output=False),
+                           categorical_features),
+                          ('scaler',
+                           scaler,
+                           numerical_features)],
+            remainder='passthrough',
+            verbose_feature_names_out=False).set_output(transform='pandas')
+
+        self.X = preprocessor.fit_transform(self.X)
