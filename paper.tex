@@ -98,54 +98,50 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 
 \begin{document}
 
-\begin{longtable}{|l|l|l|l|l|}
+\begin{longtable}{|l|l|l|l|l|l|l|}
 \hline
-\textbf{Factor} & \textbf{H2O} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} \\
+\textbf{Factor} & \textbf{H2O AutoML} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} & \textbf{LightAutoML} & \textbf{GAMA} \\
 \hline
 \endfirsthead
 
-\multicolumn{5}{c}%
+\multicolumn{7}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
-\textbf{Factor} & \textbf{H2O AutoML} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} \\
+\textbf{Factor} & \textbf{H2O AutoML} & \textbf{TPOT} & \textbf{MLJAR} & \textbf{FLAML} & \textbf{LightAutoML} & \textbf{GAMA} \\
 \hline
 \endhead
 
-\hline \multicolumn{5}{|r|}{\textit{Continued on next page}} \\
+\hline \multicolumn{7}{|r|}{\textit{Continued on next page}} \\
 \hline
 \endfoot
 
 \hline
 \endlastfoot
 
-\textbf{Ease of Use} & Easy-to-use GUI and API & Python library, requires coding experience & Very user-friendly web interface, detailed API & Simple API \\
+\textbf{Ease of Use} & Easy-to-use GUI and API & Python library, requires coding experience & Very user-friendly web interface, detailed API & Simple API & User-friendly API with minimal coding & Python library with fairly intuitive API\\
 \hline
-\textbf{Supported Algorithms} & Linear, Tree, DNN, Clustering, etc. & Genetic Programming & Linear, Tree, LightGBM, CatBoost, Clustering, etc. (no DNN) & Linear, Tree, Clustering - More limited and lightweight \\
+\textbf{Supported Algorithms} & Linear, Tree, DNN, Clustering, etc. & Genetic Programming & Linear, Tree, LightGBM, CatBoost, Clustering, etc. (no DNN) & Linear, Tree, Clustering - More limited and lightweight & Linear, LightGBM, Catboost, etc. & Linear, tree, SVM, etc. \\
 \hline
-\textbf{Feature Engineering} & Basic & Basic & Advanced - includes feature interactions & Limited \\
+\textbf{Feature Engineering} & Basic & Basic & Advanced - includes feature interactions & Limited & Advanced (automatic) & Basic \\
 \hline
-\textbf{Time Management} & Time Constraints are Settable & Generations and population size & Time constraints are Settable & Optimized for quick results \\
-\textbf{Ensemble Methods} & Yes & Yes & Yes & Yes \\
+\textbf{Time Management} & Time Constraints are Settable & Generations and population size & Time constraints are Settable & Optimized for quick results & Settable time constraints & Settable time constraints\\
 \hline
-\textbf{Hyperparameter Tuning} & Automated & Genetic algorithm & Automated and customizable & Automated and efficient tuning \\
+\textbf{Ensemble Methods} & Yes (stacking + blending) & Yes (stacking) & Yes (stacking + blending) & No & Yes (stacking) & Yes (stacking) \\
 \hline
-\textbf{Model Interpretability} & SHAP, LIME, PDPs, MOJO & POJO, etc. & Basic & SHAP, LIME, PDPs, etc. & Basic (permutation importance) \\
+\textbf{Hyperparameter Tuning} & Automated & Genetic algorithm & Automated and customizable & Automated and efficient tuning & Automated & Automated \\
 \hline
+\textbf{Model Interpretability} & SHAP, LIME, PDPs, MOJO & POJO, etc. & Basic & SHAP, LIME, PDPs, etc. & Basic (permutation importance) & SHAP, PDPs, etc. & Basic (feature importance) \\
 \hline
-\textbf{Scalability} & Good (distributed computing) & Limited & Good & Good (resource-efficient) \\
+\textbf{Scalability} & Good (distributed computing) & Limited & Good & Good (resource-efficient) & Good (distributing computing) & Moderate \\
 \hline
-\textbf{Customization} & High & Moderate & High & Low-Moderate \\
+\textbf{Customization} & High & Moderate & High & Low-Moderate & Moderate & Moderate \\
 \hline
 
 \end{longtable}
 
-\end{document}
-
-
-
 \section{Methodology}
 
-\subsection{Data Collection}
+\subsection{Data Collection} 
 
 \subsection{Model Elimination}
 
