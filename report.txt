@@ -1,0 +1,29 @@
+Dataset information
+num_rows: 1025
+num_cols: 13
+output_distribution: 0.5307317073170732
+numerical_columns: 0.38461538461538464
+binary_categorical: 0.375
+categorical_average_count: 3.125
+average_iqr: 0.231099173091105
+average_q1: 0.26016582682074585
+average_q3: 0.4912649999118509
+iqr_std: 0.054619294138652685
+q1_std: 0.1630375194628622
+q3_std: 0.17434126278233228
+z_score_average: 0.8472839938967011
+z_score_std: 0.5078654550361406
+average_correlation: 0.0016273873864261362
+correlation_std: 0.1748731073702319
+Top 10 classifiers predicted by SMEML
+Model 0: BernoulliNB() with accuracy average: 0.822439024390244 and best accuracy: 0.8439024390243902Standard Deviation: 0.025738353089312997 with scores: [0.84390244 0.81463415 0.83414634 0.84390244 0.77560976]
+Model 1: LinearSVC() with accuracy average: 0.846829268292683 and best accuracy: 0.8878048780487805Standard Deviation: 0.0322984299653597 with scores: [0.88780488 0.85853659 0.86829268 0.8195122  0.8       ]
+Model 2: DecisionTreeClassifier() with accuracy average: 1.0 and best accuracy: 1.0Standard Deviation: 0.0 with scores: [1. 1. 1. 1. 1.]
+Model 3: LogisticRegression(max_iter=1000) with accuracy average: 0.846829268292683 and best accuracy: 0.9024390243902439Standard Deviation: 0.04180348348415327 with scores: [0.90243902 0.85365854 0.87317073 0.82439024 0.7804878 ]
+Model 4: ExtraTreesClassifier() with accuracy average: 0.9970731707317073 and best accuracy: 1.0Standard Deviation: 0.005853658536585371 with scores: [1.         1.         1.         1.         0.98536585]
+Model 5: RandomForestClassifier() with accuracy average: 0.9941463414634146 and best accuracy: 1.0Standard Deviation: 0.007169238271560527 with scores: [1.         1.         1.         0.98536585 0.98536585]
+Model 6: AdaBoostClassifier(n_estimators=100) with accuracy average: 0.909268292682927 and best accuracy: 0.9365853658536586Standard Deviation: 0.014666630613046752 with scores: [0.93658537 0.90243902 0.90731707 0.90731707 0.89268293]
+Model 7: GradientBoostingClassifier() with accuracy average: 0.9639024390243902 and best accuracy: 0.975609756097561Standard Deviation: 0.008505168670323273 with scores: [0.97073171 0.97560976 0.95121951 0.96097561 0.96097561]
+Model 8: LogisticRegressionCV(cv=5, max_iter=1000) with accuracy average: 0.8526829268292684 and best accuracy: 0.8975609756097561Standard Deviation: 0.03357004982260537 with scores: [0.89756098 0.86341463 0.87317073 0.82439024 0.80487805]
+Model 9: LGBMClassifier(verbose=-1) with accuracy average: 0.9970731707317073 and best accuracy: 1.0Standard Deviation: 0.005853658536585371 with scores: [1.         1.         1.         1.         0.98536585]
+Best modelDecisionTreeClassifier() with accuracy average: 1.0 and best accuracy: 1.0Standard Deviation: 0.0 with scores: [1. 1. 1. 1. 1.]

@@ -1,13 +1,33 @@
 import pickle as pkl
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score, train_test_split
 from xgboost import XGBRegressor, XGBClassifier
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.ensemble import VotingClassifier
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 import os
+import threading
 from SMEML.models import classifiers
+import logging
+
+logging.captureWarnings(capture=True)
+
+# Get logger for warnings
+logger = logging.getLogger("py.warnings")
+
+# StreamHandler outputs on sys.stderr by default
+handler = logging.StreamHandler()
+logger.addHandler(handler)
+
+warnings_to_ignore = [
+    "FutureWarning",
+    "InconsistentVersionWarning"
+]
+
+# Set rule to ignore warnings
+logger.addFilter(
+    lambda record: record.getMessage() in warnings_to_ignore)
 
 classifier_names = [
     'SVC',
@@ -68,29 +88,42 @@ class SMEML:
 
         top = np.argsort(results[0])[-10:]
 
-        X_train, X_test, y_train, y_test = train_test_split(
-            self.X, self.y, test_size=0.2, random_state=42)
-
-        models = []
+        model_threads = []
+        self.models = []
         # get the top 3 classifiers
         for i in top:
-            model = classifiers[i]
+            thread = threading.Thread(
+                target=self.train_thread, args=(classifiers[i],))
+            model_threads.append(thread)
+            thread.start()
 
-            # train the classifier
-            model.fit(X_train, y_train)
-
-            # get the accuracy of the classifier
-            accuracy = model.score(X_test, y_test)
-            print(model, accuracy)
-
-            models.append((model, accuracy))
-
+        # wait for all threads to finish
+        for thread in model_threads:
+            thread.join()
         # get best model
-        best_model = max(models, key=lambda x: x[1])
+        best_model = max(self.models, key=lambda x: (x[2], x[1], x[3]))
+        self.best_model = best_model
 
-        print("Best model: ", best_model[0], best_model[1])
+        print("Best model: ", best_model[0], "Average accuracy: ", best_model[1],
+              "Best accuracy: ", best_model[2], "Standard Deviation: ", best_model[3], "Scores: ", best_model[4])
 
-        return results, attributes
+        self.generate_report()
+
+        self.save_final_model()
+
+    def train_thread(self, model):
+        # train the classifier
+        scores = cross_val_score(model, self.X, self.y, cv=5)
+
+        accuracy_average = np.mean(scores)
+        accuracy_best = np.max(scores)
+        accuracy_std = np.std(scores)
+
+        print("Model: ", model, "Average accuracy: ", accuracy_average, "Best accuracy: ",
+              accuracy_best, "Standard Deviation: ", accuracy_std, "Scores: ", scores)
+
+        self.models.append((model, accuracy_average,
+                            accuracy_best, accuracy_std, scores))
 
     def get_dataset_attributes(self):
         attributes = {}
@@ -187,6 +220,8 @@ class SMEML:
             attributes['correlation_std'] = np.mean(np.std(corr_values))
             print("Correlation std: ", np.mean(np.std(corr_values)))
 
+        self.attributes = attributes
+
         return attributes
 
     def preprocess(self):
@@ -223,3 +258,40 @@ class SMEML:
             verbose_feature_names_out=False).set_output(transform='pandas')
 
         self.X = preprocessor.fit_transform(self.X)
+
+    def generate_report(self):
+        lines = []
+        lines.append("Dataset information")
+
+        print()
+
+        for key, value in self.attributes.items():
+            lines.append(f"{key}: {value}")
+
+        print()
+
+        lines.append("Top 10 classifiers predicted by SMEML")
+
+        for index, model in enumerate(self.models):
+            lines.append("Model " + str(index) + ": " + str(model[0]) +
+                         " with accuracy average: " + str(model[1]) +
+                         " and best accuracy: " + str(model[2]) + "Standard Deviation: " + str(model[3]) + " with scores: " + str(model[4]))
+
+        print()
+
+        lines.append("Best model" + str(self.best_model[0]) +
+                     " with accuracy average: " +
+                     str(self.best_model[1]) +
+                     " and best accuracy: " +
+                     str(self.best_model[2]) +
+                     "Standard Deviation: " +
+                     str(self.best_model[3]) +
+                     " with scores: " + str(self.best_model[4]))
+
+        # save the report
+        with open('report.txt', 'w') as f:
+            for line in lines:
+                f.write("%s\n" % line)
+
+    def save_final_model(self):
+        pkl.dump(self.best_model[0], open('best_model.pkl', 'wb'))

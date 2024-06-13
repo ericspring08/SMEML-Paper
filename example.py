@@ -16,4 +16,4 @@ y = df['target']
 # respectively
 smeml = SMEML()
 # train the model
-results, attributes = smeml.train(X, y)
+smeml.train(X, y)
