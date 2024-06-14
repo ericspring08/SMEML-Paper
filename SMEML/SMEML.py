@@ -6,10 +6,15 @@ from sklearn.multioutput import MultiOutputRegressor
 from sklearn.ensemble import VotingClassifier
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
+from skopt import BayesSearchCV
 import os
-import threading
-from SMEML.models import classifiers
+import multiprocessing
+from SMEML.models import classifiers, param_grids
+from multiprocessing import freeze_support
+from functools import partial
 import logging
+
+np.int = int
 
 logging.captureWarnings(capture=True)
 
@@ -72,6 +77,9 @@ class SMEML:
         self.X = X
         self.y = y
 
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+            self.X, self.y, test_size=0.2, random_state=42)
+
         # fill nan values
         self.preprocess()
 
@@ -90,40 +98,48 @@ class SMEML:
 
         model_threads = []
         self.models = []
-        # get the top 3 classifiers
+        manager = multiprocessing.Manager()
+        return_dict = manager.dict()
         for i in top:
-            thread = threading.Thread(
-                target=self.train_thread, args=(classifiers[i],))
+            thread = multiprocessing.Process(
+                target=self.train_thread, args=(classifiers[i], return_dict,))
             model_threads.append(thread)
+
+        for thread in model_threads:
             thread.start()
 
         # wait for all threads to finish
         for thread in model_threads:
             thread.join()
-        # get best model
-        best_model = max(self.models, key=lambda x: (x[2], x[1], x[3]))
-        self.best_model = best_model
 
-        print("Best model: ", best_model[0], "Average accuracy: ", best_model[1],
-              "Best accuracy: ", best_model[2], "Standard Deviation: ", best_model[3], "Scores: ", best_model[4])
+        for key, value in return_dict.items():
+            self.models.append((key, value))
+
+        # get best model
+        self.best_model = max(self.models, key=lambda x: (x[1]))
+
+        print("Best model: ", self.best_model[0],
+              " with accuracy: ", self.best_model[1])
 
         self.generate_report()
-
         self.save_final_model()
 
-    def train_thread(self, model):
-        # train the classifier
-        scores = cross_val_score(model, self.X, self.y, cv=5)
+    def train_thread(self, model, return_dict):
+        print("Training model: ", model)
+        optimizer = BayesSearchCV(
+            model, param_grids[model.__class__.__name__], n_iter=10, cv=3)
 
-        accuracy_average = np.mean(scores)
-        accuracy_best = np.max(scores)
-        accuracy_std = np.std(scores)
+        optimizer.fit(self.X_train, self.y_train,
+                      callback=partial(self.bayes_cv_callback, model_name=model.__class__.__name__))
 
-        print("Model: ", model, "Average accuracy: ", accuracy_average, "Best accuracy: ",
-              accuracy_best, "Standard Deviation: ", accuracy_std, "Scores: ", scores)
+        accuracy = optimizer.score(self.X_test, self.y_test)
+        print("Model: ", model, " with accuracy: ", accuracy)
 
-        self.models.append((model, accuracy_average,
-                            accuracy_best, accuracy_std, scores))
+        return_dict[model] = accuracy
+
+    def bayes_cv_callback(self, res, model_name=None):
+        # print the current model name
+        print(f"[{model_name}] Iteration {res['x_iters'][-1]}: ")
 
     def get_dataset_attributes(self):
         attributes = {}
@@ -274,19 +290,13 @@ class SMEML:
 
         for index, model in enumerate(self.models):
             lines.append("Model " + str(index) + ": " + str(model[0]) +
-                         " with accuracy average: " + str(model[1]) +
-                         " and best accuracy: " + str(model[2]) + "Standard Deviation: " + str(model[3]) + " with scores: " + str(model[4]))
+                         " with accuracy: " + str(model[1]))
 
         print()
 
         lines.append("Best model" + str(self.best_model[0]) +
                      " with accuracy average: " +
-                     str(self.best_model[1]) +
-                     " and best accuracy: " +
-                     str(self.best_model[2]) +
-                     "Standard Deviation: " +
-                     str(self.best_model[3]) +
-                     " with scores: " + str(self.best_model[4]))
+                     str(self.best_model[1]))
 
         # save the report
         with open('report.txt', 'w') as f:
