@@ -16,14 +16,14 @@ z_score_std: 0.5078654550361406
 average_correlation: 0.0016273873864261362
 correlation_std: 0.1748731073702319
 Top 10 classifiers predicted by SMEML
-Model 0: DecisionTreeClassifier() with accuracy: 0.9707317073170731
+Model 0: DecisionTreeClassifier() with accuracy: 0.9853658536585366
 Model 1: RandomForestClassifier() with accuracy: 0.9853658536585366
-Model 2: LinearSVC() with accuracy: 0.751219512195122
+Model 2: LinearSVC() with accuracy: 0.7609756097560976
 Model 3: BernoulliNB() with accuracy: 0.8292682926829268
-Model 4: ExtraTreesClassifier() with accuracy: 0.9853658536585366
-Model 5: GradientBoostingClassifier() with accuracy: 0.9853658536585366
-Model 6: LogisticRegression(max_iter=1000) with accuracy: 0.7853658536585366
+Model 4: ExtraTreesClassifier() with accuracy: 1.0
+Model 5: LogisticRegression(max_iter=1000) with accuracy: 0.7853658536585366
+Model 6: GradientBoostingClassifier() with accuracy: 0.9853658536585366
 Model 7: AdaBoostClassifier(n_estimators=100) with accuracy: 0.8926829268292683
 Model 8: LGBMClassifier(verbose=-1) with accuracy: 0.9853658536585366
-Model 9: LogisticRegressionCV(cv=5, max_iter=1000) with accuracy: 0.7853658536585366
-Best modelRandomForestClassifier() with accuracy average: 0.9853658536585366
+Model 9: LogisticRegressionCV(cv=5, max_iter=1000) with accuracy: 0.7951219512195122
+Best modelExtraTreesClassifier() with accuracy average: 1.0

@@ -139,7 +139,7 @@ class SMEML:
 
     def bayes_cv_callback(self, res, model_name=None):
         # print the current model name
-        print(f"[{model_name}] Iteration {res['x_iters'][-1]}: ")
+        print(f"[{model_name}] Iteration {res['x']}, accuracy: {res['fun']*-1}")
 
     def get_dataset_attributes(self):
         attributes = {}
