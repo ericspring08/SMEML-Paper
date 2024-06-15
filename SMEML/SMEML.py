@@ -70,9 +70,10 @@ classifier_names = [
 
 
 class SMEML:
-    def __init__(self):
+    def __init__(self, iterations=10):
         self.X = None
         self.y = None
+        self.iterations = iterations
 
     def train(self, X, y):
         self.X = X
@@ -128,7 +129,7 @@ class SMEML:
     def train_thread(self, model, model_name, return_dict):
         print("Training model: ", model_name)
         optimizer = BayesSearchCV(
-            model, param_grids[model_name], n_iter=10, cv=3, error_score=0)
+            model, param_grids[model_name], n_iter=self.iterations, cv=3, error_score=0)
 
         optimizer.fit(self.X_train, self.y_train,
                       callback=partial(self.bayes_cv_callback, model_name=model_name))

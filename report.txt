@@ -17,9 +17,9 @@ average_correlation: 0.0016273873864261362
 correlation_std: 0.1748731073702319
 Top 10 classifiers predicted by SMEML
 Model 0: NearestCentroid() with accuracy: 0.6634146341463415
-Model 1: ExtraTreeClassifier() with accuracy: 1.0
-Model 2: DecisionTreeClassifier() with accuracy: 0.975609756097561
-Model 3: ExtraTreesClassifier() with accuracy: 0.9707317073170731
-Model 4: BernoulliNB() with accuracy: 0.8292682926829268
-Model 5: SVC() with accuracy: 1.0
-Best modelExtraTreeClassifier() with accuracy average: 1.0
+Model 1: BernoulliNB() with accuracy: 0.8292682926829268
+Model 2: SVC() with accuracy: 1.0
+Model 3: ExtraTreeClassifier() with accuracy: 0.9853658536585366
+Model 4: DecisionTreeClassifier() with accuracy: 0.9853658536585366
+Model 5: ExtraTreesClassifier() with accuracy: 0.9853658536585366
+Best modelSVC() with accuracy average: 1.0

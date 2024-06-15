@@ -1,0 +1,29 @@
+AutoML directory: AutoML_2
+The task is binary_classification with evaluation metric accuracy
+AutoML will use algorithms: ['Baseline', 'Linear', 'Decision Tree', 'Random Forest', 'Xgboost', 'Neural Network']
+AutoML will ensemble available models
+AutoML steps: ['simple_algorithms', 'default_algorithms', 'ensemble']
+* Step simple_algorithms will try to check up to 3 models
+1_Baseline accuracy 0.513619 trained in 0.68 seconds
+log_loss_eps() got an unexpected keyword argument 'response_method'
+Problem during computing permutation importance. Skipping ...
+2_DecisionTree accuracy 0.844358 trained in 14.22 seconds
+log_loss_eps() got an unexpected keyword argument 'response_method'
+Problem during computing permutation importance. Skipping ...
+3_Linear accuracy 0.832685 trained in 12.32 seconds
+* Step default_algorithms will try to check up to 3 models
+log_loss_eps() got an unexpected keyword argument 'response_method'
+Problem during computing permutation importance. Skipping ...
+4_Default_Xgboost accuracy 1.0 trained in 12.39 seconds
+log_loss_eps() got an unexpected keyword argument 'response_method'
+Problem during computing permutation importance. Skipping ...
+5_Default_NeuralNetwork accuracy 0.957198 trained in 6.31 seconds
+log_loss_eps() got an unexpected keyword argument 'response_method'
+Problem during computing permutation importance. Skipping ...
+6_Default_RandomForest accuracy 0.88716 trained in 12.54 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble accuracy 1.0 trained in 5.59 seconds
+AutoML fit time: 82.86 seconds
+AutoML best model: 4_Default_Xgboost
+Model Score: 1.0
+Time elapsed:  82.90566682815552
