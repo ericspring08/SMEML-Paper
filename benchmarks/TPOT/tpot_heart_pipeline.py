@@ -9,8 +9,8 @@ features = tpot_data.drop('target', axis=1)
 training_features, testing_features, training_target, testing_target = \
             train_test_split(features, tpot_data['target'], random_state=42)
 
-# Average CV score on the training set was: 0.9829268292682928
-exported_pipeline = GradientBoostingClassifier(learning_rate=0.5, max_depth=8, max_features=0.4, min_samples_leaf=10, min_samples_split=19, n_estimators=100, subsample=0.55)
+# Average CV score on the training set was: 0.9890243902439024
+exported_pipeline = GradientBoostingClassifier(learning_rate=1.0, max_depth=9, max_features=0.4, min_samples_leaf=20, min_samples_split=12, n_estimators=100, subsample=0.6000000000000001)
 # Fix random state in exported estimator
 if hasattr(exported_pipeline, 'random_state'):
     setattr(exported_pipeline, 'random_state', 42)

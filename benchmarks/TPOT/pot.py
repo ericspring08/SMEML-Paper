@@ -2,8 +2,11 @@ import joblib
 from tpot import TPOTClassifier
 from sklearn.model_selection import train_test_split
 import pandas as pd
+import time
 
-data = pd.read_csv('heart.csv')
+time_start = time.time()
+
+data = pd.read_csv('../../benchmark_datasets/heart.csv')
 
 X = data.drop(columns=['target'])
 y = data['target']
@@ -11,7 +14,7 @@ y = data['target']
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
 
-tpot = TPOTClassifier(generations=5, population_size=20,
+tpot = TPOTClassifier(population_size=20,
                       verbosity=2, random_state=42)
 
 tpot.fit(X_train, y_train)
@@ -22,3 +25,8 @@ tpot.export('tpot_heart_pipeline.py')
 
 # save model
 joblib.dump(tpot.fitted_pipeline_, 'tpot_heart_model.pkl')
+
+time_end = time.time()
+
+time_total = time_end - time_start
+print("Time taken: ", time_total)

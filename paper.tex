@@ -133,6 +133,8 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 
 \end{longtable}
 
+Keeping the factors we have laid out in mind, namely expeditious running, accuracy, and interpretability, we uncovered a key continuity in framework design: frameworks are forced to run and train the majority of their available models to maximize accuracy at the expense of efficiency. Given the restricted nature of tabular data, there are some models that, in general, are less likely to perform well, thus running and training these models is frequently wasteful. Cutting these models completely, however, is not optimal either, as they are the best option in a minority of cases and give frameworks versatility. We hypothesized that using a combination of layered machine learning implementation in which we train a model to predict a basic framework's outputs and meta-feature extraction in which we accelerate the training process by reducing complicated data matrices to their measurable attributes would yield an equally versatile system that minimizes time spent on prediction while still maximizing accuracy and straightforward implementation in a medical context. 
+
 \section{Methodology}
 
 \subsection{Data Collection} 
