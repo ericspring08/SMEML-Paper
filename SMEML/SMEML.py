@@ -1,16 +1,19 @@
+# sklearn intel patch
+# check if x86 or arm
+import platform
+if platform.machine() == 'x86_64':
+    from sklearnex import patch_sklearn
+    patch_sklearn()
+
 import pickle as pkl
 import numpy as np
-from sklearn.model_selection import cross_val_score, train_test_split
-from xgboost import XGBRegressor, XGBClassifier
-from sklearn.multioutput import MultiOutputRegressor
-from sklearn.ensemble import VotingClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from skopt import BayesSearchCV
 import os
 import multiprocessing
 from SMEML.models import classifiers, param_grids
-from multiprocessing import freeze_support
 from functools import partial
 import logging
 
@@ -37,11 +40,9 @@ logger.addFilter(
 classifier_names = [
     'SVC',
     'SGDClassifier',
-    'RidgeClassifierCV',
     'RidgeClassifier',
     'Perceptron',
     'PassiveAggressiveClassifier',
-    'LogisticRegressionCV',
     'LogisticRegression',
     'LinearSVC',
     'RandomForestClassifier',
@@ -94,15 +95,15 @@ class SMEML:
 
         results = smeml_model.predict(input)
 
-        top = np.argsort(results[0])[-10:]
+        top = np.argsort(results[0])[-8:]
 
         model_threads = []
         self.models = []
         manager = multiprocessing.Manager()
         return_dict = manager.dict()
         for i in top:
-            thread = multiprocessing.Process(
-                target=self.train_thread, args=(classifiers[i], return_dict,))
+            thread = multiprocessing.Process(name=classifier_names[i],
+                target=self.train_thread, args=(classifiers[i], classifier_names[i], return_dict,))
             model_threads.append(thread)
 
         for thread in model_threads:
@@ -124,13 +125,13 @@ class SMEML:
         self.generate_report()
         self.save_final_model()
 
-    def train_thread(self, model, return_dict):
-        print("Training model: ", model)
+    def train_thread(self, model, model_name, return_dict):
+        print("Training model: ", model_name)
         optimizer = BayesSearchCV(
-            model, param_grids[model.__class__.__name__], n_iter=10, cv=3)
+            model, param_grids[model_name], n_iter=10, cv=3, error_score=0)
 
         optimizer.fit(self.X_train, self.y_train,
-                      callback=partial(self.bayes_cv_callback, model_name=model.__class__.__name__))
+                      callback=partial(self.bayes_cv_callback, model_name=model_name))
 
         accuracy = optimizer.score(self.X_test, self.y_test)
         print("Model: ", model, " with accuracy: ", accuracy)

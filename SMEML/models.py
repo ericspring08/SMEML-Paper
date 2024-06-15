@@ -36,11 +36,9 @@ import numpy as np
 classifiers = np.array([
     SVC(kernel='rbf', C=1.0, verbose=False),
     SGDClassifier(loss='hinge', max_iter=1000, tol=1e-3),
-    RidgeClassifierCV(alphas=[0.1, 1.0, 10.0]),
     RidgeClassifier(alpha=1.0),
     Perceptron(max_iter=1000, tol=1e-3),
     PassiveAggressiveClassifier(max_iter=1000, tol=1e-3),
-    LogisticRegressionCV(cv=5, max_iter=1000, verbose=0),
     LogisticRegression(max_iter=1000, verbose=0),
     LinearSVC(max_iter=1000, verbose=0),
     RandomForestClassifier(n_estimators=100, verbose=0),
@@ -75,14 +73,7 @@ param_grids = {
     'SGDClassifier': {
         'loss': ['hinge', 'log', 'modified_huber', 'squared_hinge', 'perceptron'],
         'penalty': ['l2', 'l1', 'elasticnet'],
-        'alpha': [0.0001, 0.001, 0.01, 0.1],
         'max_iter': [1000, 2000],
-        'tol': [1e-3, 1e-4],
-    },
-    'RidgeClassifierCV': {
-        'alphas': [[0.01, 0.1, 1.0, 10.0, 100.0]],
-        'fit_intercept': [True, False],
-        'normalize': [True, False],
     },
     'RidgeClassifier': {
         'alpha': [0.01, 0.1, 1.0, 10.0],
@@ -91,7 +82,7 @@ param_grids = {
     },
     'Perceptron': {
         'penalty': [None, 'l2', 'l1', 'elasticnet'],
-        'alpha': [0.0001, 0.001, 0.01, 0.1],
+        'alpha': [0.001, 0.01, 0.1],
         'max_iter': [1000, 2000],
         'tol': [1e-3, 1e-4],
     },
@@ -99,12 +90,6 @@ param_grids = {
         'C': [0.01, 0.1, 1, 10],
         'max_iter': [1000, 2000],
         'tol': [1e-3, 1e-4],
-    },
-    'LogisticRegressionCV': {
-        'cv': [3, 5, 10],
-        'penalty': ['l2'],
-        'solver': ['lbfgs', 'liblinear', 'sag', 'saga'],
-        'max_iter': [1000, 2000],
     },
     'LogisticRegression': {
         'C': [0.01, 0.1, 1.0, 10.0, 100.0],
@@ -202,7 +187,7 @@ param_grids = {
         'hidden_layer_sizes': [(50,), (100,), (100, 100)],
         'activation': ['relu', 'tanh', 'logistic'],
         'solver': ['adam', 'sgd'],
-        'alpha': [0.0001, 0.001, 0.01],
+        'alpha': [0.001, 0.01],
         'learning_rate': ['constant', 'invscaling', 'adaptive'],
         'max_iter': [1000, 2000],
     },
