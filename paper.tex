@@ -26,6 +26,8 @@
 \usepackage{geometry}
 \usepackage{longtable}
 \usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
 
 
 \title{Smart Model Elimination for Efficient Automated Machine Learning}
@@ -124,7 +126,7 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 \hline
 \textbf{Hyperparameter Tuning} & Automated & Genetic algorithm & Automated and customizable & Automated and efficient tuning & Automated & Automated \\
 \hline
-\textbf{Model Interpretability} & SHAP, LIME, PDPs, MOJO & POJO, etc. & Basic & SHAP, LIME, PDPs, etc. & Basic (permutation importance) & SHAP, PDPs, etc. & Basic (feature importance) \\
+\textbf{Model Interpretability} & SHAP, LIME, PDPs, MOJO & POJO, etc. & Basic & SHAP, LIME, PDPs, etc. & Basic (permutation importance) & SHAP, PDPs, etc. Basic (feature importance) \\
 \hline
 \textbf{Scalability} & Good (distributed computing) & Limited & Good & Good (resource-efficient) & Good (distributing computing) & Moderate \\
 \hline
@@ -136,18 +138,66 @@ Table 1: Comparison of six AutoML frameworks based on commonmly evaluated criter
 
 We systematically reviewed and compared six different AutoML frameworks, comparing every feature relevant to medical implementation. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT. By testing our new framework against these four in evaluating medical data, we hoped to delineate key weaknesses and strengths in our own design. 
 
-Taking a closer look at four AutoML standards, we can observe pros and cons in their theoretical application to medicine and research. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks in the medical sphere. It supports imputation techniques for missing values with user specification and has an intuitive API, making it moderately user-friendly for minimally trained healthcare workers. H2O has a wider variety of supported algorithms that may or may not be appropriate for medical diagnosis, making it slower than FLAML on average. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users. MLJAR uses more advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users. 
+Taking a closer look at four AutoML standards, we can observe pros and cons in their theoretical application to medicine and research. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks in the medical sphere. It supports imputation techniques for missing values with user specification and has an intuitive API, making it moderately user-friendly for minimally trained healthcare workers. H2O has a wider variety of supported algorithms that may or may not be appropriate for medical diagnosis, making it slower than FLAML on Mean. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users. MLJAR uses more advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users. 
 
 Keeping the factors we have laid out in mind, namely expeditious running, accuracy, and interpretability, we also uncovered a key continuity in framework design: frameworks are forced to run and train the majority of their available models to maximize accuracy at the expense of efficiency. Given the restricted nature of tabular data, there are some models that, in general, are less likely to perform well, thus running and training these models is frequently wasteful. Cutting these models completely, however, is not optimal either, as they are the best option in a minority of cases and give frameworks versatility. We hypothesized that using a combination of layered machine learning implementation in which we train a model to predict a basic framework's outputs and meta-feature extraction in which we accelerate the training process by reducing complicated data matrices to their measurable attributes would yield an equally versatile system that minimizes time spent on prediction while still maximizing accuracy and straightforward implementation in a medical context. 
 
 \section{Methodology}
 
-\subsection{Training}
+\subsection{Overview}
+When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset.
 
-Insert Table Here
-Table 2: Meta-features extracted in simplifcation of the Kaggle dataset-optimal model dataset
 
-We used a Kaggle API library to search Kaggle using 20 medically-relevant key words. We limited our search to tabular datasets and obtained 300 viable datasets for training. We ran the Kaggle datasets through a rudimentary framework, pairing them with ML algorithms predicted to perform most optimally on that data. These ML algorithms were untrained and were selected from a pool of 30 candidates. The resulting 2x300 matrix then went through manuel meta-feature extraction (See Table 2). This new matrix was then used to train an XGBoost algorithm using a rank-based prediction system. 
+\begin{table}
+  \caption{Model Options}
+  \label{model-options-table}
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    Attribute & Model & Purpose                         \\
+    \midrule
+    \# of Rows & $|\mathbf{A}|_r$ & Data Size \\
+    \hline
+    \# of Columns & $|\mathbf{A}|_c$ & Data Size \\
+    \hline
+    Target Distribution &
+    $\frac{\max(\text{count}_1, \text{count}_0)}{|\mathbf{A}|_r}$
+    & Data Type \\
+    \hline
+    Numerical Columns &
+    $\frac{|\mathbf{A}_{num}|}{|\mathbf{A}|_{c}}$
+    & Data Type \\
+    \hline
+    Binary Categorical Columns &
+    $\frac{|\mathbf{A}_{bin}|}{|\mathbf{A}|_{c}}$
+    & Data Type \\
+    \hline
+    Mean \# of Distinct Values  & $\mu \left\{\text{\# of distinct values in column}\right\}$ & Data Type \\ 
+    \hline
+    Mean IQR  & $\mu \left\{\text{IQR of column}\right\}$ & Data Distribution \\ 
+    \hline
+    Standard Deviation of IQR  & $\sigma \left\{\text{IQR of column}\right\}$ & Data Distribution \\
+    \hline
+    Mean Q1 & $\mu \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
+    \hline
+    Standard Deviation of Q1  & $\sigma \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
+    \hline
+    Mean Q3  & $\mu \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
+    \hline
+    Standard Deviation of Q3  & $\sigma \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
+    \hline
+    Mean Percent of Z-Score Outliers  & 
+    $\mu \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & Outlier Data Points \\
+    \hline
+    Standard Deviation of Percent of Z-Score Outliers  &
+    $\sigma \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & Outlier Data Points \\
+    \hline
+    Mean Correlation& $\mu \left\{\text{Correlation Matrix}\right\}$ & Data linearity \\
+    \hline
+    Standard Deviation of Correlation & $\sigma \left\{\text{Correlation Matrix}\right\}$ & Data Linearity \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Experiments}
 
