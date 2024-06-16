@@ -17,33 +17,36 @@ average_correlation: 0.33218997349750806
 correlation_std: 0.4828738408207415
 Top 10 classifiers predicted by SMEML
 Model 0: QuadraticDiscriminantAnalysis with accuracy: QuadraticDiscriminantAnalysis()
-Model 1: BernoulliNB with accuracy: BernoulliNB(alpha=0.1, binarize=1.0)
+Model 1: BernoulliNB with accuracy: BernoulliNB(alpha=0.01, binarize=0.5)
 Model 2: SVC with accuracy: SVC(C=100.0)
-Model 3: ExtraTreeClassifier with accuracy: ExtraTreeClassifier(max_depth=20, min_samples_leaf=4, min_samples_split=10)
-Model 4: ExtraTreesClassifier with accuracy: ExtraTreesClassifier(max_features='log2', n_estimators=50)
-Model 5: XGBClassifier with accuracy: XGBClassifier(base_score=None, booster=None, callbacks=None,
+Model 3: SGDClassifier with accuracy: SGDClassifier(loss='squared_hinge', max_iter=1487, penalty='l1')
+Model 4: ExtraTreeClassifier with accuracy: ExtraTreeClassifier(criterion='entropy', max_depth=20, min_samples_split=10)
+Model 5: ExtraTreesClassifier with accuracy: ExtraTreesClassifier(max_depth=10, max_features=None, min_samples_leaf=2,
+                     min_samples_split=5)
+Model 6: XGBClassifier with accuracy: XGBClassifier(base_score=None, booster=None, callbacks=None,
               colsample_bylevel=None, colsample_bynode=None,
-              colsample_bytree=1.0, device=None, early_stopping_rounds=None,
-              enable_categorical=False, eval_metric=None, feature_types=None,
-              gamma=None, grow_policy=None, importance_type=None,
+              colsample_bytree=0.8827504269588006, device=None,
+              early_stopping_rounds=None, enable_categorical=False,
+              eval_metric=None, feature_types=None, gamma=None,
+              grow_policy=None, importance_type=None,
               interaction_constraints=None, learning_rate=0.2, max_bin=None,
               max_cat_threshold=None, max_cat_to_onehot=None,
               max_delta_step=None, max_depth=3, max_leaves=None,
               min_child_weight=None, missing=nan, monotone_constraints=None,
-              multi_strategy=None, n_estimators=200, n_jobs=None,
+              multi_strategy=None, n_estimators=100, n_jobs=None,
               num_parallel_tree=None, random_state=None, ...)
 Best modelStackingClassifier(estimators=[('QuadraticDiscriminantAnalysis',
                                 QuadraticDiscriminantAnalysis()),
                                ('BernoulliNB',
-                                BernoulliNB(alpha=0.1, binarize=1.0)),
+                                BernoulliNB(alpha=0.01, binarize=0.5)),
                                ('SVC', SVC(C=100.0)),
+                               ('SGDClassifier',
+                                SGDClassifier(loss='squared_hinge',
+                                              max_iter=1487, penalty='l1')),
                                ('ExtraTreeClassifier',
-                                ExtraTreeClassifier(max_depth=20,
-                                                    min_samples_leaf=4,
-                                                    min_samples_split=10)),
-                               ('ExtraTreesClassifier',
-                                ExtraTreesClassifier(max_features='log2',
-                                                     n_estimators=50))...
+                                ExtraTreeClassifier(criterion='entropy',
+                                                    max_depth=20,
+                                                    min_samples_split=10))...
                                                  grow_policy=None,
                                                  importance_type=None,
                                                  interaction_constraints=None,
@@ -60,4 +63,4 @@ Best modelStackingClassifier(estimators=[('QuadraticDiscriminantAnalysis',
                                                  multi_strategy=None,
                                                  n_estimators=None, n_jobs=None,
                                                  num_parallel_tree=None,
-                                                 random_state=None, ...)) with accuracy average: 0.8717948717948718
+                                                 random_state=None, ...)) with accuracy average: 0.8974358974358975

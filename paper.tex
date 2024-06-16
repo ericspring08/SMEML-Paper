@@ -147,7 +147,6 @@ Keeping the factors we have laid out in mind, namely expeditious running, accura
 \subsection{Observation}
 When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset.
 
-
 \begin{table}
   \caption{Attributes extracted from a dataset}
   \label{model-options-table}
@@ -176,31 +175,37 @@ When considering a specific dataset, various aspects regarding the distribution 
     \hline
     Mean IQR  & $\mu \left\{\text{IQR of column}\right\}$ & Data Distribution \\ 
     \hline
-    Standard Deviation of IQR  & $\sigma \left\{\text{IQR of column}\right\}$ & Data Distribution \\
+    STD of IQR  & $\sigma \left\{\text{IQR of column}\right\}$ & Data Distribution \\
     \hline
     Mean Q1 & $\mu \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
     \hline
-    Standard Deviation of Q1  & $\sigma \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
+    STD of Q1  & $\sigma \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
     \hline
     Mean Q3  & $\mu \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
     \hline
-    Standard Deviation of Q3  & $\sigma \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
+    STD of Q3  & $\sigma \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
     \hline
     Mean Percent of Z-Score Outliers  & 
     $\mu \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & Outlier Data Points \\
     \hline
-    Standard Deviation of Percent of Z-Score Outliers  &
+    STD of Percent of Z-Score Outliers  &
     $\sigma \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & Outlier Data Points \\
     \hline
     Mean Correlation& $\mu \left\{\text{Correlation Matrix}\right\}$ & Data linearity \\
     \hline
-    Standard Deviation of Correlation & $\sigma \left\{\text{Correlation Matrix}\right\}$ & Data Linearity \\
+    STD of Correlation & $\sigma \left\{\text{Correlation Matrix}\right\}$ & Data Linearity \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Data Extraction}
-To train our boosting model, we collected over a thousand datasets from kaggle, a popular website for hosting public datasets. After used various medical terms to filter down datasets and limiting our search to tabular, binary-classification datasets, we were left with 268 datasets. We extracted the attributes in Table 2. from each dataset and ran every model on each dataset to get the performace of each model. We trained a multilabel regression model on these attributes to predict the rank of every model on a specific dataset.
+
+\begin {figure}
+\centering
+\fbox{\includegraphics[width=\textwidth]{smeml-flowchart.png}}
+\caption{SMEML Process}
+\end{figure}
+\subsection{Model Elimination}
+
 
 \subsection{Experiments}
 

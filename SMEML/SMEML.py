@@ -125,7 +125,8 @@ class SMEML:
             else:
                 self.models.append((key.replace('_model', ''), value))
 
-        print(self.models)
+        # take top 3 models
+        self.models = sorted(self.model_accuracies, key=lambda x: x[1], reverse=True)[:3]
 
         stacking_classifier = StackingClassifier(estimators=self.models, final_estimator=XGBClassifier())
 
