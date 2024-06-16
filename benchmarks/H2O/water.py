@@ -7,7 +7,7 @@ time_start = time.time()
 h2o.init()
 
 # Import a sample binary outcome train/test set into H2OAutoML
-df = pd.read_csv("../../benchmark_datasets/heart.csv")
+df = pd.read_csv("../../benchmark_datasets/parkinsons.csv")
 
 # Convert the pandas DataFrame to an H2OFrame.
 h2o_df = h2o.H2OFrame(df)
@@ -15,7 +15,7 @@ h2o_df = h2o.H2OFrame(df)
 # Identify predictors and response
 x = h2o_df.columns
 
-y = "target"
+y = "status"
 
 x.remove(y)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  16 JUN 2024 00:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  16 JUN 2024 11:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -549,30 +549,27 @@ Overfull \hbox (52.60262pt too wide) in paragraph at lines 155--200
  [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2] [3] (./paper.aux)
+[2] [3] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 968A5A3FF6C39911E775F4709688DFA8;590.
+(rerunfilecheck)             Checksum: FB8E2C19AF2D855DB09047D5FCAC128B;740.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 213 ({)
+### simple group (level 1) entered at line 216 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 13398 strings out of 476025
- 215895 string characters out of 5779036
- 1880388 words of memory out of 5000000
- 33494 multiletter control sequences out of 15000+600000
- 549903 words of font info for 154 fonts, out of 8000000 for 9000
+ 13406 strings out of 476025
+ 215979 string characters out of 5779036
+ 1881388 words of memory out of 5000000
+ 33495 multiletter control sequences out of 15000+600000
+ 550163 words of font info for 158 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,14n,76p,1366b,553s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (3 pages, 166746 bytes).
+Output written on paper.pdf (3 pages, 167335 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 41521 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 134 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
+ 41529 words of extra memory for PDF output out of 42996 (max. 10000000)
 

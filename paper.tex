@@ -144,17 +144,17 @@ Keeping the factors we have laid out in mind, namely expeditious running, accura
 
 \section{Methodology}
 
-\subsection{Overview}
+\subsection{Observation}
 When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset.
 
 
 \begin{table}
-  \caption{Model Options}
+  \caption{Attributes extracted from a dataset}
   \label{model-options-table}
   \centering
   \begin{tabular}{lll}
     \toprule
-    Attribute & Model & Purpose                         \\
+    Attribute & Formula & Purpose\\
     \midrule
     \# of Rows & $|\mathbf{A}|_r$ & Data Size \\
     \hline
@@ -198,6 +198,9 @@ When considering a specific dataset, various aspects regarding the distribution 
     \bottomrule
   \end{tabular}
 \end{table}
+
+\subsection{Data Extraction}
+To train our boosting model, we collected over a thousand datasets from kaggle, a popular website for hosting public datasets. After used various medical terms to filter down datasets and limiting our search to tabular, binary-classification datasets, we were left with 268 datasets. We extracted the attributes in Table 2. from each dataset and ran every model on each dataset to get the performace of each model. We trained a multilabel regression model on these attributes to predict the rank of every model on a specific dataset.
 
 \subsection{Experiments}
 

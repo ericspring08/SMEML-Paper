@@ -1,39 +1,49 @@
 Dataset information
-num_rows: 1025
-num_cols: 13
-output_distribution: 0.5307317073170732
-numerical_columns: 0.38461538461538464
-binary_categorical: 0.375
-categorical_average_count: 3.125
-average_iqr: 0.231099173091105
-average_q1: 0.26016582682074585
-average_q3: 0.4912649999118509
-iqr_std: 0.054619294138652685
-q1_std: 0.1630375194628622
-q3_std: 0.17434126278233228
-z_score_average: 0.8472839938967011
-z_score_std: 0.5078654550361406
-average_correlation: 0.0016273873864261362
-correlation_std: 0.1748731073702319
+num_rows: 195
+num_cols: 22
+output_distribution: 0.005128205128205128
+numerical_columns: 1.0
+binary_categorical: 0
+categorical_average_count: 0
+average_iqr: 0.20972318088068367
+average_q1: 0.15172680998107907
+average_q3: 0.3614499908617627
+iqr_std: 0.0885572404242931
+q1_std: 0.13787886374737696
+q3_std: 0.20816237600161092
+z_score_average: 0.7300941151606178
+z_score_std: 0.6688827731178631
+average_correlation: 0.33218997349750806
+correlation_std: 0.4828738408207415
 Top 10 classifiers predicted by SMEML
-Model 0: NearestCentroid with accuracy: NearestCentroid(metric='manhattan')
-Model 1: ExtraTreeClassifier with accuracy: ExtraTreeClassifier(min_samples_leaf=2, min_samples_split=5)
-Model 2: ExtraTreesClassifier with accuracy: ExtraTreesClassifier(bootstrap=True, max_depth=20, n_estimators=200)
-Model 3: DecisionTreeClassifier with accuracy: DecisionTreeClassifier(min_samples_leaf=2, min_samples_split=5)
-Model 4: BernoulliNB with accuracy: BernoulliNB(alpha=0.01, binarize=0.5)
-Model 5: SVC with accuracy: SVC(C=10.0, gamma='auto')
-Best modelStackingClassifier(estimators=[('NearestCentroid',
-                                NearestCentroid(metric='manhattan')),
+Model 0: QuadraticDiscriminantAnalysis with accuracy: QuadraticDiscriminantAnalysis()
+Model 1: BernoulliNB with accuracy: BernoulliNB(alpha=0.1, binarize=1.0)
+Model 2: SVC with accuracy: SVC(C=100.0)
+Model 3: ExtraTreeClassifier with accuracy: ExtraTreeClassifier(max_depth=20, min_samples_leaf=4, min_samples_split=10)
+Model 4: ExtraTreesClassifier with accuracy: ExtraTreesClassifier(max_features='log2', n_estimators=50)
+Model 5: XGBClassifier with accuracy: XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=1.0, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=0.2, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=3, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              multi_strategy=None, n_estimators=200, n_jobs=None,
+              num_parallel_tree=None, random_state=None, ...)
+Best modelStackingClassifier(estimators=[('QuadraticDiscriminantAnalysis',
+                                QuadraticDiscriminantAnalysis()),
+                               ('BernoulliNB',
+                                BernoulliNB(alpha=0.1, binarize=1.0)),
+                               ('SVC', SVC(C=100.0)),
                                ('ExtraTreeClassifier',
-                                ExtraTreeClassifier(min_samples_leaf=2,
-                                                    min_samples_split=5)),
+                                ExtraTreeClassifier(max_depth=20,
+                                                    min_samples_leaf=4,
+                                                    min_samples_split=10)),
                                ('ExtraTreesClassifier',
-                                ExtraTreesClassifier(bootstrap=True,
-                                                     max_depth=20,
-                                                     n_estimators=200)),
-                               ('DecisionTreeClassifier',
-                                DecisionTreeClassifier(min_samples_leaf=2,
-                                                       min_samples_split=5...
+                                ExtraTreesClassifier(max_features='log2',
+                                                     n_estimators=50))...
                                                  grow_policy=None,
                                                  importance_type=None,
                                                  interaction_constraints=None,
@@ -50,4 +60,4 @@ Best modelStackingClassifier(estimators=[('NearestCentroid',
                                                  multi_strategy=None,
                                                  n_estimators=None, n_jobs=None,
                                                  num_parallel_tree=None,
-                                                 random_state=None, ...)) with accuracy average: 1.0
+                                                 random_state=None, ...)) with accuracy average: 0.8717948717948718

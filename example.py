@@ -6,10 +6,10 @@ import time
 if __name__ == "__main__":
     time_start = time.time()
     # load the dataset
-    df = pd.read_csv('./benchmark_datasets/heart.csv')
+    df = pd.read_csv('./benchmark_datasets/parkinsons.csv')
 
-    X = df.drop('target', axis=1)
-    y = df['target']
+    X = df.drop('status', axis=1)
+    y = df['status']
 
 # label encoding
 # y = y.map({'ckd': 1, 'notckd': 0})
@@ -17,7 +17,7 @@ if __name__ == "__main__":
 # create an instance of the SMEML class
 # X and y are the features and target variable
 # respectively
-    smeml = SMEML(iterations=5)
+    smeml = SMEML(iterations=32)
 # train the model
     smeml.train(X, y)
     time_end = time.time()

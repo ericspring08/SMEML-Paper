@@ -143,7 +143,7 @@ class SMEML:
     def train_thread(self, model, model_name, return_dict):
         print("Training model: ", model_name)
         optimizer = BayesSearchCV(
-            model, param_grids[model_name], n_iter=self.iterations, cv=3, error_score=0)
+            model, param_grids[model_name], n_iter=self.iterations, cv=3)
 
         optimizer.fit(self.X_train, self.y_train,
                       callback=partial(self.bayes_cv_callback, model_name=model_name))
@@ -203,8 +203,12 @@ class SMEML:
                 categorical_average_count += self.X[col].nunique()
 
         attributes['numerical_columns'] = numerical_features/self.X.shape[1]
-        attributes['binary_categorical'] = binary_categorical/categorical_count
-        attributes['categorical_average_count'] = categorical_average_count / \
+        if categorical_count == 0:
+            attributes['binary_categorical'] = 0
+            attributes['categorical_average_count'] = 0
+        else:
+            attributes['binary_categorical'] = binary_categorical/categorical_count
+            attributes['categorical_average_count'] = categorical_average_count / \
             categorical_count
         attributes['average_iqr'] = np.mean(iqr_values)
         attributes['average_q1'] = np.mean(q1_values)
@@ -213,9 +217,9 @@ class SMEML:
         attributes['q1_std'] = np.mean(np.std(q1_values))
         attributes['q3_std'] = np.mean(np.std(q3_values))
         print("Numerical columns: ", numerical_features/self.X.shape[1])
-        print("Binary categorical: ", binary_categorical/categorical_count)
+        print("Binary categorical: ", attributes['binary_categorical'])
         print("Categorical average count: ",
-              categorical_average_count/categorical_count)
+              attributes['categorical_average_count'])
         print("Average IQR: ", np.mean(iqr_values))
         print("Average Q1: ", np.mean(q1_values))
         print("Average Q3: ", np.mean(q3_values))
@@ -292,6 +296,8 @@ class SMEML:
             verbose_feature_names_out=False).set_output(transform='pandas')
 
         self.X = preprocessor.fit_transform(self.X)
+
+        print(self.X)
 
     def generate_report(self):
         lines = []

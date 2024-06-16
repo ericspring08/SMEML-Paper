@@ -8,11 +8,11 @@ import xgboost
 xgboost_version = xgboost.__version__
 
 # Load your dataset
-dataset_path = '../../MTF/SAHeart.csv'  # Specify the path to your dataset file
+dataset_path = '../../benchmark_datasets/parkinsons.csv'  # Specify the path to your dataset file
 data = pd.read_csv(dataset_path)
 
-X = data.drop(columns=["chd"])  # Adjust the column name as per your dataset
-y = data["chd"]  # Adjust the column name as per your dataset
+X = data.drop(columns=["status"])  # Adjust the column name as per your dataset
+y = data["status"]  # Adjust the column name as per your dataset
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
@@ -20,8 +20,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Customize FLAML's AutoML
 automl = AutoML()
 automl_settings = {
-    "time_budget": 60,  # Set the maximum time budget for AutoML in seconds
-    # Specify the type of task (classification or regression)
     "task": "classification",
     "metric": "accuracy",  # Choose the evaluation metric to optimize
     "learner_selector": "auto",  # Let FLAML automatically select the learners
