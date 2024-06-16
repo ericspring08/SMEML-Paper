@@ -78,7 +78,7 @@
 
 
 \begin{abstract}
-  Automated Machine Learning or AutoML has emerged as a popular field of research. Many of these frameworks optimize a form of model selection, however, they all require every model to be run and evaluated. We propose a novel framework that automatically eliminates models that are unlikely to be performant by training a Boosting Model on hundreds of kaggle datasets. Out of the 30 model options, our framework can predict a top five model within its top eight 80\% of the time.
+  Automated Machine Learning or AutoML has emerged as a popular field of research. Many of these frameworks optimize a form of model selection, however, they all require most models to be run and evaluated. We propose a novel framework that automatically eliminates models that are unlikely to be performant by training a Boosting Model on hundreds of kaggle datasets. Out of the 30 model options, our framework can predict a top five model within its top eight 80\% of the time.
 \end{abstract}
 
 
@@ -132,21 +132,26 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 \hline
 
 \end{longtable}
+Table 1: Comparison of six AutoML frameworks based on commonmly evaluated criteria as well as more obscure features relevant to the medical diagnosis process 
 
-Keeping the factors we have laid out in mind, namely expeditious running, accuracy, and interpretability, we uncovered a key continuity in framework design: frameworks are forced to run and train the majority of their available models to maximize accuracy at the expense of efficiency. Given the restricted nature of tabular data, there are some models that, in general, are less likely to perform well, thus running and training these models is frequently wasteful. Cutting these models completely, however, is not optimal either, as they are the best option in a minority of cases and give frameworks versatility. We hypothesized that using a combination of layered machine learning implementation in which we train a model to predict a basic framework's outputs and meta-feature extraction in which we accelerate the training process by reducing complicated data matrices to their measurable attributes would yield an equally versatile system that minimizes time spent on prediction while still maximizing accuracy and straightforward implementation in a medical context. 
+We systematically reviewed and compared six different AutoML frameworks, comparing every feature relevant to medical implementation. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT. By testing our new framework against these four in evaluating medical data, we hoped to delineate key weaknesses and strengths in our own design. 
+
+Taking a closer look at four AutoML standards, we can observe pros and cons in their theoretical application to medicine and research. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks in the medical sphere. It supports imputation techniques for missing values with user specification and has an intuitive API, making it moderately user-friendly for minimally trained healthcare workers. H2O has a wider variety of supported algorithms that may or may not be appropriate for medical diagnosis, making it slower than FLAML on average. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users. MLJAR uses more advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users. 
+
+Keeping the factors we have laid out in mind, namely expeditious running, accuracy, and interpretability, we also uncovered a key continuity in framework design: frameworks are forced to run and train the majority of their available models to maximize accuracy at the expense of efficiency. Given the restricted nature of tabular data, there are some models that, in general, are less likely to perform well, thus running and training these models is frequently wasteful. Cutting these models completely, however, is not optimal either, as they are the best option in a minority of cases and give frameworks versatility. We hypothesized that using a combination of layered machine learning implementation in which we train a model to predict a basic framework's outputs and meta-feature extraction in which we accelerate the training process by reducing complicated data matrices to their measurable attributes would yield an equally versatile system that minimizes time spent on prediction while still maximizing accuracy and straightforward implementation in a medical context. 
 
 \section{Methodology}
 
-\subsection{Data Collection} 
+\subsection{Training}
 
-\subsection{Model Elimination}
+Insert Table Here
+Table 2: Meta-features extracted in simplifcation of the Kaggle dataset-optimal model dataset
 
+We used a Kaggle API library to search Kaggle using 20 medically-relevant key words. We limited our search to tabular datasets and obtained 300 viable datasets for training. We ran the Kaggle datasets through a rudimentary framework, pairing them with ML algorithms predicted to perform most optimally on that data. These ML algorithms were untrained and were selected from a pool of 30 candidates. The resulting 2x300 matrix then went through manuel meta-feature extraction (See Table 2). This new matrix was then used to train an XGBoost algorithm using a rank-based prediction system. 
 
-\section{Experiments}
+\subsection{Experiments}
 
 \section{Discussion}
-
-\section{Conclusion}
 
 \begin{ack}
 
