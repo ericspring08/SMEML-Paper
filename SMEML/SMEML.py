@@ -10,7 +10,9 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import StackingClassifier, VotingClassifier
 from skopt import BayesSearchCV
+from xgboost import XGBClassifier
 import os
 import multiprocessing
 from SMEML.models import classifiers, param_grids
@@ -99,7 +101,6 @@ class SMEML:
         top = np.argsort(results[0])[-8:]
 
         model_threads = []
-        self.models = []
         manager = multiprocessing.Manager()
         return_dict = manager.dict()
         for i in top:
@@ -113,15 +114,28 @@ class SMEML:
         # wait for all threads to finish
         for thread in model_threads:
             thread.join()
+        
+        self.model_accuracies = []
+        self.models = []
 
+        # loop through return dict and get the models and accuracies
         for key, value in return_dict.items():
-            self.models.append((key, value))
+            if 'accuracy' in key:
+                self.model_accuracies.append((key, value))
+            else:
+                self.models.append((key.replace('_model', ''), value))
 
-        # get best model
-        self.best_model = max(self.models, key=lambda x: (x[1]))
+        print(self.models)
 
-        print("Best model: ", self.best_model[0],
-              " with accuracy: ", self.best_model[1])
+        stacking_classifier = StackingClassifier(estimators=self.models, final_estimator=XGBClassifier())
+
+        stacking_classifier.fit(self.X_train, self.y_train)
+
+        accuracy = stacking_classifier.score(self.X_test, self.y_test)
+
+        print("stacking classifier accuracy: ", accuracy)
+
+        self.best_model = (stacking_classifier, accuracy)
 
         self.generate_report()
         self.save_final_model()
@@ -137,7 +151,9 @@ class SMEML:
         accuracy = optimizer.score(self.X_test, self.y_test)
         print("Model: ", model, " with accuracy: ", accuracy)
 
-        return_dict[model] = accuracy
+
+        return_dict[model_name + '_accuracy'] = accuracy
+        return_dict[model_name + '_model'] = optimizer.best_estimator_
 
     def bayes_cv_callback(self, res, model_name=None):
         # print the current model name

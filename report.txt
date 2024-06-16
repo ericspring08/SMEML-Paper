@@ -16,10 +16,38 @@ z_score_std: 0.5078654550361406
 average_correlation: 0.0016273873864261362
 correlation_std: 0.1748731073702319
 Top 10 classifiers predicted by SMEML
-Model 0: NearestCentroid() with accuracy: 0.6634146341463415
-Model 1: BernoulliNB() with accuracy: 0.8292682926829268
-Model 2: SVC() with accuracy: 1.0
-Model 3: ExtraTreeClassifier() with accuracy: 0.9853658536585366
-Model 4: DecisionTreeClassifier() with accuracy: 0.9853658536585366
-Model 5: ExtraTreesClassifier() with accuracy: 0.9853658536585366
-Best modelSVC() with accuracy average: 1.0
+Model 0: NearestCentroid with accuracy: NearestCentroid(metric='manhattan')
+Model 1: ExtraTreeClassifier with accuracy: ExtraTreeClassifier(min_samples_leaf=2, min_samples_split=5)
+Model 2: ExtraTreesClassifier with accuracy: ExtraTreesClassifier(bootstrap=True, max_depth=20, n_estimators=200)
+Model 3: DecisionTreeClassifier with accuracy: DecisionTreeClassifier(min_samples_leaf=2, min_samples_split=5)
+Model 4: BernoulliNB with accuracy: BernoulliNB(alpha=0.01, binarize=0.5)
+Model 5: SVC with accuracy: SVC(C=10.0, gamma='auto')
+Best modelStackingClassifier(estimators=[('NearestCentroid',
+                                NearestCentroid(metric='manhattan')),
+                               ('ExtraTreeClassifier',
+                                ExtraTreeClassifier(min_samples_leaf=2,
+                                                    min_samples_split=5)),
+                               ('ExtraTreesClassifier',
+                                ExtraTreesClassifier(bootstrap=True,
+                                                     max_depth=20,
+                                                     n_estimators=200)),
+                               ('DecisionTreeClassifier',
+                                DecisionTreeClassifier(min_samples_leaf=2,
+                                                       min_samples_split=5...
+                                                 grow_policy=None,
+                                                 importance_type=None,
+                                                 interaction_constraints=None,
+                                                 learning_rate=None,
+                                                 max_bin=None,
+                                                 max_cat_threshold=None,
+                                                 max_cat_to_onehot=None,
+                                                 max_delta_step=None,
+                                                 max_depth=None,
+                                                 max_leaves=None,
+                                                 min_child_weight=None,
+                                                 missing=nan,
+                                                 monotone_constraints=None,
+                                                 multi_strategy=None,
+                                                 n_estimators=None, n_jobs=None,
+                                                 num_parallel_tree=None,
+                                                 random_state=None, ...)) with accuracy average: 1.0
