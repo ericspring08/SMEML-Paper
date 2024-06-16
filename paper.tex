@@ -143,10 +143,13 @@ Taking a closer look at four AutoML standards, we can observe pros and cons in t
 Keeping the factors we have laid out in mind, namely expeditious running, accuracy, and interpretability, we also uncovered a key continuity in framework design: frameworks are forced to run and train the majority of their available models to maximize accuracy at the expense of efficiency. Given the restricted nature of tabular data, there are some models that, in general, are less likely to perform well, thus running and training these models is frequently wasteful. Cutting these models completely, however, is not optimal either, as they are the best option in a minority of cases and give frameworks versatility. We hypothesized that using a combination of layered machine learning implementation in which we train a model to predict a basic framework's outputs and meta-feature extraction in which we accelerate the training process by reducing complicated data matrices to their measurable attributes would yield an equally versatile system that minimizes time spent on prediction while still maximizing accuracy and straightforward implementation in a medical context. 
 
 \section{Methodology}
+When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset. These extracted attributes are shown in Table 2. 
 
-\subsection{Observation}
-When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset.
+We considered 28 different models, including all supervised and semi-supervised sklearn classification models and common boosting models such as XGBoost, Lightgbm, and Catboost.
 
+To implement this model elimination process, we trained a boosting model on 268 kaggle datasets. We choose datasets that were medically related and focused our approach to binary classification. We extracted the attributes in Table 2 from each dataset, this is the input for the boosting model. We then ran a "dumb" framework that trained every model on each dataset. The accuracy of every model is ranked and every model is treated as a label with its value being its rank. Then we trained a multilabel regression to predict the rank of each model giving the extracted attributes. We produced a median spearman correlation of 0.7301 between the predicted rank and the actual rank and a median p-value of 1.032e-05. Furthermore, we guarantee that we can predict a top two model within the predicted top ten 90.12\% of the time.
+
+When a user inputs a dataset into SMEML, it first extracts the attributes from the dataset. It feeds these attributes into the boosting model to get the predicted rank of each model. Since we have determined that we can predict a top two model within the predicted top ten quite confidently we can eliminate the bottom 18 models from the list. We run bayseian optimization on the top ten models to get the best hyperparamters for each model. We select the top models that have significantly better performance than other models. These models are stacked together to form the final model. This process is shown in Figure 1.
 \begin{table}
   \caption{Attributes extracted from a dataset}
   \label{model-options-table}
@@ -204,8 +207,6 @@ When considering a specific dataset, various aspects regarding the distribution 
 \fbox{\includegraphics[width=\textwidth]{smeml-flowchart.png}}
 \caption{SMEML Process}
 \end{figure}
-\subsection{Model Elimination}
-
 
 \subsection{Experiments}
 
