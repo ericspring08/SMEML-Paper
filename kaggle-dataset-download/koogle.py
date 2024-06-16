@@ -11,7 +11,7 @@ datasets = []
 start_page = 1
 page_count = 10
 topics = ["kidney", "diabetes", "renal",
-          "chickenpox", "influenza", "congenital"]
+          "chickenpox", "influenza", "congenital", "lung", "heart", "thyroid", "cancer", "COVID", "malaria", "bone", "brain", "alzheimer's", "obesity", "adrenal", "stomach", "small intestine", "ulcer"]
 for i in range(start_page, start_page + page_count + 1):
     for j in range(len(topics)):
         dataset_page = api.dataset_list(
