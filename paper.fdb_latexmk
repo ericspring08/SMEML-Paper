@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1718572677 "/Users/ericzhang/Desktop/Code/MTF-Paper/paper.tex" "paper.pdf" "paper" 1718572678 0
-  "/Users/ericzhang/Desktop/Code/MTF-Paper/paper.tex" 1718572677 13908 25766c35f44ddf1cf51860b56da5c005 ""
+["pdflatex"] 1718574109 "/Users/ericzhang/Desktop/Code/MTF-Paper/paper.tex" "paper.pdf" "paper" 1718574109 0
+  "/Users/ericzhang/Desktop/Code/MTF-Paper/paper.tex" 1718574109 12694 313f34369e0a1440621fbb60b38e1204 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1678549815 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1678549815 2971 def0b6c1f0b107b3b936def894055589 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/map/fontname/texfonts.map" 1678549815 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -81,6 +81,9 @@
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/base/size10.clo" 1678549815 8448 c33a4e1cb35cee9b33c2b21033b73e39 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/base/t1cmtt.fd" 1678549815 2443 f9c272838e65ac147422f32fe87b76a1 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/booktabs/booktabs.sty" 1678549815 6078 f1cb470c9199e7110a27851508ed7a5c ""
+  "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/caption/caption.sty" 1678549815 55778 14d5c99aa26410e440820bb9ea5b8b3a ""
+  "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/caption/caption3.sty" 1678549815 71836 1a735454ad10692452eb2f2fc37f3865 ""
+  "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/caption/ltcaption.sty" 1678549815 7418 021d7c4eb11bde94592761855a3d046e ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/environ/environ.sty" 1678549815 4378 f429f0da968c278653359293040a8f52 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1678549815 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1678549815 46845 3b58f70c6e861a13d927bff09d35ecbc ""
@@ -93,7 +96,6 @@
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/graphics/keyval.sty" 1678549815 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/graphics/mathcolor.ltx" 1678549815 2885 9c645d672ae17285bba324998918efd8 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/graphics/trig.sty" 1678549815 4023 293ea1c16429fc0c4cf605f4da1791a9 ""
-  "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/grfext/grfext.sty" 1678549815 7133 b94bbacbee6e4fdccdc7f810b2aec370 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/hycolor/hycolor.sty" 1678549815 17914 4c28a13fc3d975e6e81c9bea1d697276 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/hyperref/hpdftex.def" 1678549815 48272 99ede602a8ace626d8ed02f058a4bf8e ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/hyperref/hyperref.sty" 1678549815 223129 4edf043af471f3251c66e432cfa22987 ""
@@ -123,10 +125,10 @@
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1678549815 56148 51a9a8571c07b9921892ae11063ae853 ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/web2c/texmf.cnf" 1678549815 40748 4081c8bc921e56c865f975bd762e388c ""
   "/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1678549815 7884066 8197b5e86c7bf6d7352283907f10d5c2 ""
-  "paper.aux" 1718572678 1694 2a0f26be3389f41496b81a3b66a61c1e "pdflatex"
-  "paper.out" 1718572678 493 f225ee205013239de672915c614478ed "pdflatex"
+  "paper.aux" 1718574109 1830 20689079edf1117cf8b12aaa386b5e89 "pdflatex"
+  "paper.out" 1718574109 493 f225ee205013239de672915c614478ed "pdflatex"
   "paper.sty" 1714668730 11625 b5f853b54a7a098e9e5b837f826d5daa ""
-  "paper.tex" 1718572677 13908 25766c35f44ddf1cf51860b56da5c005 ""
+  "paper.tex" 1718574109 12694 313f34369e0a1440621fbb60b38e1204 ""
   "smeml-flowchart.png" 1718565084 27401 1a1a371d1f0c041a5356aecffc5ef3c9 ""
   (generated)
   "paper.aux"
