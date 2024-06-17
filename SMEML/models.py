@@ -71,7 +71,7 @@ param_grids = {
         'gamma': ['scale', 'auto'],
     },
     'SGDClassifier': {
-        'loss': ['hinge', 'log', 'modified_huber', 'squared_hinge', 'perceptron'],
+        'loss': ['squared_error', 'squared_epsilon_insensitive', 'squared_hinge', 'hinge', 'perceptron', 'huber', 'epsilon_insensitive', 'log_loss', 'modified_huber'],
         'penalty': ['l2', 'l1', 'elasticnet'],
         'max_iter': [1000, 2000],
     },

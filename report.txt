@@ -1,53 +1,39 @@
 Dataset information
-num_rows: 195
-num_cols: 22
-output_distribution: 0.005128205128205128
-numerical_columns: 1.0
-binary_categorical: 0
-categorical_average_count: 0
-average_iqr: 0.20972318088068367
-average_q1: 0.15172680998107907
-average_q3: 0.3614499908617627
-iqr_std: 0.0885572404242931
-q1_std: 0.13787886374737696
-q3_std: 0.20816237600161092
-z_score_average: 0.7300941151606178
-z_score_std: 0.6688827731178631
-average_correlation: 0.33218997349750806
-correlation_std: 0.4828738408207415
+num_rows: 319795
+num_cols: 50
+output_distribution: 0.30566769336606264
+numerical_columns: 0.08
+binary_categorical: 1.0
+categorical_average_count: 2.0
+average_iqr: 0.08571051761334111
+average_q1: 0.09059676970641808
+average_q3: 0.17630728731975917
+iqr_std: 0.012049053002649369
+q1_std: 0.09414304952773808
+q3_std: 0.0969426515670602
+z_score_average: 0.6022317184765814
+z_score_std: 0.7364184430366909
+average_correlation: nan
+correlation_std: nan
 Top 10 classifiers predicted by SMEML
-Model 0: QuadraticDiscriminantAnalysis with accuracy: QuadraticDiscriminantAnalysis()
-Model 1: BernoulliNB with accuracy: BernoulliNB(alpha=0.01, binarize=0.5)
-Model 2: SVC with accuracy: SVC(C=100.0)
-Model 3: SGDClassifier with accuracy: SGDClassifier(loss='squared_hinge', max_iter=1487, penalty='l1')
-Model 4: ExtraTreeClassifier with accuracy: ExtraTreeClassifier(criterion='entropy', max_depth=20, min_samples_split=10)
-Model 5: ExtraTreesClassifier with accuracy: ExtraTreesClassifier(max_depth=10, max_features=None, min_samples_leaf=2,
-                     min_samples_split=5)
-Model 6: XGBClassifier with accuracy: XGBClassifier(base_score=None, booster=None, callbacks=None,
-              colsample_bylevel=None, colsample_bynode=None,
-              colsample_bytree=0.8827504269588006, device=None,
-              early_stopping_rounds=None, enable_categorical=False,
-              eval_metric=None, feature_types=None, gamma=None,
-              grow_policy=None, importance_type=None,
-              interaction_constraints=None, learning_rate=0.2, max_bin=None,
-              max_cat_threshold=None, max_cat_to_onehot=None,
-              max_delta_step=None, max_depth=3, max_leaves=None,
-              min_child_weight=None, missing=nan, monotone_constraints=None,
-              multi_strategy=None, n_estimators=100, n_jobs=None,
-              num_parallel_tree=None, random_state=None, ...)
-Best modelStackingClassifier(estimators=[('QuadraticDiscriminantAnalysis',
-                                QuadraticDiscriminantAnalysis()),
-                               ('BernoulliNB',
-                                BernoulliNB(alpha=0.01, binarize=0.5)),
-                               ('SVC', SVC(C=100.0)),
+Model 0: S with accuracy: G
+Model 1: B with accuracy: e
+Model 2: L with accuracy: o
+Model 3: C with accuracy: a
+Model 4: E with accuracy: x
+Model 5: L with accuracy: i
+Model 6: R with accuracy: a
+Best modelStackingClassifier(estimators=[('CatBoostClassifier',
+                                <catboost.core.CatBoostClassifier object at 0x171ca8550>),
+                               ('LogisticRegression',
+                                LogisticRegression(C=0.01, max_iter=1690,
+                                                   solver='saga')),
                                ('SGDClassifier',
-                                SGDClassifier(loss='squared_hinge',
-                                              max_iter=1487, penalty='l1')),
-                               ('ExtraTreeClassifier',
-                                ExtraTreeClassifier(criterion='entropy',
-                                                    max_depth=20,
-                                                    min_samples_split=10))...
-                                                 grow_policy=None,
+                                SGDClassifier(loss='modified_huber',
+                                              max_iter=1820, penalty='l1'))],
+                   final_estimator=XGBClassifier(base_score=None, booster=None,
+                                                 callbacks=None,
+                                                 colsamp...
                                                  importance_type=None,
                                                  interaction_constraints=None,
                                                  learning_rate=None,
@@ -63,4 +49,5 @@ Best modelStackingClassifier(estimators=[('QuadraticDiscriminantAnalysis',
                                                  multi_strategy=None,
                                                  n_estimators=None, n_jobs=None,
                                                  num_parallel_tree=None,
-                                                 random_state=None, ...)) with accuracy average: 0.8974358974358975
+                                                 random_state=None, ...),
+                   n_jobs=-1, verbose=2) with accuracy average: 0.9139605059491237

@@ -12,7 +12,7 @@ from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import StackingClassifier, VotingClassifier
 from skopt import BayesSearchCV
-from xgboost import XGBClassifier
+from xgboost import XGBClassifier, XGBRegressor
 import os
 import multiprocessing
 from SMEML.models import classifiers, param_grids
@@ -81,11 +81,10 @@ class SMEML:
         self.X = X
         self.y = y
 
+        self.preprocess()
+
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.X, self.y, test_size=0.2, random_state=42)
-
-        # fill nan values
-        self.preprocess()
 
         attributes = self.get_dataset_attributes()
 
@@ -116,19 +115,24 @@ class SMEML:
             thread.join()
         
         self.model_accuracies = []
-        self.models = []
+        self.models = {}
 
         # loop through return dict and get the models and accuracies
         for key, value in return_dict.items():
             if 'accuracy' in key:
-                self.model_accuracies.append((key, value))
+                self.model_accuracies.append((key.replace('_accuracy', ''), value))
             else:
-                self.models.append((key.replace('_model', ''), value))
+                self.models[key.replace('_model', '')] = value
 
+        self.model_accuracies = sorted(self.model_accuracies, key=lambda x: x[1], reverse=True)
         # take top 3 models
-        self.models = sorted(self.model_accuracies, key=lambda x: x[1], reverse=True)[:3]
+        self.top_models_accuracies = self.model_accuracies[:3]
 
-        stacking_classifier = StackingClassifier(estimators=self.models, final_estimator=XGBClassifier())
+        self.top_models = [(model_name, self.models[model_name]) for model_name, _ in self.top_models_accuracies]
+
+        # train the stacking classifier
+        print("Training stacking classifier")
+        stacking_classifier = StackingClassifier(estimators=self.top_models, final_estimator=XGBClassifier(), verbose=2, n_jobs=-1)
 
         stacking_classifier.fit(self.X_train, self.y_train)
 
@@ -270,6 +274,9 @@ class SMEML:
         numerical_features = self.X.select_dtypes(
             include=['int64', 'float64']).columns
 
+        print("Categorical features: ", categorical_features)
+        print("Numerical features: ", numerical_features)
+
         # fill missing values
         for col in columns:
             if col in categorical_features:
@@ -281,9 +288,6 @@ class SMEML:
 
         # scale
         scaler = MinMaxScaler()
-
-# replace with mode for unknown values
-        df = self.X.fillna(self.X.mode().iloc[0])
 
         preprocessor = ColumnTransformer(
             transformers=[('ohe',
@@ -298,8 +302,6 @@ class SMEML:
 
         self.X = preprocessor.fit_transform(self.X)
 
-        print(self.X)
-
     def generate_report(self):
         lines = []
         lines.append("Dataset information")
@@ -313,11 +315,9 @@ class SMEML:
 
         lines.append("Top 10 classifiers predicted by SMEML")
 
-        for index, model in enumerate(self.models):
+        for index, model in enumerate(self.models_accuracies):
             lines.append("Model " + str(index) + ": " + str(model[0]) +
                          " with accuracy: " + str(model[1]))
-
-        print()
 
         lines.append("Best model" + str(self.best_model[0]) +
                      " with accuracy average: " +

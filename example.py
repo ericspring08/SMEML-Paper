@@ -6,10 +6,10 @@ import time
 if __name__ == "__main__":
     time_start = time.time()
     # load the dataset
-    df = pd.read_csv('./benchmark_datasets/parkinsons.csv')
+    df = pd.read_csv('./benchmark_datasets/heart2.csv')
 
-    X = df.drop('status', axis=1)
-    y = df['status']
+    X = df.drop('HeartDisease', axis=1)
+    y = df['HeartDisease']
 
 # label encoding
 # y = y.map({'ckd': 1, 'notckd': 0})
