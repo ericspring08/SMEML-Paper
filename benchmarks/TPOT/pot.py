@@ -6,10 +6,10 @@ import time
 
 time_start = time.time()
 
-data = pd.read_csv('../../benchmark_datasets/parkinsons.csv')
+data = pd.read_csv('../../benchmark_datasets/heart2.csv')
 
-X = data.drop(columns=['status'])
-y = data['status']
+X = data.drop(columns=['HeartDisease'])
+y = data['HeartDisease']
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)

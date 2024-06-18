@@ -18,6 +18,7 @@ import multiprocessing
 from SMEML.models import classifiers, param_grids
 from functools import partial
 import logging
+import optuna
 
 np.int = int
 
@@ -72,9 +73,10 @@ classifier_names = [
 
 
 class SMEML:
-    def __init__(self, iterations=10):
+    def __init__(self, iterations=10, mode="SME"):
         self.X = None
         self.y = None
+        self.mode = mode
         self.iterations = iterations
 
     def train(self, X, y):
@@ -86,6 +88,15 @@ class SMEML:
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.X, self.y, test_size=0.2, random_state=42)
 
+        if self.mode == "SME":
+            self.SMEmodel()
+        if self.mode == "dumb":
+            self.dumbmode()
+
+        self.generate_report()
+        self.save_final_model()
+
+    def SMEmodel(self):
         attributes = self.get_dataset_attributes()
 
         # train the model
@@ -142,27 +153,42 @@ class SMEML:
 
         self.best_model = (stacking_classifier, accuracy)
 
-        self.generate_report()
-        self.save_final_model()
+    def dumbmode(self):
+        # train all models
+        for i in range(len(classifiers)):
+            model = classifiers[i]
+            model_name = classifier_names[i]
+
+            study = optuna.create_study(direction='maximize', study_name=model_name, storage='sqlite:///optuna.db', load_if_exists=True)
+            study.optimize(partial(self.objective, model=model, model_name=model_name), n_trials=self.iterations)
+
+            estimator = model.set_params(**study.best_params)
+            estimator.fit(self.X_train, self.y_train)
+            accuracy = estimator.score(self.X_test, self.y_test)
+            self.model_accuracies.append((model_name, accuracy))
+            self.models[model_name + '_model'] = estimator
+            self.models[model_name + '_accuracy'] = accuracy
 
     def train_thread(self, model, model_name, return_dict):
         print("Training model: ", model_name)
-        optimizer = BayesSearchCV(
-            model, param_grids[model_name], n_iter=self.iterations, cv=3)
 
-        optimizer.fit(self.X_train, self.y_train,
-                      callback=partial(self.bayes_cv_callback, model_name=model_name))
+        study = optuna.create_study(direction='maximize', study_name=model_name, storage='sqlite:///optuna.db', load_if_exists=True)
+        study.optimize(partial(self.objective, model=model, model_name=model_name), n_trials=self.iterations)
 
-        accuracy = optimizer.score(self.X_test, self.y_test)
-        print("Model: ", model, " with accuracy: ", accuracy)
+        estimator = model.set_params(**study.best_params)
 
+        estimator.fit(self.X_train, self.y_train)
+
+        accuracy = estimator.score(self.X_test, self.y_test)
 
         return_dict[model_name + '_accuracy'] = accuracy
-        return_dict[model_name + '_model'] = optimizer.best_estimator_
+        return_dict[model_name + '_model'] = estimator
 
-    def bayes_cv_callback(self, res, model_name=None):
-        # print the current model name
-        print(f"[{model_name}] Iteration {res['x']}, accuracy: {res['fun']*-1}")
+    def objective(self, trial, model, model_name):
+        model.set_params(**model.get_params())
+        model.fit(self.X_train, self.y_train)
+        return model.score(self.X_test, self.y_test)
+    
 
     def get_dataset_attributes(self):
         attributes = {}
@@ -315,7 +341,7 @@ class SMEML:
 
         lines.append("Top 10 classifiers predicted by SMEML")
 
-        for index, model in enumerate(self.models_accuracies):
+        for index, model in enumerate(self.model_accuracies):
             lines.append("Model " + str(index) + ": " + str(model[0]) +
                          " with accuracy: " + str(model[1]))
 

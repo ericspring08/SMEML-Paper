@@ -16,24 +16,26 @@ z_score_std: 0.7364184430366909
 average_correlation: nan
 correlation_std: nan
 Top 10 classifiers predicted by SMEML
-Model 0: S with accuracy: G
-Model 1: B with accuracy: e
-Model 2: L with accuracy: o
-Model 3: C with accuracy: a
-Model 4: E with accuracy: x
-Model 5: L with accuracy: i
-Model 6: R with accuracy: a
-Best modelStackingClassifier(estimators=[('CatBoostClassifier',
-                                <catboost.core.CatBoostClassifier object at 0x171ca8550>),
-                               ('LogisticRegression',
-                                LogisticRegression(C=0.01, max_iter=1690,
-                                                   solver='saga')),
-                               ('SGDClassifier',
-                                SGDClassifier(loss='modified_huber',
-                                              max_iter=1820, penalty='l1'))],
+Model 0: LogisticRegression with accuracy: 0.9138666958520302
+Model 1: LinearSVC with accuracy: 0.9136321706092966
+Model 2: Perceptron with accuracy: 0.913335105301834
+Model 3: SGDClassifier with accuracy: 0.9125689895089042
+Model 4: RandomForestClassifier with accuracy: 0.9023593239419003
+Model 5: ExtraTreesClassifier with accuracy: 0.8903359964977564
+Model 6: BernoulliNB with accuracy: 0.8521709219969043
+Best modelStackingClassifier(estimators=[('LogisticRegression',
+                                LogisticRegression(max_iter=1000)),
+                               ('LinearSVC', LinearSVC()),
+                               ('Perceptron', Perceptron())],
                    final_estimator=XGBClassifier(base_score=None, booster=None,
                                                  callbacks=None,
-                                                 colsamp...
+                                                 colsample_bylevel=None,
+                                                 colsample_bynode=None,
+                                                 colsample_bytree=None,
+                                                 device=None,
+                                                 early_stopping_rounds=None,
+                                                 enable_categorical=False,
+                                                 ev...
                                                  importance_type=None,
                                                  interaction_constraints=None,
                                                  learning_rate=None,
@@ -50,4 +52,4 @@ Best modelStackingClassifier(estimators=[('CatBoostClassifier',
                                                  n_estimators=None, n_jobs=None,
                                                  num_parallel_tree=None,
                                                  random_state=None, ...),
-                   n_jobs=-1, verbose=2) with accuracy average: 0.9139605059491237
+                   n_jobs=-1, verbose=2) with accuracy average: 0.9144295564345909
