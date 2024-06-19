@@ -3,7 +3,7 @@
 import platform
 if platform.machine() == 'x86_64':
     from sklearnex import patch_sklearn
-    # patch_sklearn()
+    patch_sklearn()
 
 import pickle as pkl
 import numpy as np
@@ -170,7 +170,7 @@ class SMEML:
                     param_grids[model_name],
                     n_iter=self.iterations,
                     n_jobs=-1,
-                    verbose=0,
+                    verbose=3,
                     error_score=0
                 )
 
@@ -200,7 +200,7 @@ class SMEML:
                 param_grids[model_name],
                 n_iter=self.iterations,
                 n_jobs=-1,
-                verbose=0,
+                verbose=3,
                 error_score=0,
                 cv=3
             )
