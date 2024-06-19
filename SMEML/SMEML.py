@@ -191,17 +191,30 @@ class SMEML:
     def train_thread(self, model, model_name, return_dict):
         print("Training model: ", model_name)
 
-        study = optuna.create_study(direction='maximize', study_name=model_name)
-        study.optimize(partial(self.objective, model=model, model_name=model_name), n_trials=self.iterations)
+        # check if the dataset is too large for the model
+        if size_limits.get(model_name) is not None and self.X.shape[0] * self.X.shape[1] > size_limits[model_name]:
+            return
+        
+        try:
+            optimizer = BayesSearchCV(
+                model,
+                param_grids[model_name],
+                n_iter=self.iterations,
+                n_jobs=-1,
+                verbose=0,
+                error_score=0,
+                cv=3
+            )
 
-        estimator = model.set_params(**study.best_params)
-
-        estimator.fit(self.X_train, self.y_train)
-
-        accuracy = estimator.score(self.X_test, self.y_test)
+            optimizer.fit(self.X_train, self.y_train, callback=partial(self.bayes_cv_callback, model_name=model_name))
+            accuracy = optimizer.score(self.X_test, self.y_test)
+        except Exception as e:
+            print("Error training model: ", model_name)
+            print(e)
+            return
 
         return_dict[model_name + '_accuracy'] = accuracy
-        return_dict[model_name + '_model'] = estimator
+        return_dict[model_name + '_model'] = optimizer.best_estimator_ 
 
     def bayes_cv_callback(self, res, model_name):
         self.progress_bars[model_name].update()
