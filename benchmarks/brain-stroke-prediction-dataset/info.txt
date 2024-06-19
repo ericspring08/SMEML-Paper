@@ -1,0 +1,2 @@
+Name: Brain stroke prediction dataset
+Link: https://www.kaggle.com/datasets/zzettrkalpakbal/full-filled-brain-stroke-dataset
