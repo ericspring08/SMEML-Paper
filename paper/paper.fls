@@ -1,7 +1,7 @@
-PWD /Users/ericzhang/Desktop/Code/MTF-Paper
+PWD /Users/ericzhang/Desktop/Code/SMEML-Paper/paper
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/web2c/texmf.cnf
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/ericzhang/Desktop/Code/MTF-Paper/paper.tex
+INPUT /Users/ericzhang/Desktop/Code/SMEML-Paper/paper/paper.tex
 OUTPUT paper.log
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/base/article.cls
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/tex/latex/base/article.cls

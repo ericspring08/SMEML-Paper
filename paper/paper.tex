@@ -30,7 +30,6 @@
 \usepackage{booktabs}
 \usepackage{caption}
 
-
 \title{Smart Model Elimination for Efficient Automated Machine Learning}
 
 
@@ -188,8 +187,27 @@ When a user inputs a dataset into SMEML, it first extracts the attributes from t
 \caption{SMEML Process}
 \end{figure}
 
-\subsection{Experiments}
+\section{Experiments}
+\subsection{Experiment Design}
+To evaluate our framework, we choose 7 different datasets of diverse size. We ran SMEML on each dataset for 32 iterations of tuning. We compared this against a "dumb" mode which simply runs every model on the dataset. We used the accuracy and time to train as our metrics.
 
+All experiments are run on an Ubuntu server with Intel Xeon E5520 @ 2.27GHz and 24GB of RAM.
+
+\subsection{Results}
+\begin{table}
+  \caption{Experiment Results}
+  \label{model-options-table}
+  \centering
+  \begin{tabular}{llllll}
+    \toprule
+    % group 2, 3 as multicolumn and 4, 5 as multicolumn
+    Dataset & \multicolumn{2}{c}{Accuracy} & \multicolumn{2}{c}{Time to Train} & Size (RxC)\\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & SMEML & Dumb & SMEML & Dumb \\
+    \midrule
+    \bottomrule
+  \end{tabular}
+\end{table}
 \section{Discussion}
 
 \begin{ack}
