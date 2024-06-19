@@ -33,7 +33,8 @@ logger.addHandler(handler)
 
 warnings_to_ignore = [
     "FutureWarning",
-    "InconsistentVersionWarning"
+    "InconsistentVersionWarning",
+    "ConvergenceWarning",
 ]
 
 # Set rule to ignore warnings
@@ -173,12 +174,11 @@ class SMEML:
                     error_score=0
                 )
 
-                optimizer.fit(self.X_train, self.y_train, callback=partial(self.bayes_cv_callback, model_name=model_name))
+                optimizer.fit(self.X_train, self.y_train)
 
                 accuracy = optimizer.score(self.X_test, self.y_test)
                 print("Model: ", model_name, " accuracy: ", accuracy)
                 models.append((model_name, accuracy))
-                print("Model: ", model_name, " accuracy: ", accuracy)
             except Exception as e:
                 print("Error training model: ", model_name)
                 print(e)
@@ -205,7 +205,7 @@ class SMEML:
                 cv=3
             )
 
-            optimizer.fit(self.X_train, self.y_train, callback=partial(self.bayes_cv_callback, model_name=model_name))
+            optimizer.fit(self.X_train, self.y_train)
             accuracy = optimizer.score(self.X_test, self.y_test)
             print("Model: ", model_name, " accuracy: ", accuracy)
         except Exception as e:
