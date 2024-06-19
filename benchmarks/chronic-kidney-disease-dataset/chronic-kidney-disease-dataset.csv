@@ -36,7 +36,7 @@ id,age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sod,pot,hemo,pcv,wc,rc,htn,dm,cad,app
 34,70.0,70.0,1.01,1.0,0.0,normal,,present,present,171.0,153.0,5.2,,,,,,,no,yes,no,poor,no,no,ckd
 35,65.0,90.0,1.02,2.0,1.0,abnormal,normal,notpresent,notpresent,270.0,39.0,2.0,,,12.0,36,9800,4.9,yes,yes,no,poor,no,yes,ckd
 36,76.0,70.0,1.015,1.0,0.0,normal,normal,notpresent,notpresent,92.0,29.0,1.8,133.0,3.9,10.3,32,,,yes,no,no,good,no,no,ckd
-37,72.0,80.0,,,,,,notpresent,notpresent,137.0,65.0,3.4,141.0,4.7,9.7,28,6900,2.5,yes,yes,no,poor,no,yes,ckd	
+37,72.0,80.0,,,,,,notpresent,notpresent,137.0,65.0,3.4,141.0,4.7,9.7,28,6900,2.5,yes,yes,no,poor,no,yes,ckd
 38,69.0,80.0,1.02,3.0,0.0,abnormal,normal,notpresent,notpresent,,103.0,4.1,132.0,5.9,12.5,,,,yes,no,no,good,no,no,ckd
 39,82.0,80.0,1.01,2.0,2.0,normal,,notpresent,notpresent,140.0,70.0,3.4,136.0,4.2,13.0,40,9800,4.2,yes,yes,no,good,no,no,ckd
 40,46.0,90.0,1.01,2.0,0.0,normal,abnormal,notpresent,notpresent,99.0,80.0,2.1,,,11.1,32,9100,4.1,yes,no,	no,good,no,no,ckd
@@ -229,7 +229,7 @@ id,age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sod,pot,hemo,pcv,wc,rc,htn,dm,cad,app
 227,57.0,80.0,1.015,0.0,0.0,,normal,notpresent,notpresent,120.0,48.0,1.6,,,11.3,36,7200,3.8,yes,yes,no,good,no,no,ckd
 228,60.0,70.0,,,,,,notpresent,notpresent,124.0,52.0,2.5,,,,,,,yes,no,no,good,no,no,ckd
 229,59.0,50.0,1.01,3.0,0.0,normal,abnormal,notpresent,notpresent,241.0,191.0,12.0,114.0,2.9,9.6,31,15700,3.8,no,yes,no,good,yes,no,ckd
-230,65.0,60.0,1.01,2.0,0.0,normal,abnormal,present,notpresent,192.0,17.0,1.7,130.0,4.3,,,9500,,yes,yes,no,poor,no,no,ckd	
+230,65.0,60.0,1.01,2.0,0.0,normal,abnormal,present,notpresent,192.0,17.0,1.7,130.0,4.3,,,9500,,yes,yes,no,poor,no,no,ckd
 231,60.0,90.0,,,,,,notpresent,notpresent,269.0,51.0,2.8,138.0,3.7,11.5,35,,,yes,yes,yes,good,yes,no,ckd
 232,50.0,90.0,1.015,1.0,0.0,abnormal,abnormal,notpresent,notpresent,,,,,,,,,,no,no,no,good,yes,no,ckd
 233,51.0,100.0,1.015,2.0,0.0,normal,normal,notpresent,present,93.0,20.0,1.6,146.0,4.5,,,,,no,no,no,poor,no,no,ckd
