@@ -40,7 +40,7 @@ classifiers = np.array([
     Perceptron(max_iter=1000, tol=1e-3),
     PassiveAggressiveClassifier(max_iter=1000, tol=1e-3),
     LogisticRegression(max_iter=1000, verbose=0),
-    LinearSVC(max_iter=1000, verbose=0),
+    LinearSVC(max_iter=1000, dual=True, verbose=0),
     RandomForestClassifier(n_estimators=100, verbose=0),
     HistGradientBoostingClassifier(max_iter=100, verbose=0),
     GradientBoostingClassifier(n_estimators=100, verbose=0),
@@ -77,14 +77,13 @@ param_grids = {
     },
     'RidgeClassifier': {
         'alpha': [0.01, 0.1, 1.0, 10.0],
-        'fit_intercept': [True, False],
-        'normalize': [True, False],
+        'solver': ['auto', 'svd', 'cholesky', 'lsqr', 'sparse_cg', 'sag', 'saga'],
     },
     'Perceptron': {
-        'penalty': [None, 'l2', 'l1', 'elasticnet'],
-        'alpha': [0.001, 0.01, 0.1],
+        # 'penalty': [None, 'l2', 'l1', 'elasticnet'],
+        # 'alpha': [0.001, 0.01, 0.1],
         'max_iter': [1000, 2000],
-        'tol': [1e-3, 1e-4],
+        # 'tol': [1e-3, 1e-4],
     },
     'PassiveAggressiveClassifier': {
         'C': [0.01, 0.1, 1, 10],

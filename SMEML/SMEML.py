@@ -11,14 +11,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import StackingClassifier, VotingClassifier
-from skopt import BayesSearchCV
 from xgboost import XGBClassifier, XGBRegressor
 import os
 import multiprocessing
 from SMEML.models import classifiers, param_grids
 from functools import partial
 import logging
-import optuna
+from skopt import BayesSearchCV
+from tqdm import tqdm
 
 np.int = int
 
@@ -71,6 +71,9 @@ classifier_names = [
     'DummyClassifier'
 ]
 
+size_limits = {
+    'SVC': 10000,
+}
 
 class SMEML:
     def __init__(self, iterations=10, mode="SME"):
@@ -78,6 +81,7 @@ class SMEML:
         self.y = None
         self.mode = mode
         self.iterations = iterations
+        self.progress_bars = {}
 
     def train(self, X, y):
         self.X = X
@@ -159,20 +163,36 @@ class SMEML:
             model = classifiers[i]
             model_name = classifier_names[i]
 
-            study = optuna.create_study(direction='maximize', study_name=model_name, storage='sqlite:///optuna.db', load_if_exists=True)
-            study.optimize(partial(self.objective, model=model, model_name=model_name), n_trials=self.iterations)
+            # check if the dataset is too large for the model
+            if size_limits.get(model_name) is not None and self.X.shape[0] * self.X.shape[1] > size_limits[model_name]:
+                continue
+            
+            print("Training model: ", model_name)
+            try:
+                optimizer = BayesSearchCV(
+                    model,
+                    param_grids[model_name],
+                    n_iter=self.iterations,
+                    n_jobs=-1,
+                    verbose=0,
+                    error_score=0
+                )
 
-            estimator = model.set_params(**study.best_params)
-            estimator.fit(self.X_train, self.y_train)
-            accuracy = estimator.score(self.X_test, self.y_test)
-            self.model_accuracies.append((model_name, accuracy))
-            self.models[model_name + '_model'] = estimator
-            self.models[model_name + '_accuracy'] = accuracy
+                self.progress_bars[model_name] = tqdm(total=self.iterations, desc="Optimizing " + model_name)
+                optimizer.fit(self.X_train, self.y_train, callback=partial(self.bayes_cv_callback, model_name=model_name))
+
+                accuracy = optimizer.score(self.X_test, self.y_test)
+
+                print("Model: ", model_name, " accuracy: ", accuracy)
+            except Exception as e:
+                print("Error training model: ", model_name)
+                print(e)
+                continue
 
     def train_thread(self, model, model_name, return_dict):
         print("Training model: ", model_name)
 
-        study = optuna.create_study(direction='maximize', study_name=model_name, storage='sqlite:///optuna.db', load_if_exists=True)
+        study = optuna.create_study(direction='maximize', study_name=model_name)
         study.optimize(partial(self.objective, model=model, model_name=model_name), n_trials=self.iterations)
 
         estimator = model.set_params(**study.best_params)
@@ -184,11 +204,8 @@ class SMEML:
         return_dict[model_name + '_accuracy'] = accuracy
         return_dict[model_name + '_model'] = estimator
 
-    def objective(self, trial, model, model_name):
-        model.set_params(**model.get_params())
-        model.fit(self.X_train, self.y_train)
-        return model.score(self.X_test, self.y_test)
-    
+    def bayes_cv_callback(self, res, model_name):
+        self.progress_bars[model_name].update()
 
     def get_dataset_attributes(self):
         attributes = {}
