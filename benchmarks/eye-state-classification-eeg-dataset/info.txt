@@ -1,0 +1,2 @@
+Name: Eye State Classification EEG Dataset
+Link: https://www.kaggle.com/datasets/robikscube/eye-state-classification-eeg-dataset

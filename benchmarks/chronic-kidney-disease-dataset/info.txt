@@ -1,0 +1,2 @@
+Name: Chronic KIdney Disease dataset
+Link: https://www.kaggle.com/datasets/mansoordaku/ckdisease
