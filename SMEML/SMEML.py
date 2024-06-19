@@ -97,9 +97,6 @@ class SMEML:
         if self.mode == "dumb":
             self.dumbmode()
 
-        self.generate_report()
-        self.save_final_model()
-
     def SMEmodel(self):
         attributes = self.get_dataset_attributes()
 
@@ -155,10 +152,9 @@ class SMEML:
 
         print("stacking classifier accuracy: ", accuracy)
 
-        self.best_model = (stacking_classifier, accuracy)
-
     def dumbmode(self):
         # train all models
+        models = []
         for i in range(len(classifiers)):
             model = classifiers[i]
             model_name = classifier_names[i]
@@ -182,12 +178,15 @@ class SMEML:
                 optimizer.fit(self.X_train, self.y_train, callback=partial(self.bayes_cv_callback, model_name=model_name))
 
                 accuracy = optimizer.score(self.X_test, self.y_test)
-
+                models.append((model_name, accuracy))
                 print("Model: ", model_name, " accuracy: ", accuracy)
             except Exception as e:
                 print("Error training model: ", model_name)
                 print(e)
                 continue
+        
+        models = sorted(models, key=lambda x: x[1], reverse=True)
+        print("Top models: ", models[:3])
 
     def train_thread(self, model, model_name, return_dict):
         print("Training model: ", model_name)
@@ -344,32 +343,3 @@ class SMEML:
             verbose_feature_names_out=False).set_output(transform='pandas')
 
         self.X = preprocessor.fit_transform(self.X)
-
-    def generate_report(self):
-        lines = []
-        lines.append("Dataset information")
-
-        print()
-
-        for key, value in self.attributes.items():
-            lines.append(f"{key}: {value}")
-
-        print()
-
-        lines.append("Top 10 classifiers predicted by SMEML")
-
-        for index, model in enumerate(self.model_accuracies):
-            lines.append("Model " + str(index) + ": " + str(model[0]) +
-                         " with accuracy: " + str(model[1]))
-
-        lines.append("Best model" + str(self.best_model[0]) +
-                     " with accuracy average: " +
-                     str(self.best_model[1]))
-
-        # save the report
-        with open('report.txt', 'w') as f:
-            for line in lines:
-                f.write("%s\n" % line)
-
-    def save_final_model(self):
-        pkl.dump(self.best_model[0], open('best_model.pkl', 'wb'))
