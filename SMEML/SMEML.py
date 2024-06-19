@@ -206,6 +206,7 @@ class SMEML:
                 cv=3
             )
 
+            self.progress_bars[model_name] = tqdm(total=self.iterations, desc="Optimizing " + model_name)
             optimizer.fit(self.X_train, self.y_train, callback=partial(self.bayes_cv_callback, model_name=model_name))
             accuracy = optimizer.score(self.X_test, self.y_test)
         except Exception as e:

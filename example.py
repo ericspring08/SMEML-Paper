@@ -23,7 +23,7 @@ if __name__ == "__main__":
 # create an instance of the SMEML class
 # X and y are the features and target variable
 # respectively
-    smeml = SMEML(iterations=1, mode="dumb")
+    smeml = SMEML(iterations=1, mode="SME")
 # train the model
     smeml.train(X, y)
     time_end = time.time()
