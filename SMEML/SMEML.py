@@ -3,7 +3,7 @@
 import platform
 if platform.machine() == 'x86_64':
     from sklearnex import patch_sklearn
-    patch_sklearn()
+    # patch_sklearn()
 
 import pickle as pkl
 import numpy as np
