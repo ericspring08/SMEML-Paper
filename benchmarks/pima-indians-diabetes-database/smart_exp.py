@@ -9,13 +9,11 @@ import time
 time_start = time.time()
 
 # Load the dataset
-data = pd.read_csv('chronic-kidney-disease-dataset.csv')
+data = pd.read_csv('pima-indians-diabetes-database.csv')
 
 # Define the target column
-target = data['classification']
-target = target.replace('ckd', 1)
-target = target.replace('notckd', 0)
-data = data.drop(columns=['classification'])
+target = data['Outcome']
+data = data.drop(columns=['Outcome'])
 
 if __name__ == '__main__':
     # Initialize the SMEML object
@@ -24,6 +22,6 @@ if __name__ == '__main__':
     # Run the smart experiment
     smeml.train(data, target)
 
-time_end = time.time()
+    time_end = time.time()
 
-print('Time elapsed: ', time_end - time_start)
+    print('Time elapsed: ', time_end - time_start)

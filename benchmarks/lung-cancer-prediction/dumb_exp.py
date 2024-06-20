@@ -9,17 +9,17 @@ import time
 time_start = time.time()
 
 # Load the dataset
-data = pd.read_csv('chronic-kidney-disease-dataset.csv')
+data = pd.read_csv('lung-cancer-prediction.csv')
 
 # Define the target column
-target = data['classification']
-target = target.replace('ckd', 1)
-target = target.replace('notckd', 0)
-data = data.drop(columns=['classification'])
+target = data['LUNG_CANCER']
+target = target.replace('YES', 1)
+target = target.replace('NO', 0)
+data = data.drop(columns=['LUNG_CANCER'])
 
 if __name__ == '__main__':
     # Initialize the SMEML object
-    smeml = SMEML(iterations=20, mode='SME')
+    smeml = SMEML(iterations=20, mode='dumb')
 
     # Run the smart experiment
     smeml.train(data, target)

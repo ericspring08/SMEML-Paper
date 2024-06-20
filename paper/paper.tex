@@ -80,7 +80,7 @@
 
 
 \begin{abstract}
-  Automated Machine Learning or AutoML has emerged as a popular field of research. Many of these frameworks optimize a form of model selection, however, they all require most models to be run and evaluated. We propose a novel framework that automatically eliminates models that are unlikely to be performant by training a Boosting Model on hundreds of kaggle datasets. Out of the 30 model options, our framework can predict a top five model within its top eight 80\% of the time.
+  Automated Machine Learning or AutoML has emerged as a popular field of research. We performed a literature review of existing AutoML papers and conducted a survey on six popluar AutoML frameworks. Many of these frameworks optimize a form of model selection, however, they all require most models to be run and evaluated. We propose a novel framework that automatically eliminates models that are unlikely to be performant by training a Boosting Model on hundreds of kaggle datasets. Our framework, SME, demonstrates the ability to generate a model with near equal accuracy to a "dumb" model that runs every model on every dataset, but in a fraction of the time.
 \end{abstract}
 
 
@@ -115,7 +115,7 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
 \end{table}
 Table 1: Comparison of six AutoML frameworks based on commonmly evaluated criteria as well as more obscure features relevant to the medical diagnosis process 
 
-We systematically reviewed and compared six different AutoML frameworks, comparing every feature relevant to medical implementation. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT. By testing our new framework against these four in evaluating medical data, we hoped to delineate key weaknesses and strengths in our own design. 
+We systematically reviewed and compared six different AutoML frameworks, comparing every feature relevant to medical implementation. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT.
 
 Taking a closer look at four AutoML standards, we can observe pros and cons in their theoretical application to medicine and research. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks in the medical sphere. It supports imputation techniques for missing values with user specification and has an intuitive API, making it moderately user-friendly for minimally trained healthcare workers. H2O has a wider variety of supported algorithms that may or may not be appropriate for medical diagnosis, making it slower than FLAML on Mean. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users. MLJAR uses more advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users. 
 
@@ -128,7 +128,7 @@ We considered 28 different models, including all supervised and semi-supervised 
 
 To implement this model elimination process, we trained a boosting model on 268 kaggle datasets. We choose datasets that were medically related and focused our approach to binary classification. We extracted the attributes in Table 2 from each dataset, this is the input for the boosting model. We then ran a "dumb" framework that trained every model on each dataset. The accuracy of every model is ranked and every model is treated as a label with its value being its rank. Then we trained a multilabel regression to predict the rank of each model giving the extracted attributes. We produced a median spearman correlation of 0.7301 between the predicted rank and the actual rank and a median p-value of 1.032e-05. Furthermore, we guarantee that we can predict a top two model within the predicted top ten 90.12\% of the time.
 
-When a user inputs a dataset into SMEML, it first extracts the attributes from the dataset. It feeds these attributes into the boosting model to get the predicted rank of each model. Since we have determined that we can predict a top two model within the predicted top ten quite confidently we can eliminate the bottom 18 models from the list. We run bayseian optimization on the top ten models to get the best hyperparamters for each model. We used  Each model's optimization is run in its own process and in parralell. We select the top models that have significantly better performance than other models. These models are stacked together to form the final model. This process is shown in Figure 1.
+When a user inputs a dataset into SMEML, it first extracts the attributes from the dataset. It feeds these attributes into the boosting model to get the predicted rank of each model. Since we have determined that we can predict a top two model within the predicted top ten quite confidently we can eliminate the bottom 18 models from the list. We run bayseian optimization on the top ten models to get the best hyperparamters for each model. We select the top models that have significantly better performance than other models. These models are stacked together to form the final model. This process is shown in Figure 1.
 \begin{table}
   \caption{Attributes extracted from a dataset}
   \label{model-options-table}
@@ -189,7 +189,7 @@ When a user inputs a dataset into SMEML, it first extracts the attributes from t
 
 \section{Experiments}
 \subsection{Experiment Design}
-To evaluate our framework, we choose 7 different datasets of diverse size. We ran SMEML on each dataset for 32 iterations of tuning. We compared this against a "dumb" mode which simply runs every model on the dataset. We used the accuracy and time to train as our metrics.
+To evaluate our framework, we choose 7 different datasets of diverse size. We ran SMEML on each dataset for 20 iterations of tuning. We compared this against a "dumb" mode which simply runs every model on the dataset. We used the accuracy and time to train as our metrics.
 
 All experiments are run on an Ubuntu server with Intel Xeon E5520 @ 2.27GHz and 24GB of RAM.
 
@@ -201,10 +201,15 @@ All experiments are run on an Ubuntu server with Intel Xeon E5520 @ 2.27GHz and 
   \begin{tabular}{llllll}
     \toprule
     % group 2, 3 as multicolumn and 4, 5 as multicolumn
-    Dataset & \multicolumn{2}{c}{Accuracy} & \multicolumn{2}{c}{Time to Train} & Size (RxC)\\
+    Dataset & \multicolumn{2}{c}{Accuracy} & \multicolumn{2}{c}{Time to Train (sec)} & Size (RxC)\\
     \cmidrule(lr){2-3} \cmidrule(lr){4-5}
     & SMEML & Dumb & SMEML & Dumb \\
     \midrule
+    Chronic Kidney Disease Dataset & 1.0 & 1.0 & 419.64 & 788.46 & 400x26\\
+    Brain Stroke Prediction Dataset & .9458 & .9458 & 114.16 & 370.95 & 4892x11\\
+    Lung Cancer Prediction & .9839 & .9839 & 143.07 & 317.04 & 309x16\\
+    Pima Indians Diabetes Dataset & .7857 & .8052 & 161.99 & 374.01 & 768x8 \\
+    Eye State Classification & .9536 & .9549 & 312.57 & 696.51 & 14980x15\\ 
     \bottomrule
   \end{tabular}
 \end{table}

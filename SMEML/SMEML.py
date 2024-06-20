@@ -111,30 +111,33 @@ class SMEML:
 
         top = np.argsort(results[0])[-8:]
 
-        model_threads = []
-        manager = multiprocessing.Manager()
-        return_dict = manager.dict()
-        for i in top:
-            thread = multiprocessing.Process(name=classifier_names[i],
-                target=self.train_thread, args=(classifiers[i], classifier_names[i], return_dict,))
-            model_threads.append(thread)
-
-        for thread in model_threads:
-            thread.start()
-
-        # wait for all threads to finish
-        for thread in model_threads:
-            thread.join()
-        
         self.model_accuracies = []
         self.models = {}
 
-        # loop through return dict and get the models and accuracies
-        for key, value in return_dict.items():
-            if 'accuracy' in key:
-                self.model_accuracies.append((key.replace('_accuracy', ''), value))
-            else:
-                self.models[key.replace('_model', '')] = value
+        for i in top:
+            print("Training model: ", classifier_names[i])
+            try:
+                optimizer = BayesSearchCV(
+                    classifiers[i],
+                    param_grids[classifier_names[i]],
+                    n_iter=self.iterations,
+                    n_jobs=-1,
+                    verbose=3,
+                    cv=3,
+                    error_score=0
+                )
+            
+                optimizer.fit(self.X_train, self.y_train)
+
+                accuracy = optimizer.score(self.X_test, self.y_test)
+                print("Model: ", classifier_names[i], " accuracy: ", accuracy)
+
+                self.model_accuracies.append((classifier_names[i], accuracy))
+                self.models[classifier_names[i]] = optimizer.best_estimator_
+            except Exception as e:
+                print("Error training model: ", classifier_names[i])
+                print(e)
+                continue
 
         self.model_accuracies = sorted(self.model_accuracies, key=lambda x: x[1], reverse=True)
         # take top 3 models
@@ -151,6 +154,13 @@ class SMEML:
         accuracy = stacking_classifier.score(self.X_test, self.y_test)
 
         print("stacking classifier accuracy: ", accuracy)
+        
+        # check if stacking classifier is better than the top model
+        if accuracy > self.top_models_accuracies[0][1]:
+            print("Stacking classifier is better than the top model")
+        else:
+            print("Stacking classifier is not better than the top model")
+            print("Top model: ", self.top_models_accuracies[0][0], " accuracy: ", self.top_models_accuracies[0][1])
 
     def dumbmode(self):
         # train all models
@@ -171,6 +181,7 @@ class SMEML:
                     n_iter=self.iterations,
                     n_jobs=-1,
                     verbose=3,
+                    cv=3,
                     error_score=0
                 )
 
@@ -186,35 +197,6 @@ class SMEML:
         
         models = sorted(models, key=lambda x: x[1], reverse=True)
         print("Top models: ", models[:3])
-
-    def train_thread(self, model, model_name, return_dict):
-        print("Training model: ", model_name)
-
-        # check if the dataset is too large for the model
-        if size_limits.get(model_name) is not None and self.X.shape[0] * self.X.shape[1] > size_limits[model_name]:
-            return
-        
-        try:
-            optimizer = BayesSearchCV(
-                model,
-                param_grids[model_name],
-                n_iter=self.iterations,
-                n_jobs=-1,
-                verbose=3,
-                error_score=0,
-                cv=3
-            )
-
-            optimizer.fit(self.X_train, self.y_train)
-            accuracy = optimizer.score(self.X_test, self.y_test)
-            print("Model: ", model_name, " accuracy: ", accuracy)
-        except Exception as e:
-            print("Error training model: ", model_name)
-            print(e)
-            return
-
-        return_dict[model_name + '_accuracy'] = accuracy
-        return_dict[model_name + '_model'] = optimizer.best_estimator_ 
 
     def get_dataset_attributes(self):
         attributes = {}

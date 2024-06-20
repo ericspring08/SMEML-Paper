@@ -19,7 +19,7 @@ data = data.drop(columns=['classification'])
 
 if __name__ == '__main__':
     # Initialize the SMEML object
-    smeml = SMEML(iterations=32, mode='dumb')
+    smeml = SMEML(iterations=20, mode='dumb')
 
     # Run the smart experiment
     smeml.train(data, target)
