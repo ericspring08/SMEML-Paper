@@ -1,0 +1,682 @@
+['/Users/ericzhang/Desktop/Code/SMEML-Paper/benchmarks/stroke-prediction-dataset', '/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip', '/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11', '/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload', '/Users/ericzhang/Desktop/Code/SMEML-Paper/.venv/lib/python3.11/site-packages', '/Users/ericzhang/Desktop/Code/SMEML-Paper']
+Categorical features:  Index(['gender', 'ever_married', 'work_type', 'Residence_type',
+       'smoking_status'],
+      dtype='object')
+Numerical features:  Index(['id', 'age', 'hypertension', 'heart_disease', 'avg_glucose_level',
+       'bmi'],
+      dtype='object')
+Number of rows:  5110
+Number of columns:  22
+Output distribution:  0.03933463796477495
+Numerical columns:  0.18181818181818182
+Binary categorical:  1.0
+Categorical average count:  2.0
+Average IQR:  0.3048889904846568
+Average Q1:  0.20087768388047905
+Average Q3:  0.5057666743651359
+IQR STD:  0.17162182963791692
+Q1 STD:  0.07793958344893953
+Q3 STD:  0.2408500357032867
+Z-score average:  0.7590774970303354
+Z-score std:  0.5166871055535672
+Training model:  CatBoostClassifier
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  CatBoostClassifier  accuracy:  0.9393346379647749
+Training model:  BernoulliNB
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  BernoulliNB  accuracy:  0.9393346379647749
+Training model:  SGDClassifier
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  SGDClassifier  accuracy:  0.9393346379647749
+Training model:  LinearSVC
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  LinearSVC  accuracy:  0.9393346379647749
+Training model:  LogisticRegression
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  LogisticRegression  accuracy:  0.9393346379647749
+Training model:  ExtraTreesClassifier
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  ExtraTreesClassifier  accuracy:  0.9373776908023483
+Training model:  RandomForestClassifier
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  RandomForestClassifier  accuracy:  0.9393346379647749
+Training model:  Perceptron
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+Model:  Perceptron  accuracy:  0.9285714285714286
+Training stacking classifier
+stacking classifier accuracy:  0.9334637964774951
+Stacking classifier is not better than the top model
+Top model:  CatBoostClassifier  accuracy:  0.9393346379647749
+Time elapsed:  172.67270302772522
+[CV 2/3] END depth=3, iterations=300, learning_rate=0.1;, score=0.948 total time=   0.4s
+[CV 1/3] END depth=7, iterations=200, learning_rate=0.01;, score=0.955 total time=   0.5s
+[CV 2/3] END depth=5, iterations=200, learning_rate=0.01;, score=0.954 total time=   0.4s
+[CV 2/3] END depth=5, iterations=200, learning_rate=0.01;, score=0.954 total time=   0.3s
+[CV 1/3] END depth=7, iterations=100, learning_rate=0.01;, score=0.955 total time=   0.4s
+[CV 2/3] END depth=3, iterations=100, learning_rate=0.2;, score=0.950 total time=   0.2s
+[CV 2/3] END depth=5, iterations=300, learning_rate=0.01;, score=0.954 total time=   0.6s
+[CV 1/3] END ...........alpha=1.0, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 1/3] END ..........alpha=0.01, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 2/3] END ...........alpha=1.0, binarize=0.5;, score=0.919 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ..........alpha=0.01, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=huber, max_iter=1790, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=perceptron, max_iter=1484, penalty=l1;, score=0.943 total time=   0.0s
+[CV 1/3] END loss=modified_huber, max_iter=1953, penalty=l1;, score=0.955 total time=   0.0s
+[CV 2/3] END loss=log_loss, max_iter=1526, penalty=l1;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=modified_huber, max_iter=1000, penalty=l2;, score=0.952 total time=   0.0s
+[CV 1/3] END loss=hinge, max_iter=2000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END loss=epsilon_insensitive, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=10.0, loss=squared_hinge, max_iter=1324, penalty=l2;, score=0.954 total time=   0.1s
+[CV 2/3] END C=1.0, loss=squared_hinge, max_iter=1517, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.1, loss=squared_hinge, max_iter=1596, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=100.0, loss=squared_hinge, max_iter=1364, penalty=l2;, score=0.954 total time=   0.3s
+[CV 3/3] END C=1.0, loss=squared_hinge, max_iter=1963, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.1, loss=squared_hinge, max_iter=1802, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END C=0.1, loss=squared_hinge, max_iter=1802, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=100.0, loss=hinge, max_iter=2000, penalty=l2;, score=0.954 total time=   0.1s
+[CV 2/3] END C=0.01, loss=hinge, max_iter=1002, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=100.0, loss=hinge, max_iter=1000, penalty=l2;, score=0.954 total time=   0.1s
+[CV 2/3] END C=1.0, max_iter=1775, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.1, max_iter=1450, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 1/3] END C=10.0, max_iter=1235, penalty=l2, solver=lbfgs;, score=0.955 total time=   0.0s
+[CV 2/3] END C=0.1, max_iter=1216, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=100.0, max_iter=1721, penalty=l2, solver=liblinear;, score=0.955 total time=   0.0s
+[CV 2/3] END C=100.0, max_iter=1002, penalty=l2, solver=saga;, score=0.954 total time=   0.3s
+[CV 3/3] END bootstrap=False, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 2/3] END bootstrap=True, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=10, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=10, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.4s
+[CV 2/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=50;, score=0.953 total time=   0.2s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=2, n_estimators=50;, score=0.954 total time=   0.2s
+[CV 1/3] END bootstrap=True, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 3/3] END .....................max_iter=1585;, score=0.896 total time=   0.0s
+[CV 1/3] END .....................max_iter=1564;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=1564;, score=0.896 total time=   0.0s
+[CV 3/3] END .....................max_iter=1487;, score=0.896 total time=   0.0s
+[CV 3/3] END .....................max_iter=1635;, score=0.896 total time=   0.0s
+[CV 3/3] END .....................max_iter=1050;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=2000;, score=0.864 total time=   0.0s
+[CV 3/3] END .....................max_iter=1195;, score=0.896 total time=   0.0s
+[CV 1/3] END depth=3, iterations=300, learning_rate=0.1;, score=0.949 total time=   0.4s
+[CV 1/3] END depth=7, iterations=200, learning_rate=0.1;, score=0.951 total time=   0.5s
+[CV 3/3] END depth=7, iterations=200, learning_rate=0.01;, score=0.954 total time=   0.5s
+[CV 3/3] END depth=3, iterations=300, learning_rate=0.1;, score=0.950 total time=   0.3s
+[CV 1/3] END depth=3, iterations=100, learning_rate=0.01;, score=0.955 total time=   0.1s
+[CV 1/3] END depth=5, iterations=100, learning_rate=0.01;, score=0.955 total time=   0.2s
+[CV 2/3] END depth=7, iterations=100, learning_rate=0.2;, score=0.952 total time=   0.7s
+[CV 2/3] END depth=5, iterations=100, learning_rate=0.2;, score=0.947 total time=   0.3s
+[CV 2/3] END ..........alpha=0.01, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=0.0;, score=0.943 total time=   0.0s
+[CV 1/3] END ..........alpha=0.01, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 1/3] END ...........alpha=1.0, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 1/3] END ..........alpha=0.01, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ...........alpha=1.0, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=hinge, max_iter=1094, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=squared_error, max_iter=1653, penalty=elasticnet;, score=0.701 total time=   0.0s
+[CV 2/3] END loss=modified_huber, max_iter=1953, penalty=l1;, score=0.949 total time=   0.0s
+[CV 2/3] END loss=perceptron, max_iter=1152, penalty=l1;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=modified_huber, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=log_loss, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=huber, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=perceptron, max_iter=1424, penalty=l2;, score=0.887 total time=   0.0s
+[CV 1/3] END C=10.0, loss=squared_hinge, max_iter=1324, penalty=l2;, score=0.955 total time=   0.1s
+[CV 1/3] END C=0.1, loss=squared_hinge, max_iter=1596, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END C=10.0, loss=hinge, max_iter=1295, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.1, loss=hinge, max_iter=1777, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.1, loss=hinge, max_iter=1629, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=1.0, loss=squared_hinge, max_iter=1963, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=100.0, loss=squared_hinge, max_iter=1754, penalty=l2;, score=0.954 total time=   0.3s
+[CV 2/3] END C=100.0, loss=hinge, max_iter=2000, penalty=l2;, score=0.954 total time=   0.1s
+[CV 1/3] END C=100.0, loss=hinge, max_iter=1000, penalty=l2;, score=0.955 total time=   0.1s
+[CV 3/3] END C=1.0, max_iter=1775, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.01, max_iter=1266, penalty=l2, solver=lbfgs;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.1, max_iter=1450, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=1.0, max_iter=1472, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 3/3] END C=10.0, max_iter=1748, penalty=l2, solver=sag;, score=0.954 total time=   0.2s
+[CV 3/3] END C=1.0, max_iter=1781, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1673, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1029, penalty=l2, solver=sag;, score=0.954 total time=   0.2s
+[CV 2/3] END C=100.0, max_iter=1721, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 3/3] END C=100.0, max_iter=1002, penalty=l2, solver=saga;, score=0.954 total time=   0.4s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=10, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=None, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.3s
+[CV 3/3] END bootstrap=False, max_depth=None, max_features=sqrt, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 3/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.5s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.2s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=200;, score=0.953 total time=   0.4s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.952 total time=   0.7s
+[CV 3/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=2, min_samples_split=2, n_estimators=200;, score=0.953 total time=   1.4s
+[CV 1/3] END bootstrap=False, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=10, n_estimators=200;, score=0.955 total time=   0.8s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 2/3] END bootstrap=True, max_depth=10, max_features=None, min_samples_leaf=1, min_samples_split=10, n_estimators=50;, score=0.952 total time=   0.5s
+[CV 2/3] END .....................max_iter=1585;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=1186;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=1203;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=1564;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=1487;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=1551;, score=0.864 total time=   0.0s
+[CV 1/3] END .....................max_iter=2000;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=2000;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=2000;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=1000;, score=0.864 total time=   0.0s
+[CV 1/3] END .....................max_iter=1143;, score=0.952 total time=   0.0s
+[CV 2/3] END .....................max_iter=1143;, score=0.864 total time=   0.0s
+[CV 1/3] END .....................max_iter=2000;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=2000;, score=0.896 total time=   0.0s
+[CV 3/3] END depth=3, iterations=300, learning_rate=0.1;, score=0.950 total time=   0.4s
+[CV 2/3] END depth=7, iterations=200, learning_rate=0.01;, score=0.954 total time=   0.5s
+[CV 2/3] END depth=3, iterations=300, learning_rate=0.1;, score=0.948 total time=   0.3s
+[CV 3/3] END depth=7, iterations=300, learning_rate=0.1;, score=0.952 total time=   0.8s
+[CV 2/3] END depth=7, iterations=200, learning_rate=0.2;, score=0.949 total time=   0.5s
+[CV 1/3] END depth=5, iterations=200, learning_rate=0.01;, score=0.955 total time=   0.3s
+[CV 2/3] END depth=5, iterations=200, learning_rate=0.1;, score=0.950 total time=   0.4s
+[CV 3/3] END depth=7, iterations=100, learning_rate=0.01;, score=0.954 total time=   0.4s
+[CV 2/3] END depth=3, iterations=300, learning_rate=0.01;, score=0.954 total time=   0.5s
+[CV 3/3] END depth=5, iterations=100, learning_rate=0.01;, score=0.954 total time=   0.2s
+[CV 2/3] END depth=7, iterations=300, learning_rate=0.01;, score=0.954 total time=   2.6s
+[CV 3/3] END ...........alpha=0.1, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=squared_error, max_iter=1653, penalty=elasticnet;, score=0.395 total time=   0.0s
+[CV 2/3] END loss=perceptron, max_iter=1960, penalty=l1;, score=0.869 total time=   0.0s
+[CV 2/3] END loss=squared_error, max_iter=1108, penalty=elasticnet;, score=0.460 total time=   0.0s
+[CV 2/3] END loss=huber, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=huber, max_iter=1000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END loss=huber, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=log_loss, max_iter=2000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=perceptron, max_iter=1424, penalty=l2;, score=0.946 total time=   0.0s
+[CV 2/3] END C=10.0, loss=squared_hinge, max_iter=1324, penalty=l2;, score=0.954 total time=   0.1s
+[CV 3/3] END C=100.0, loss=squared_hinge, max_iter=1364, penalty=l2;, score=0.954 total time=   0.3s
+[CV 1/3] END C=100.0, loss=squared_hinge, max_iter=1754, penalty=l2;, score=0.955 total time=   0.3s
+[CV 2/3] END C=10.0, loss=squared_hinge, max_iter=1467, penalty=l2;, score=0.954 total time=   0.2s
+[CV 2/3] END C=10.0, loss=squared_hinge, max_iter=1904, penalty=l2;, score=0.954 total time=   0.2s
+[CV 1/3] END C=0.01, loss=hinge, max_iter=1002, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END C=0.01, loss=hinge, max_iter=1002, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=1.0, loss=hinge, max_iter=1535, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.01, max_iter=1266, penalty=l2, solver=lbfgs;, score=0.955 total time=   0.0s
+[CV 3/3] END C=0.1, max_iter=1450, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=10.0, max_iter=1230, penalty=l2, solver=liblinear;, score=0.955 total time=   0.0s
+[CV 2/3] END C=1.0, max_iter=1472, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=1.0, max_iter=1781, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 3/3] END C=10.0, max_iter=1504, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 2/3] END C=1.0, max_iter=1560, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 3/3] END C=10.0, max_iter=1673, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 1/3] END C=100.0, max_iter=1002, penalty=l2, solver=saga;, score=0.955 total time=   0.6s
+[CV 3/3] END C=0.01, max_iter=1548, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.1, max_iter=1184, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 3/3] END C=0.1, max_iter=1184, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.952 total time=   0.3s
+[CV 1/3] END bootstrap=True, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=1, min_samples_split=10, n_estimators=200;, score=0.955 total time=   0.5s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=10, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.6s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 1/3] END bootstrap=False, max_depth=10, max_features=sqrt, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.4s
+[CV 2/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=4, min_samples_split=10, n_estimators=200;, score=0.954 total time=   0.4s
+[CV 3/3] END bootstrap=False, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=10, n_estimators=200;, score=0.954 total time=   0.8s
+[CV 2/3] END .....................max_iter=1186;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=2000;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=2000;, score=0.864 total time=   0.0s
+[CV 2/3] END depth=7, iterations=200, learning_rate=0.1;, score=0.949 total time=   0.5s
+[CV 2/3] END depth=7, iterations=300, learning_rate=0.1;, score=0.949 total time=   0.8s
+[CV 1/3] END depth=3, iterations=300, learning_rate=0.01;, score=0.955 total time=   0.5s
+[CV 2/3] END depth=3, iterations=100, learning_rate=0.01;, score=0.954 total time=   0.1s
+[CV 1/3] END depth=5, iterations=300, learning_rate=0.01;, score=0.955 total time=   0.6s
+[CV 1/3] END depth=7, iterations=300, learning_rate=0.01;, score=0.955 total time=   2.4s
+[CV 3/3] END ...........alpha=1.0, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 2/3] END ..........alpha=0.01, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 1/3] END ...........alpha=1.0, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 3/3] END ..........alpha=0.01, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=0.0;, score=0.943 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 2/3] END ..........alpha=0.01, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=huber, max_iter=1790, penalty=elasticnet;, score=0.955 total time=   0.0s
+[CV 3/3] END loss=perceptron, max_iter=1484, penalty=l1;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=modified_huber, max_iter=1949, penalty=elasticnet;, score=0.838 total time=   0.0s
+[CV 1/3] END loss=perceptron, max_iter=1960, penalty=l1;, score=0.945 total time=   0.0s
+[CV 3/3] END loss=modified_huber, max_iter=1953, penalty=l1;, score=0.935 total time=   0.0s
+[CV 1/3] END loss=log_loss, max_iter=1526, penalty=l1;, score=0.955 total time=   0.0s
+[CV 2/3] END loss=epsilon_insensitive, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=log_loss, max_iter=2000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=1.0, loss=squared_hinge, max_iter=1517, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END C=10.0, loss=hinge, max_iter=1295, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END C=0.1, loss=hinge, max_iter=1777, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END C=0.1, loss=hinge, max_iter=1629, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END C=0.01, loss=squared_hinge, max_iter=1298, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=100.0, loss=squared_hinge, max_iter=1754, penalty=l2;, score=0.954 total time=   0.3s
+[CV 3/3] END C=1.0, loss=hinge, max_iter=1104, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1235, penalty=l2, solver=lbfgs;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.1, max_iter=1216, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 1/3] END C=10.0, max_iter=1748, penalty=l2, solver=sag;, score=0.955 total time=   0.2s
+[CV 1/3] END C=10.0, max_iter=1206, penalty=l2, solver=lbfgs;, score=0.955 total time=   0.0s
+[CV 1/3] END C=10.0, max_iter=1029, penalty=l2, solver=sag;, score=0.955 total time=   0.2s
+[CV 2/3] END C=0.01, max_iter=1548, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.955 total time=   0.3s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=1, min_samples_split=10, n_estimators=200;, score=0.954 total time=   0.5s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=1, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=200;, score=0.954 total time=   0.4s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=None, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.924 total time=   1.5s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.3s
+[CV 3/3] END bootstrap=False, max_depth=10, max_features=sqrt, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.4s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=2, n_estimators=50;, score=0.953 total time=   0.3s
+[CV 1/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=4, min_samples_split=10, n_estimators=200;, score=0.955 total time=   0.4s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 1/3] END .....................max_iter=1487;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=1551;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=1635;, score=0.864 total time=   0.0s
+[CV 2/3] END .....................max_iter=1050;, score=0.864 total time=   0.0s
+[CV 1/3] END .....................max_iter=2000;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=2000;, score=0.896 total time=   0.0s
+[CV 3/3] END depth=7, iterations=200, learning_rate=0.2;, score=0.953 total time=   0.5s
+[CV 1/3] END depth=5, iterations=200, learning_rate=0.1;, score=0.951 total time=   0.4s
+[CV 3/3] END depth=3, iterations=300, learning_rate=0.01;, score=0.954 total time=   0.5s
+[CV 1/3] END depth=7, iterations=100, learning_rate=0.1;, score=0.952 total time=   0.8s
+[CV 3/3] END depth=5, iterations=300, learning_rate=0.01;, score=0.954 total time=   0.6s
+[CV 3/3] END depth=5, iterations=100, learning_rate=0.2;, score=0.951 total time=   0.3s
+[CV 2/3] END ...........alpha=1.0, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 3/3] END ..........alpha=0.01, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 2/3] END ...........alpha=1.0, binarize=0.5;, score=0.919 total time=   0.0s
+[CV 1/3] END ..........alpha=0.01, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=0.0;, score=0.949 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.5;, score=0.924 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 1/3] END loss=modified_huber, max_iter=1949, penalty=elasticnet;, score=0.952 total time=   0.0s
+[CV 2/3] END loss=modified_huber, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=huber, max_iter=1000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END loss=epsilon_insensitive, max_iter=2000, penalty=elasticnet;, score=0.955 total time=   0.0s
+[CV 1/3] END loss=log_loss, max_iter=1000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 2/3] END loss=epsilon_insensitive, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=log_loss, max_iter=2000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 2/3] END C=1.0, loss=hinge, max_iter=1257, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.1, loss=squared_hinge, max_iter=1730, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END C=0.01, loss=squared_hinge, max_iter=1298, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END C=1.0, loss=squared_hinge, max_iter=1963, penalty=l2;, score=0.955 total time=   0.0s
+[CV 2/3] END C=1.0, loss=hinge, max_iter=1104, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.01, max_iter=1266, penalty=l2, solver=lbfgs;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1504, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.01, max_iter=1613, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.1, max_iter=1721, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.1, max_iter=1184, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.952 total time=   0.3s
+[CV 3/3] END bootstrap=True, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 1/3] END bootstrap=False, max_depth=None, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=1, min_samples_split=5, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=None, max_features=sqrt, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.953 total time=   0.3s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.953 total time=   0.5s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=None, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.9s
+[CV 3/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=4, min_samples_split=10, n_estimators=200;, score=0.954 total time=   0.4s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=10, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 1/3] END bootstrap=True, max_depth=10, max_features=None, min_samples_leaf=1, min_samples_split=10, n_estimators=50;, score=0.954 total time=   0.5s
+[CV 3/3] END .....................max_iter=1186;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=1918;, score=0.864 total time=   0.0s
+[CV 1/3] END .....................max_iter=1000;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1000;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=1000;, score=0.896 total time=   0.0s
+[CV 3/3] END .....................max_iter=1143;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=2000;, score=0.864 total time=   0.0s
+[CV 2/3] END depth=5, iterations=300, learning_rate=0.2;, score=0.946 total time=   0.5s
+[CV 3/3] END depth=7, iterations=200, learning_rate=0.1;, score=0.953 total time=   0.5s
+[CV 1/3] END depth=7, iterations=300, learning_rate=0.1;, score=0.949 total time=   0.8s
+[CV 1/3] END depth=5, iterations=200, learning_rate=0.01;, score=0.955 total time=   0.3s
+[CV 3/3] END depth=5, iterations=200, learning_rate=0.1;, score=0.951 total time=   0.3s
+[CV 2/3] END depth=7, iterations=100, learning_rate=0.01;, score=0.954 total time=   0.4s
+[CV 1/3] END depth=3, iterations=100, learning_rate=0.2;, score=0.950 total time=   0.2s
+[CV 1/3] END depth=7, iterations=100, learning_rate=0.2;, score=0.948 total time=   0.7s
+[CV 1/3] END depth=5, iterations=100, learning_rate=0.2;, score=0.947 total time=   0.3s
+[CV 3/3] END ...........alpha=0.1, binarize=0.0;, score=0.949 total time=   0.0s
+[CV 3/3] END ..........alpha=0.01, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=hinge, max_iter=1094, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=perceptron, max_iter=1484, penalty=l1;, score=0.955 total time=   0.0s
+[CV 2/3] END loss=modified_huber, max_iter=1949, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=squared_error, max_iter=1653, penalty=elasticnet;, score=0.127 total time=   0.0s
+[CV 1/3] END loss=epsilon_insensitive, max_iter=1000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 2/3] END loss=hinge, max_iter=2000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=log_loss, max_iter=1000, penalty=l2;, score=0.941 total time=   0.0s
+[CV 3/3] END C=10.0, loss=squared_hinge, max_iter=1467, penalty=l2;, score=0.954 total time=   0.2s
+[CV 2/3] END C=0.1, loss=squared_hinge, max_iter=1802, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=10.0, loss=squared_hinge, max_iter=1904, penalty=l2;, score=0.954 total time=   0.2s
+[CV 2/3] END C=100.0, loss=hinge, max_iter=1000, penalty=l2;, score=0.954 total time=   0.1s
+[CV 1/3] END C=1.0, max_iter=1775, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1230, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.1, max_iter=1216, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 3/3] END C=1.0, max_iter=1472, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1748, penalty=l2, solver=sag;, score=0.954 total time=   0.2s
+[CV 2/3] END C=1.0, max_iter=1781, penalty=l2, solver=sag;, score=0.954 total time=   0.1s
+[CV 3/3] END C=10.0, max_iter=1206, penalty=l2, solver=lbfgs;, score=0.954 total time=   0.0s
+[CV 3/3] END C=1.0, max_iter=1560, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.01, max_iter=1613, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 2/3] END C=0.1, max_iter=1721, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=2, min_samples_split=10, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.955 total time=   0.3s
+[CV 1/3] END bootstrap=False, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.955 total time=   0.3s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 3/3] END bootstrap=False, max_depth=None, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=1, min_samples_split=5, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 1/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.3s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=200;, score=0.955 total time=   0.4s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.4s
+[CV 1/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=1, min_samples_split=2, n_estimators=50;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=None, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   1.1s
+[CV 2/3] END bootstrap=False, max_depth=10, max_features=sqrt, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.4s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=2, n_estimators=50;, score=0.954 total time=   0.3s
+[CV 2/3] END bootstrap=True, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 3/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=10, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 3/3] END bootstrap=True, max_depth=10, max_features=None, min_samples_leaf=1, min_samples_split=10, n_estimators=50;, score=0.953 total time=   0.6s
+[CV 3/3] END .....................max_iter=1186;, score=0.896 total time=   0.0s
+[CV 3/3] END .....................max_iter=1203;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=1507;, score=0.864 total time=   0.0s
+[CV 3/3] END .....................max_iter=2000;, score=0.896 total time=   0.0s
+[CV 3/3] END .....................max_iter=1602;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=1195;, score=0.864 total time=   0.0s
+[CV 3/3] END depth=5, iterations=300, learning_rate=0.2;, score=0.949 total time=   0.5s
+[CV 1/3] END depth=3, iterations=300, learning_rate=0.1;, score=0.949 total time=   0.3s
+[CV 1/3] END depth=7, iterations=200, learning_rate=0.2;, score=0.948 total time=   0.5s
+[CV 3/3] END depth=5, iterations=200, learning_rate=0.01;, score=0.954 total time=   0.4s
+[CV 3/3] END depth=5, iterations=200, learning_rate=0.01;, score=0.954 total time=   0.3s
+[CV 3/3] END depth=3, iterations=100, learning_rate=0.01;, score=0.954 total time=   0.1s
+[CV 2/3] END depth=7, iterations=100, learning_rate=0.1;, score=0.950 total time=   0.7s
+[CV 3/3] END depth=3, iterations=100, learning_rate=0.2;, score=0.951 total time=   0.2s
+[CV 3/3] END depth=7, iterations=100, learning_rate=0.2;, score=0.953 total time=   0.7s
+[CV 2/3] END ...........alpha=0.1, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.0;, score=0.952 total time=   0.0s
+[CV 2/3] END ...........alpha=1.0, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 2/3] END ..........alpha=0.01, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 3/3] END ...........alpha=0.1, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 2/3] END ...........alpha=0.1, binarize=0.5;, score=0.916 total time=   0.0s
+[CV 1/3] END ..........alpha=0.01, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 1/3] END ...........alpha=1.0, binarize=1.0;, score=0.955 total time=   0.0s
+[CV 2/3] END ...........alpha=1.0, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=perceptron, max_iter=1960, penalty=l1;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=perceptron, max_iter=1152, penalty=l1;, score=0.955 total time=   0.0s
+[CV 1/3] END loss=squared_error, max_iter=1108, penalty=elasticnet;, score=0.564 total time=   0.0s
+[CV 3/3] END loss=huber, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=epsilon_insensitive, max_iter=2000, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=hinge, max_iter=2000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.1, loss=squared_hinge, max_iter=1596, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, loss=hinge, max_iter=1295, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=1.0, loss=hinge, max_iter=1257, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=0.1, loss=hinge, max_iter=1777, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.1, loss=squared_hinge, max_iter=1730, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.1, loss=hinge, max_iter=1629, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.01, loss=squared_hinge, max_iter=1298, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=10.0, loss=squared_hinge, max_iter=1904, penalty=l2;, score=0.955 total time=   0.3s
+[CV 3/3] END C=1.0, loss=hinge, max_iter=1535, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=10.0, max_iter=1504, penalty=l2, solver=liblinear;, score=0.955 total time=   0.0s
+[CV 1/3] END C=1.0, max_iter=1560, penalty=l2, solver=liblinear;, score=0.955 total time=   0.0s
+[CV 1/3] END C=10.0, max_iter=1673, penalty=l2, solver=liblinear;, score=0.955 total time=   0.0s
+[CV 3/3] END C=10.0, max_iter=1029, penalty=l2, solver=sag;, score=0.954 total time=   0.2s
+[CV 3/3] END C=100.0, max_iter=1721, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 2/3] END C=0.01, max_iter=1613, penalty=l2, solver=sag;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.1, max_iter=1721, penalty=l2, solver=liblinear;, score=0.955 total time=   0.0s
+[CV 1/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=2, min_samples_split=10, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=10, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=1, min_samples_split=10, n_estimators=200;, score=0.953 total time=   0.5s
+[CV 1/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=1, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=1, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.954 total time=   0.4s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=None, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.930 total time=   1.7s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=2, min_samples_split=2, n_estimators=200;, score=0.952 total time=   1.5s
+[CV 2/3] END bootstrap=False, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=10, n_estimators=200;, score=0.954 total time=   0.8s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=sqrt, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.953 total time=   0.2s
+[CV 2/3] END bootstrap=True, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=10, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 1/3] END .....................max_iter=1585;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1186;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1203;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1551;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1050;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=1000;, score=0.896 total time=   0.0s
+[CV 1/3] END depth=5, iterations=300, learning_rate=0.2;, score=0.945 total time=   0.5s
+[CV 3/3] END depth=7, iterations=100, learning_rate=0.1;, score=0.954 total time=   0.7s
+[CV 2/3] END depth=5, iterations=100, learning_rate=0.01;, score=0.954 total time=   0.2s
+[CV 3/3] END depth=7, iterations=300, learning_rate=0.01;, score=0.954 total time=   2.6s
+[CV 3/3] END ...........alpha=1.0, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 1/3] END ...........alpha=0.1, binarize=0.0;, score=0.952 total time=   0.0s
+[CV 1/3] END ...........alpha=1.0, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 3/3] END ...........alpha=1.0, binarize=0.5;, score=0.923 total time=   0.0s
+[CV 2/3] END ..........alpha=0.01, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ..........alpha=0.01, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 3/3] END ...........alpha=1.0, binarize=1.0;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=hinge, max_iter=1094, penalty=elasticnet;, score=0.955 total time=   0.0s
+[CV 3/3] END loss=huber, max_iter=1790, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=perceptron, max_iter=1152, penalty=l1;, score=0.954 total time=   0.0s
+[CV 3/3] END loss=log_loss, max_iter=1526, penalty=l1;, score=0.941 total time=   0.0s
+[CV 3/3] END loss=squared_error, max_iter=1108, penalty=elasticnet;, score=0.283 total time=   0.1s
+[CV 3/3] END loss=epsilon_insensitive, max_iter=1000, penalty=l2;, score=0.954 total time=   0.0s
+[CV 2/3] END loss=epsilon_insensitive, max_iter=2000, penalty=elasticnet;, score=0.954 total time=   0.0s
+[CV 1/3] END loss=epsilon_insensitive, max_iter=1000, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END loss=perceptron, max_iter=1424, penalty=l2;, score=0.954 total time=   0.0s
+[CV 3/3] END C=1.0, loss=squared_hinge, max_iter=1517, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=1.0, loss=hinge, max_iter=1257, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END C=0.1, loss=squared_hinge, max_iter=1730, penalty=l2;, score=0.954 total time=   0.0s
+[CV 1/3] END C=100.0, loss=squared_hinge, max_iter=1364, penalty=l2;, score=0.955 total time=   0.3s
+[CV 1/3] END C=10.0, loss=squared_hinge, max_iter=1467, penalty=l2;, score=0.955 total time=   0.3s
+[CV 1/3] END C=1.0, loss=hinge, max_iter=1104, penalty=l2;, score=0.955 total time=   0.0s
+[CV 1/3] END C=100.0, loss=hinge, max_iter=2000, penalty=l2;, score=0.955 total time=   0.1s
+[CV 1/3] END C=1.0, loss=hinge, max_iter=1535, penalty=l2;, score=0.955 total time=   0.0s
+[CV 3/3] END C=10.0, max_iter=1235, penalty=l2, solver=lbfgs;, score=0.954 total time=   0.0s
+[CV 3/3] END C=10.0, max_iter=1230, penalty=l2, solver=liblinear;, score=0.954 total time=   0.0s
+[CV 2/3] END C=10.0, max_iter=1206, penalty=l2, solver=lbfgs;, score=0.954 total time=   0.0s
+[CV 1/3] END C=0.01, max_iter=1548, penalty=l2, solver=sag;, score=0.955 total time=   0.0s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=4, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=2, min_samples_split=10, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.955 total time=   0.2s
+[CV 3/3] END bootstrap=True, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=None, min_samples_leaf=2, min_samples_split=2, n_estimators=100;, score=0.948 total time=   0.3s
+[CV 2/3] END bootstrap=False, max_depth=None, max_features=log2, min_samples_leaf=2, min_samples_split=5, n_estimators=200;, score=0.954 total time=   0.3s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.953 total time=   0.1s
+[CV 3/3] END bootstrap=True, max_depth=10, max_features=sqrt, min_samples_leaf=1, min_samples_split=2, n_estimators=100;, score=0.954 total time=   0.1s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=sqrt, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=sqrt, min_samples_leaf=1, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.2s
+[CV 2/3] END bootstrap=False, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=10, n_estimators=100;, score=0.954 total time=   0.2s
+[CV 1/3] END bootstrap=False, max_depth=None, max_features=sqrt, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.955 total time=   0.1s
+[CV 2/3] END bootstrap=False, max_depth=20, max_features=None, min_samples_leaf=2, min_samples_split=5, n_estimators=100;, score=0.931 total time=   1.2s
+[CV 1/3] END bootstrap=True, max_depth=20, max_features=None, min_samples_leaf=4, min_samples_split=5, n_estimators=100;, score=0.954 total time=   1.1s
+[CV 2/3] END bootstrap=True, max_depth=None, max_features=None, min_samples_leaf=2, min_samples_split=2, n_estimators=200;, score=0.953 total time=   1.4s
+[CV 3/3] END bootstrap=True, max_depth=10, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 3/3] END bootstrap=False, max_depth=20, max_features=log2, min_samples_leaf=4, min_samples_split=5, n_estimators=50;, score=0.954 total time=   0.1s
+[CV 1/3] END .....................max_iter=1635;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1186;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1507;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=1507;, score=0.896 total time=   0.0s
+[CV 1/3] END .....................max_iter=1602;, score=0.952 total time=   0.0s
+[CV 2/3] END .....................max_iter=1602;, score=0.864 total time=   0.0s
+[CV 1/3] END .....................max_iter=1195;, score=0.952 total time=   0.0s
+[CV 1/3] END .....................max_iter=1918;, score=0.952 total time=   0.0s
+[CV 3/3] END .....................max_iter=1918;, score=0.896 total time=   0.0s
+[CV 2/3] END .....................max_iter=1000;, score=0.864 total time=   0.0s

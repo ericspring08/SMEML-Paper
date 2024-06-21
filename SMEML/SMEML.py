@@ -115,6 +115,9 @@ class SMEML:
         self.models = {}
 
         for i in top:
+            # check if the dataset is too large for the model
+            if size_limits.get(classifier_names[i]) is not None and self.X.shape[0] * self.X.shape[1] > size_limits[classifier_names[i]]:
+                continue 
             print("Training model: ", classifier_names[i])
             try:
                 optimizer = BayesSearchCV(
