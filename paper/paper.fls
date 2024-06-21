@@ -781,13 +781,13 @@ INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/vf/adobe/ti
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
-INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
-INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
 INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
+INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
+INPUT /opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT ./smeml-flowchart.png
 INPUT ./smeml-flowchart.png
 INPUT smeml-flowchart.png

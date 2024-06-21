@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  21 JUN 2024 16:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  21 JUN 2024 17:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -544,12 +544,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 <smeml-flowchart.png, id=59, 963.6pt x 433.62pt>
 File: smeml-flowchart.png Graphic file (type png)
 <use smeml-flowchart.png>
-Package pdftex.def Info: smeml-flowchart.png  used on input line 183.
+Package pdftex.def Info: smeml-flowchart.png  used on input line 181.
 (pdftex.def)             Requested size: 397.48499pt x 178.86383pt.
+ [3 <./smeml-flowchart.png>]
+Underfull \vbox (badness 1681) has occurred while \output is active []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3 <./smeml-flowchart.png>] [4] [5] (./paper.aux)
+ [4] [5] (./paper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -558,18 +558,18 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 228 ({)
+### simple group (level 1) entered at line 226 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 14725 strings out of 476025
- 241812 string characters out of 5779036
- 1867388 words of memory out of 5000000
+ 14722 strings out of 476025
+ 241788 string characters out of 5779036
+ 1870388 words of memory out of 5000000
  34802 multiletter control sequences out of 15000+600000
- 545227 words of font info for 149 fonts, out of 8000000 for 9000
+ 545097 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,15n,76p,1406b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,76p,1374b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper.pdf (5 pages, 175827 bytes).
+Output written on paper.pdf (5 pages, 175737 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  114 compressed objects within 2 object streams
