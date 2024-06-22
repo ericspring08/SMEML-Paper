@@ -211,7 +211,7 @@ To evaluate our framework, we choose 5 different datasets of diverse size [/15, 
 After running the benchmark datasets, several observations were readily apparent. First, accurcy did not change for 4 of the 6 benchmarks. The other two benchmarks on eye states and diabetes prediction represented a loss of accuracy for SMEML by 0.13\% and 1.95\%, respectively. Training time, however, favored SMEML in every trial. SMEML outperformed the dummy framework by 173.96 seconds in its worst performance on the lung cancer trial and by 383.94 seconds in its best performance on the eye state dataset. Relative to the dummy's performance, a percent decrease in time to run for SMEML of at least 46.78\% could be seen, with a decrease of up to 69.22\% observerd as well. SMEML's worst performance by percent decrease was also the performance in which it returned perfect accuracy. 
 \section{Discussion}
 \subsection{Summary}
-As evidenced by our experiment's results, SMEML manages to return comparable accuracy results compared to its dumb couterpart while more than splitting the run time in half in the majority of benchmarks. Its performance is not limited by the size of the dataset, and it in fact returned its first, third, and fourth best percentage-based run times on the 'large' dataset benchmarks (those exceeding 1000 rows). This is important in third world medicine where time is of the essence and there is a constant influx of new patient data. Further research should be done in incorporating this innovation into a full-fledged AutoML framework to expedite and improve the process further. A practical demonsration of this software's real-world application can be found on our SmartDx website. 
+As evidenced by our experiment's results, SMEML manages to return comparable accuracy results compared to its dumb couterpart while more than splitting the run time in half in the majority of benchmarks. Its performance is not limited by the size of the dataset, and it in fact returned its first, third, and fourth best percentage-based run times on the 'large' dataset benchmarks (those exceeding 1000 rows). This is important in third world medicine where time is of the essence and there is a constant influx of new patient data. Further research should be done in incorporating this innovation into a full-fledged AutoML framework to expedite and improve the process further. A practical demonsration of this software's real-world application can be found on our SmartDx website [21]. Source code can be found at [22].
 \subsection{Limitations}
 Our implementation of SMEML has limitations. These include a small training set due to lack of available datasets, finite computing power, time constraints, and a lack of access to paticular scientific literature. Our framework only improves on the model selection process and does not address the various other aspects of AutoML. Therefore, SMEML is not comparable to other full-featured AutoML frameworks.
 \subsection{Future Work}
@@ -264,5 +264,10 @@ The authors would like to thank the St. Mark's School of Texas for supporting th
 [19] Thomaskonstantin. Analyzing and Modeling Stroke Data. 6 July 2021, \url{www.kaggle.com/code/thomaskonstantin/analyzing-and-modeling-stroke-data/input}.
 
 [20] Robikscube. Eye State Prediction Dataset. 26 June 2022, \url{www.kaggle.com/code/robikscube/eye-state-prediction-dataset/input?select=EEG_Eye_State_Classification.csv}.
+
+[21] SmartDx Website. \url{https://smartdx.vercel.app/}.
+
+[22] Github Repository. \url{www.github.com/ericspring08/SMEML-Paper}.
+}
 
 \end{document}
