@@ -78,7 +78,7 @@
 
 
 \begin{abstract}
-  Automated Machine Learning or AutoML has emerged as a popular field of research. We performed a literature review of existing AutoML papers and conducted a in depth survey on six popluar AutoML frameworks. Many of these frameworks optimize a form of model selection, however, they all require every model to be run and evaluated. We propose a novel framework, SMEML (Smart Model Elimination Machine Learning), that automatically eliminates models that are unlikely to be performant so unnecessary time is not spent training these models. SMEML demonstrates the ability to generate a model with near equal accuracy to a "dumb" brute-force model that runs every model on every dataset, but in a fraction of the time.
+  Automated Machine Learning or AutoML has emerged as a popular field of research. We performed a literature review of existing AutoML papers and conducted an in depth survey on six popluar AutoML frameworks. Many of these frameworks optimize a form of model selection, however, they all require every model to be run and evaluated. We propose a novel framework, SMEML (Smart Model Elimination Machine Learning), that automatically eliminates models that are unlikely to be performant so unnecessary time is not spent training these models. SMEML demonstrates the ability to generate a model with near equal accuracy to a "dumb" brute-force model that runs every model on every dataset, but in a fraction of the time.
 \end{abstract}
 
 
@@ -110,14 +110,14 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
   \captionsetup{font=footnotesize}
   \caption*{\textbf{Abbreviations}: EOU: Ease of Use, M: \# of models evaluated by framework, FE: Feature Engineering, TM: Time Management, HPT: Hyper-Parameter Tuning, Inter: Interface, Custom: Customization}
 \end{table}
-We systematically reviewed and compared five different AutoML frameworks, comparing every feature relevant to medical implementation [5, 6, 7, 8, 9, 10, 11, 12, 13]. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT.
+We systematically reviewed and compared five different AutoML frameworks, comparing every feature relevant to medical implementation [5-10]. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT.
 
-Taking a closer look at four AutoML standards, we can observe pros and cons in their theoretical application to medicine and research. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks in the medical sphere. It supports imputation techniques for missing values with user specification and has an intuitive API, making it moderately user-friendly for minimally trained healthcare workers [11, 12]. H2O has a wider variety of supported algorithms that may or may not be appropriate for medical diagnosis, making it slower than FLAML on average. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour [12]. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users [5, 6]. MLJAR uses more advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface [9, 10]. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users [7, 8].
+Taking a closer look at four AutoML standards, we can observe pros and cons in their theoretical application to medicine and research. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks in the medical sphere. It supports imputation techniques for missing values with user specification and has an intuitive API, making it moderately user-friendly for minimally trained healthcare workers [9, 12]. H2O has a wider variety of supported algorithms that may or may not be appropriate for medical diagnosis, making it slower than FLAML on average. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour [12]. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users [5]. MLJAR uses more advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface [7, 8]. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users [6, 8].
 
 Keeping the factors we have laid out in mind, namely expeditious running, accuracy, and interpretability, we also uncovered a key continuity in framework design: frameworks are forced to run and train the majority of their available models to maximize accuracy at the expense of efficiency. Given the restricted nature of tabular data, there are some models that, in general, are less likely to perform well, thus running and training these models is frequently wasteful. Cutting these models completely, however, is not optimal either, as they are the best option in a minority of cases and give frameworks versatility. We hypothesized that using a combination of layered machine learning implementation and meta-feature extraction would yield an equally versatile system that minimizes time spent on prediction while still maximizing the other quantities. 
 
 \section{Methodology}
-When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features [14]. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset. These extracted attributes are shown in Table 2. 
+When considering a specific dataset, various aspects regarding the distribution and relationship within the data can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features [11]. As a result, we can develop a boosting model to predict the best models based off extracted attributes from a dataset. These extracted attributes are shown in Table 2. 
 
 We considered 28 different models, including all supervised and semi-supervised sklearn classification models and common boosting models such as XGBoost, Lightgbm, and Catboost.
 
@@ -184,7 +184,7 @@ When a user inputs a dataset into SMEML, it first extracts the attributes from t
 
 \section{Experiments}
 \subsection{Experiment Design}
-To evaluate our framework, we choose 5 different datasets of diverse size [/15, /16, /17, /18, /19, /20]. We ran SMEML on each dataset for 20 iterations of tuning. We compared this against a "dumb" mode which simply runs every model on the dataset. We used the accuracy and time to train as our metrics. All experiments are run on an Ubuntu server with Intel Xeon E5520 @ 2.27GHz and 24GB of RAM.
+To evaluate our framework, we choose 5 different datasets of diverse size. We ran SMEML on each dataset for 20 iterations of tuning. We compared this against a "dumb" mode which simply runs every model on the dataset. We used the accuracy and time to train as our metrics. All experiments are run on an Ubuntu server with Intel Xeon E5520 @ 2.27GHz and 24GB of RAM.
 
 \subsection{Results}
 \begin{table}
@@ -198,20 +198,20 @@ To evaluate our framework, we choose 5 different datasets of diverse size [/15, 
     \cmidrule(lr){2-3} \cmidrule(lr){4-5}
     & SMEML & Dumb & SMEML & Dumb \\
     \midrule
-    Lung Cancer Prediction & .9839 & .9839 & 143.07 & 317.04 & 309x16\\
-    Chronic Kidney Disease Dataset & 1.0 & 1.0 & 419.64 & 788.46 & 400x26\\
-    Pima Indians Diabetes Dataset & .7857 & .8052 & 161.99 & 374.01 & 768x8 \\
-    Brain Stroke Prediction Dataset & .9458 & .9458 & 114.16 & 370.95 & 4892x11\\
-    Stroke Prediction Dataset & .9393 & .9393 & 172.67 & 385.23 & 5110x12 \\
-    Eye State Classification & .9536 & .9549 & 312.57 & 696.51 & 14980x15\\ 
+    Lung Cancer Prediction [12] & .9839 & .9839 & 143.07 & 317.04 & 309x16\\
+    Chronic Kidney Disease Dataset [13] & 1.0 & 1.0 & 419.64 & 788.46 & 400x26\\
+    Pima Indians Diabetes Dataset [14] & .7857 & .8052 & 161.99 & 374.01 & 768x8 \\
+    Brain Stroke Prediction Dataset [15] & .9458 & .9458 & 114.16 & 370.95 & 4892x11\\
+    Stroke Prediction Dataset [16] & .9393 & .9393 & 172.67 & 385.23 & 5110x12 \\
+    Eye State Classification [17] & .9536 & .9549 & 312.57 & 696.51 & 14980x15\\ 
     \bottomrule
   \end{tabular}
 \end{table}
 
-After running the benchmark datasets, several observations were readily apparent. First, accurcy did not change for 4 of the 6 benchmarks. The other two benchmarks on eye states and diabetes prediction represented a loss of accuracy for SMEML by 0.13\% and 1.95\%, respectively. Training time, however, favored SMEML in every trial. SMEML outperformed the dummy framework by 173.96 seconds in its worst performance on the lung cancer trial and by 383.94 seconds in its best performance on the eye state dataset. Relative to the dummy's performance, a percent decrease in time to run for SMEML of at least 46.78\% could be seen, with a decrease of up to 69.22\% observerd as well. SMEML's worst performance by percent decrease was also the performance in which it returned perfect accuracy. 
+After running the benchmark datasets, several observations were readily apparent. First, accuracy did not change for 4 of the 6 benchmarks. The other two benchmarks on eye states and diabetes prediction represented a loss of accuracy for SMEML by 0.13\% and 1.95\%, respectively. Training time, however, favored SMEML in every trial. SMEML outperformed the dummy framework by 173.96 seconds in its worst performance on the lung cancer trial and by 383.94 seconds in its best performance on the eye state dataset. Relative to the dummy's performance, a percent decrease in time to run for SMEML of at least 46.78\% could be seen, with a decrease of up to 69.22\% observerd as well. SMEML's worst performance by percent decrease was also the performance in which it returned perfect accuracy. 
 \section{Discussion}
 \subsection{Summary}
-As evidenced by our experiment's results, SMEML manages to return comparable accuracy results compared to its dumb couterpart while more than splitting the run time in half in the majority of benchmarks. Its performance is not limited by the size of the dataset, and it in fact returned its first, third, and fourth best percentage-based run times on the 'large' dataset benchmarks (those exceeding 1000 rows). This is important in third world medicine where time is of the essence and there is a constant influx of new patient data. Further research should be done in incorporating this innovation into a full-fledged AutoML framework to expedite and improve the process further. A practical demonsration of this software's real-world application can be found on our SmartDx website [21]. Source code can be found at [22].
+As evidenced by our experiment's results, SMEML manages to return comparable accuracy results compared to its dumb couterpart while more than splitting the run time in half in the majority of benchmarks. Its performance is not limited by the size of the dataset, and it in fact returned its first, third, and fourth best percentage-based run times on the 'large' dataset benchmarks (those exceeding 1000 rows). This is important in third world medicine where time is of the essence and there is a constant influx of new patient data. Further research should be done in incorporating this innovation into a full-fledged AutoML framework to expedite and improve the process further. A practical demonsration of this software's real-world application can be found on our SmartDx website [18]. Source code can be found at [19].
 \subsection{Limitations}
 Our implementation of SMEML has limitations. These include a small training set due to lack of available datasets, finite computing power, time constraints, and a lack of access to paticular scientific literature. Our framework only improves on the model selection process and does not address the various other aspects of AutoML. Therefore, SMEML is not comparable to other full-featured AutoML frameworks.
 \subsection{Future Work}
@@ -221,53 +221,48 @@ The authors would like to thank the St. Mark's School of Texas for supporting th
 \end{ack}
 
 \section*{References}
+
 \medskip
 {
 \small
 
-[1] He, Xin, et al. “AutoML: A Survey of the State-of-the-Art.” Knowledge-Based Systems, journal-article, 16 Apr. 2021, \url{arxiv.org/pdf/1908.00709}.
+[1] He, Xin, et al. “AutoML: A Survey of the State-of-the-Art.” Knowledge-Based Systems, 212, 106622 (2021), \url{https://doi.org/10.1016/j.knosys.2020.106622}. 
 
-[2] Nchasi, Goodluck, et al. “Challenges Faced by African Healthcare Workers During the Third Wave of the Pandemic.” Health Science Reports, vol. 5, no. 6, Oct. 2022, doi:10.1002/hsr2.893.
+[2] Nchasi, Goodluck, et al. “Challenges Faced by African Healthcare Workers During the Third Wave of the Pandemic.” Health Science Reports, 5, 6 (2022), \url{https://doi.org/10.1002%2Fhsr2.893}.
 
-[3] Global Strategy on Human Resources for Health: Workforce 2030. World Health Organization, 2016, \url{iris.who.int/bitstream/handle/10665/250368/9789241511131-eng.pdf?sequence=1}.
+[3] Global Strategy on Human Resources for Health: Workforce 2030. World Health Organization, 16 (2016), \url{}.
 
-[4] Bajwa, Junaid, et al. “Artificial Intelligence in Healthcare: Transforming the Practice of Medicine.” Future Healthcare Journal, vol. 8, no. 2, July 2021, pp. e188–94, doi:10.7861/fhj.2021-0095.
+[4] Bajwa, Junaid, et al. “Artificial Intelligence in Healthcare: Transforming the Practice of Medicine.” Future Healthcare Journal, 8, 188-94 (2021), \url{https://doi.org/10.7861%2Ffhj.2021-0095} 
 
 [5] LeDell, E., and S. Poirier. “H2O AutoML: Scalable Automatic Machine Learning.” 7th ICML Workshop on Automated Machine Learning, 2020, \url{www.automl.org/wp-content/uploads/2020/07/AutoML_2020_paper_61.pdf}.
 
-[6] “H2oai/H2o-3: H2O Is an Open Source, Distributed, Fast and Scalable Machine Learning Platform: Deep Learning, Gradient Boosting (GBM) \& XGBoost, Random Forest, Generalized Linear Modeling (GLM With Elastic Net), K-Means, PCA, Generalized Additive Models (GAM), RuleFit, Support Vector Machine (SVM), Stacked Ensembles, Automatic Machine Learning (AutoML), Etc.” GitHub, \url{github.com/h2oai/h2o-3}.
+[6] Olson, Randal S., 1, et al. "Automating Biomedical Data Science Through Tree-based Pipeline Optimization." Applications of Evolutionary Computation, 19, 123 (2016), \url{https://doi.org/10.1007/978-3-319-31204-0_9}.
 
-[7] Olson, Randal S., 1, et al. Automating Biomedical Data Science Through Tree-based Pipeline Optimization. journal-article, 28 Jan. 2016, \url{arxiv.org/pdf/1601.07925}.
+[7] P\l{}o\'{n}ska, Aleksandra, et al. “MLJAR: State-of-the-art Automated Machine Learning Framework for Tabular Data.  Version 0.10.3.” MLJAR, (2021), \url{github.com/mljar/mljar-supervised}.
 
-[8] “EpistasisLab/Tpot: A Python Automated Machine Learning Tool That Optimizes Machine Learning Pipelines Using Genetic Programming.” GitHub, \url{github.com/EpistasisLab/tpot}.
+[8] Conrad, Felix, et al. “Benchmarking AutoML for Regression Tasks on Small Tabular Data in Materials Design.” Scientific Reports, 12, 19350 (2022), \url{https://doi.org/10.1038/s41598-022-23327-1}.
 
-[9] “Mljar/Mljar-supervised: Python Package for AutoML on Tabular Data With Feature Engineering, Hyper-Parameters Tuning, Explanations and Automatic Documentation.” GitHub, \url{github.com/mljar/mljar-supervised}.
+[9] Shang, Zhi, et al. "FLAML: A Fast and Lightweight AutoML Library." 4th MLSys Conference, (2021), \url{https://doi.org/10.48550/arXiv.1911.04706} .
 
-[10] Conrad, Felix, et al. “Benchmarking AutoML for Regression Tasks on Small Tabular Data in Materials Design.” Scientific Reports, vol. 12, no. 1, Nov. 2022, doi:10.1038/s41598-022-23327-1.
+[10] Ryzhkov, Alexander, et al. "LightAutoML: AutoML Solution for a Large Financial Services Ecosystem." arXiv, (2021), \url{https://doi.org/10.48550/arXiv.2109.01528}
 
-[11] Shang, Zhi, et al. "FLAML: A Fast and Lightweight AutoML Library." arXiv, 11 Nov. 2019, \url{arxiv.org/pdf/1911.04706}.
+[11] Akalin, Altuna. 3.3 Relationship Between Variables: Linear Models and Correlation | Computational Genomics With R. 30 Sept. 2020, \url{compgenomr.github.io/book/relationship-between-variables-linear-models-and-correlation.html}.
 
-[12] "FLAML: A Fast Library for AutoML and Tuning." GitHub, \url{github.com/microsoft/FLAML}.
+[12] Ms. Nancy Al Aswad. Lung Cancer. \url{www.kaggle.com/datasets/nancyalaswad90/lung-cancer}.
 
-[13] “Sb-ai-lab/LightAutoML: Fast and Customizable Framework for Automatic ML Model Creation (AutoML).” GitHub, \url{github.com/sb-ai-lab/LightAutoML}.
+[13] Mansoor Iqbal. Chronic KIdney Disease Dataset. \url{www.kaggle.com/datasets/mansoordaku/ckdisease}.
 
-[14] Akalin, Altuna. 3.3 Relationship Between Variables: Linear Models and Correlation | Computational Genomics With R. 30 Sept. 2020, \url{compgenomr.github.io/book/relationship-between-variables-linear-models-and-correlation.html}.
+[14] UCI Machine Learning. Pima Indians Diabetes Dataset. \url{https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database}.
 
-[15] Lung Cancer. 15 July 2022, \url{www.kaggle.com/datasets/nancyalaswad90/lung-cancer}.
+[15] Izzet Turkalp Akbasli. Brain stroke prediction dataset. \url{https://www.kaggle.com/datasets/zzettrkalpakbal/full-filled-brain-stroke-dataset}.
 
-[16] Chronic KIdney Disease Dataset. 13 Apr. 2017, \url{www.kaggle.com/datasets/mansoordaku/ckdisease}.
+[16] fedesoriano. Stroke Prediction Dataset. \url{www.kaggle.com/fedesoriano/stroke-prediction-dataset}.
 
-[17] Busekseolu. Diabetes Classification. 26 Nov. 2021, \url{www.kaggle.com/code/busekseolu/diabetes-classification/input}.
+[17] Rob Mulla. Eye State Classification EEG Dataset. \url{https://www.kaggle.com/datasets/robikscube/eye-state-classification-eeg-dataset}.
 
-[18] Mahendrasinghrajpoot. Brain Stroke Dataset. 21 Aug. 2022, \url{www.kaggle.com/code/mahendrasinghrajpoot/brain-stroke-dataset/input}.
+[18] SmartDx Website. \url{https://smartdx.vercel.app/}.
 
-[19] Thomaskonstantin. Analyzing and Modeling Stroke Data. 6 July 2021, \url{www.kaggle.com/code/thomaskonstantin/analyzing-and-modeling-stroke-data/input}.
-
-[20] Robikscube. Eye State Prediction Dataset. 26 June 2022, \url{www.kaggle.com/code/robikscube/eye-state-prediction-dataset/input?select=EEG_Eye_State_Classification.csv}.
-
-[21] SmartDx Website. \url{https://smartdx.vercel.app/}.
-
-[22] Github Repository. \url{www.github.com/ericspring08/SMEML-Paper}.
+[19] Github Repository. \url{www.github.com/ericspring08/SMEML-Paper}.
 }
 
 \end{document}
