@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  24 JUN 2024 17:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  24 JUN 2024 18:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -537,9 +537,6 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \vbox (badness 2573) has occurred while \output is active []
-
  [1
 
 
@@ -552,21 +549,18 @@ Package pdftex.def Info: smeml-flowchart.png  used on input line 183.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3 <./smeml-flowchart.png>]
-Underfull \vbox (badness 2205) has occurred while \output is active []
-
- [4]
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
+ [3 <./smeml-flowchart.png>] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 []\T1/ptm/m/n/9 (+20) [11] Akalin, Al-tuna. 3.3 Re-la-tion-ship Be-tween Vari-ables: Lin-ear Mod-els and Cor-re-la-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 \T1/ptm/m/n/9 (+20) tion | Com-pu-ta-tional Ge-nomics With R. 30 Sept. 2020, []$\T1/cmtt/m/n/9 compgenomr . github . io / book /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
 []\T1/ptm/m/n/9 (+20) [16] fedes-o-ri-ano. Stroke Pre-dic-tion Dataset. []$\T1/cmtt/m/n/9 www . kaggle . com / fedesoriano /
  []
 
@@ -578,18 +572,18 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: E8C019715FCD1086BE4A20CBE8FEFAF2;1036.
  ) 
 Here is how much of TeX's memory you used:
- 14790 strings out of 476025
- 242601 string characters out of 5779036
+ 14777 strings out of 476025
+ 242492 string characters out of 5779036
  1870388 words of memory out of 5000000
  34832 multiletter control sequences out of 15000+600000
- 550368 words of font info for 181 fonts, out of 8000000 for 9000
+ 549848 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,15n,76p,1429b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,76p,1272b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper.pdf (5 pages, 216463 bytes).
+Output written on paper.pdf (5 pages, 215780 bytes).
 PDF statistics:
- 182 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
+ 181 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
  41046 words of extra memory for PDF output out of 42996 (max. 10000000)
 
