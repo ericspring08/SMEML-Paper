@@ -128,51 +128,53 @@ When a user inputs a dataset into SMEML, it first extracts the attributes from t
   \caption{Attributes extracted from a dataset}
   \label{model-options-table}
   \centering
-  \begin{tabular}{lll}
+  \begin{tabular}{llll}
     \toprule
-    Attribute & Formula & Purpose\\
+    Attribute & Formula & Purpose & Weight\\
     \midrule
-    \# of Rows & $|\mathbf{A}|_r$ & Data Size \\
+    \# of Rows & $|\mathbf{A}|_r$ & DS & .0422 \\
     \hline
-    \# of Columns & $|\mathbf{A}|_c$ & Data Size \\
+    \# of Columns & $|\mathbf{A}|_c$ & DS & .0415 \\
     \hline
     Target Distribution &
     $\frac{\max(\text{count}_1, \text{count}_0)}{|\mathbf{A}|_r}$
-    & Data Type \\
+    & DT & .0489 \\
     \hline
     Numerical Columns &
     $\frac{|\mathbf{A}_{num}|}{|\mathbf{A}|_{c}}$
-    & Data Type \\
+    & DT & .0428 \\
     \hline
     Binary Categorical Columns &
     $\frac{|\mathbf{A}_{bin}|}{|\mathbf{A}|_{c}}$
-    & Data Type \\
+    & DT & .0117 \\
     \hline
-    Mean \# of Distinct Values  & $\mu \left\{\text{\# of distinct values in column}\right\}$ & Data Type \\ 
+    Mean \# of Distinct Values  & $\mu \left\{\text{\# of distinct values in column}\right\}$ & DT & .0076 \\ 
     \hline
-    Mean IQR  & $\mu \left\{\text{IQR of column}\right\}$ & Data Distribution \\ 
+    Mean IQR  & $\mu \left\{\text{IQR of column}\right\}$ & DD & .0594 \\ 
     \hline
-    STD of IQR  & $\sigma \left\{\text{IQR of column}\right\}$ & Data Distribution \\
+    STD of IQR  & $\sigma \left\{\text{IQR of column}\right\}$ & DD & .0700 \\
     \hline
-    Mean Q1 & $\mu \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
+    Mean Q1 & $\mu \left\{\text{Q1 of column}\right\}$ & DD & .0789 \\
     \hline
-    STD of Q1  & $\sigma \left\{\text{Q1 of column}\right\}$ & Data Distribution \\
+    STD of Q1  & $\sigma \left\{\text{Q1 of column}\right\}$ & DD & .0613 \\
     \hline
-    Mean Q3  & $\mu \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
+    Mean Q3  & $\mu \left\{\text{Q3 of column}\right\}$ & DD & .0812 \\
     \hline
-    STD of Q3  & $\sigma \left\{\text{Q3 of column}\right\}$ & Data Distribution \\
+    STD of Q3  & $\sigma \left\{\text{Q3 of column}\right\}$ & DD & .1103 \\
     \hline
     Mean Percent of Z-Score Outliers  & 
-    $\mu \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & Outlier Data Points \\
+    $\mu \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & ODP & .0558 \\
     \hline
     STD of Percent of Z-Score Outliers  &
-    $\sigma \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & Outlier Data Points \\
+    $\sigma \left\{ \frac{\text{\# of Z-Score Outliers}}{|\mathbf{A}|_r} \right\}$ & ODP & .0798 \\
     \hline
-    Mean Correlation& $\mu \left\{\text{Correlation Matrix}\right\}$ & Data linearity \\
+    Mean Correlation& $\mu \left\{\text{Correlation Matrix}\right\}$ & DL & .0559 \\
     \hline
-    STD of Correlation & $\sigma \left\{\text{Correlation Matrix}\right\}$ & Data Linearity \\
+    STD of Correlation & $\sigma \left\{\text{Correlation Matrix}\right\}$ & DL & .1526 \\
     \bottomrule
   \end{tabular}
+  \captionsetup{font=footnotesize}
+  \caption*{\textbf{Abbreviations}: DS: Data Size, DT: Data Type, DD: Data Distribution, ODP: Outlier Data Points, DL: Data Linearity}
 \end{table}
 
 
