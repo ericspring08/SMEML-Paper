@@ -87,7 +87,7 @@
 Machine learning (ML) is a type of artificial intelligence (AI) that uses searching and trend-determining to make predictions. ML algorithms are trained and tested on a given dataset to become "smarter". Once they've learned the patterns typical of that data, they can make predictions based on similar data. These algorithms also require additional processes, however, like hyperparamater tuning, and can be modified in conjunction with one another, like in ensemble learning. This makes the process complex and time-inefficient. To do this on a larger scale and at greater speeds, recent research and effort have been put into developing AutoML frameworks [1].
 
 One sector of the global industry that has the most potential for beneficial integration of AutoML frameworks is healthcare, particularly in developing countries. These countries have severe shortages of healthcare workers and limited tools for diagnosis. For example, Africa has 2.3 healthcare workers per 1000 individuals, while the Americas have 24.8 healthcare workers per 1000 [2]. The World Health Organization (WHO) emphasized that this deficit is growing every year and will likely reach 18 million personnel by 2030 [3]. Medical AIs typically automate repetitive tasks, making time consumption a primary concern [4]. This coupled with a lack of adequate resources makes designing faster diagnostic systems for developing countries' medical sectors a pivotal issue. 
-%
+
 Most AutoML frameworks implement some form of model selection where a pool of models are filtered until a final model is selected. However, these frameworks require that every model be run [1]. In theory, this means that much energy is spent training models that are unlikely to be selected. We propose SMEML, a novel model selection algorithm that automatically eliminates models that it believes will not be performant. 
 
 \subsection{Survey}
@@ -110,20 +110,20 @@ Most AutoML frameworks implement some form of model selection where a pool of mo
   \captionsetup{font=footnotesize}
   \caption*{\textbf{Abbreviations}: EOU: Ease of Use, M: \# of models evaluated by framework, FE: Feature Engineering, TM: Time Management, HPT: Hyper-Parameter Tuning, Inter: Interface, Custom: Customization}
 \end{table}
-We systematically reviewed and compared five different AutoML frameworks, comparing every feature relevant to medical implementation. Of these six, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT.
+We systematically review and compare five different AutoML frameworks, comparing every feature relevant to medical implementation in Table 1. Of these five, we wanted to take a closer look at four: FLAML, H2O, MLJAR, and TPOT.
 
-We can observe pros and cons in the four models' theoretical applications. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks. It supports user-specified imputation techniques for missing values and has an intuitive API, making it moderately user-friendly for healthcare workers [9]. H2O has a wider variety of supported algorithms that may be appropriate for medical diagnosis, making it slower than FLAML on average. In one trial, more than half of FLAML's performances in one minute were better than or equal to H20's performances in one hour [9]. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users [5]. MLJAR uses advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface [7]. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming can require fine-tuning from users [6].
+We can observe pros and cons in the four models' theoretical applications. FLAML uses blend search hyper-parameter optimization and focuses on lightweight models, making it quick and applicable to repetitive tasks. It supports user-specified imputation techniques for missing values and has an intuitive API, making it moderately user-friendly for healthcare workers [9]. H2O has a wider variety of supported algorithms that may be appropriate for medical diagnosis, making it slower than FLAML on average. In one trial, more than half of FLAML's performances in one minute were better than or equal to H2O's performances in one hour [9]. H2O has automatic and multi-faceted methods of dealing with missing values and flexible interfaces in R and Python, making it intuitive for users [5]. MLJAR uses advanced algorithms such as light gradient boosting and neural networks. It automatically deals with missing values and is known for its automated user interface [7]. TPOT uses genetic programming. It builds pipelines over multiple generations, which can be time consuming. It has built-in pre-processing for missing values, but the genetic programming requires fine-tuning from users [6].
 
-Keeping the factors we have laid out in mind, we also uncovered a key continuity in framework design: frameworks must run the majority of their models to maximize accuracy at the expense of efficiency. Given the specific nature of certain tabular data, there are some models that are less likely to perform well, thus running and training these models is wasteful. Cutting these models completely, however, is not optimal, as they are the best option in a minority of cases. We hypothesized that using a combination of layered machine learning implementation and meta-feature extraction would yield an equally versatile system that minimizes time spent on training without sacrificing accuracy.
+Through this survey, we uncovered a key continuity in these frameworks' design: frameworks must run all of their models to maximize accuracy at the expense of efficiency. Given the specific nature of certain tabular data, there are some models that are less likely to perform well, thus running and training these models is wasteful. Cutting these models completely, however, is not optimal, as they are the best option in a minority of cases. We hypothesized that using a combination of multi-layer machine learning implementation and meta-feature extraction would yield an equally versatile system that minimizes time spent on training without sacrificing accuracy.
 
 \section{Methodology}
-When considering a specific dataset, the distribution, relationship between datapoints, and various other attributes can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features [11]. Accordingly, we can develop a boosting model to predict the best models based off extracted attributes from a dataset. These extracted attributes are shown in Table 2. Each attribute attempts to capture a specific type of relationship or distribution within the data.
+When considering a specific dataset, the distribution, relationship between datapoints, and various other attributes can give us clues as to which models are likely to perform best. For example, linear models tend to work better on datasets where there is a linear relationship between features [11]. Accordingly, we can develop a boosting model to predict the best models based on extracted attributes from a dataset. These extracted attributes are shown in Table 2. Each attribute attempts to capture a specific type of relationship or distribution within the data.
 
 We considered 28 different models, including all supervised and semi-supervised sklearn [12] classification models and common boosting models such as XGBoost [13], LightGBM [14], and Catboost [15].
 
-To implement this model elimination process, we trained a boosting model on 268 kaggle datasets. We chose medical datasets and focused our approach on binary classification. We extracted the attributes in Table 2 from each dataset: this is the input for the boosting model. We then ran a "dumb" framework that trained every model on each dataset. The accuracy of every model is ranked, and every model is treated as a label with its value being its rank. Then we trained a multilabel regression to predict the rank of each model, giving the extracted attributes. We produced a median spearman correlation of 0.7301 between the predicted rank and the actual rank and a median p-value of 1.032e-05. Furthermore, we guarantee that we can predict a top two model within the predicted top eight 90.12\% of the time.
+To implement the model elimination process, we train a multilabel-regression boosting model called the SME Model-Ranker on 268 kaggle datasets. We choose medical datasets and focus our approach on binary classification. We extract the attributes in Table 2 from each dataset: this is the input for the boosting model. We then run a "dumb", brute-force framework that trains every model every each dataset. The accuracy of every model is ranked, and every model is treated as a label with its value being its rank. We train the SME to predict the rank of each model, given the extracted attributes. SME produces a median spearman correlation of 0.7301 between the predicted rank and the actual rank and a median p-value of 1.032e-05. Furthermore, we guarantee that we can predict a top two model within the predicted top eight 90.12\% of the time.
 
-When a user inputs a dataset into SMEML, it first extracts the attributes from the dataset. It feeds these attributes into the boosting model to get the predicted rank of each model. Since we have determined that we can predict a top two model within the predicted top eight quite confidently, we can eliminate the bottom 20 models from the list. We run Bayseian optimization using scikit-optimize [16] on the top eight models to get the best hyperparamters for each model. We select the top models that have significantly better performance than other models. These models are stacked together to form the final model. This process is shown in Figure 1.
+When a user inputs a dataset into SMEML, it first extracts the attributes from the dataset and then feeds them into the SME to get the predicted rank of each model. Since we have determined that we can predict a top two model within the predicted top eight quite confidently, we can eliminate the bottom 20 models from the list. We run Bayseian optimization using scikit-optimize [16] on the top eight models to get the best hyperparamters for each model. We select the top models that have significantly better performance than other models. These models are stacked together to form the final model. This process is shown in Figure 1.
 \begin{table}
   \caption{Attributes extracted from a dataset}
   \label{model-options-table}
@@ -190,7 +190,7 @@ To evaluate our framework, we choose 5 different datasets of diverse size. We ra
 
 \subsection{Results}
 \begin{table}
-  \caption{Experiment Results}
+  \caption{Comparing experiment results for SMEML and dumb mode}
   \label{model-options-table}
   \centering
   \begin{tabular}{llllll}
@@ -213,7 +213,7 @@ To evaluate our framework, we choose 5 different datasets of diverse size. We ra
 Several observations were made from running these datasets. First, accuracy did not change for 4 of the 6 benchmarks. The other two benchmarks on eye states and diabetes prediction represented a loss of accuracy for SMEML by 0.13\% and 1.95\%, respectively. Training time, however, favored SMEML in every trial. SMEML outperformed the dummy framework by 173.96 seconds in its worst performance on the lung cancer trial and by 383.94 seconds in its best performance on the eye state dataset. Relative to the dummy's performance, a percent decrease in time to run for SMEML of at least 46.78\% could be seen, with a decrease of up to 69.22\% observerd as well. SMEML's worst performance by percent decrease was also the performance in which it returned perfect accuracy. 
 \section{Discussion}
 \subsection{Summary}
-SMEML manages to return comparable accuracy results to its dumb couterpart while more than splitting the run time in half in the majority of benchmarks. Its performance is not limited by the size of the dataset, and it returned its first, third, and fourth best percentage-based run times on the 'large' dataset benchmarks (those exceeding 1000 rows). This is important in third world medicine where time is of the essence and there is a constant influx of new patient data. A practical demonsration of this software's real-world application can be found on our SmartDx website [23]. Source code can be found at [24].
+SMEML manages to return comparable accuracy results to its dumb couterpart while more than splitting the run time in half in the majority of benchmarks. Its performance is not limited by the size of the dataset, and it returned its first, third, and fourth overall best run times for SMEML relative to the dumb mode on the 'large' dataset benchmarks (those exceeding 1000 rows). This is important in third world medicine where time is of the essence and there is a constant influx of new patient data. A practical demonsration of this software's real-world application can be found on our SmartDx website [23]. Source code can be found at [24].
 \subsection{Limitations}
 Our implementation of SMEML has limitations. These include a small training set due to lack of available datasets, finite computing power, time constraints, and a lack of access to paticular scientific literature. Our framework only improves on the model selection process and does not address the various other aspects of AutoML. Therefore, SMEML is not comparable to other full-featured AutoML frameworks.
 \subsection{Future Work}
@@ -229,49 +229,49 @@ We would like to thank St. Mark's School of Texas for supporting this research.
 {
 \small
 
-[1] He, X., et al. “AutoML: A Survey of the State-of-the-Art.” Knowledge-Based Systems. 212, 106622 (2021). \url{https://doi.org/10.1016/j.knosys.2020.106622}. 
+[1] He, X., et al., “AutoML: A Survey of the State-of-the-Art.” Knowledge-Based Systems 212, 106622 (2021). \url{https://doi.org/10.1016/j.knosys.2020.106622}. 
 
-[2] Nchasi, G., et al. “Challenges Faced by African Healthcare Workers During the Third Wave of the Pandemic.” Health Science Reports. 5, 6 (2022). \url{https://doi.org/10.1002/hsr2.893}.
+[2] Nchasi, G., et al., “Challenges Faced by African Healthcare Workers During the Third Wave of the Pandemic.” Health Science Reports 5, 6 (2022). \url{https://doi.org/10.1002/hsr2.893}.
 
-[3] "Global Strategy on Human Resources for Health: Workforce 2030." World Health Organization. 16 (2020). \url{https://www.who.int/publications/i/item/9789241511131}.
+[3] "Global Strategy on Human Resources for Health: Workforce 2030." World Health Organization, pg. 16 (2020). \url{https://www.who.int/publications/i/item/9789241511131}.
 
-[4] Bajwa, J., et al. “Artificial Intelligence in Healthcare: Transforming the Practice of Medicine.” Future Healthcare Journal. 8, 188-94 (2021). \url{https://doi.org/10.7861/fhj.2021-0095}.
+[4] Bajwa, J., et al., “Artificial Intelligence in Healthcare: Transforming the Practice of Medicine.” Future Healthcare Journal 8, 188 (2021). \url{https://doi.org/10.7861/fhj.2021-0095}.
 
-[5] LeDell, E., and S. Poirier. “H2O AutoML: Scalable Automatic Machine Learning.” 7th ICML Workshop on Automated Machine Learning. (2020). \url{https://automl.org/wp-content/uploads/2020/07/AutoML_2020_paper_61.pdf}.
+[5] LeDell, E., and S. Poirier, “H2O AutoML: Scalable Automatic Machine Learning.” 7th ICML Workshop on Automated Machine Learning (2020). \url{https://automl.org/wp-content/uploads/2020/07/AutoML_2020_paper_61.pdf}.
 
-[6] Olson, S., et al. "Automating Biomedical Data Science Through Tree-based Pipeline Optimization." Applications of Evolutionary Computation. 19, 123 (2016). \url{https://doi.org/10.1007/978-3-319-31204-0_9}.
+[6] Olson, S., et al., "Automating Biomedical Data Science Through Tree-based Pipeline Optimization." Applications of Evolutionary Computation 19, 123 (2016). \url{https://doi.org/10.1007/978-3-319-31204-0_9}.
 
-[7] P\l{}o\'{n}ska, A., et al. “MLJAR: State-of-the-art Automated Machine Learning Framework for Tabular Data.  Version 0.10.3.” MLJAR. (2021). \url{https://github.com/mljar/mljar-supervised}.
+[7] P\l{}o\'{n}ska, A., et al., “MLJAR: State-of-the-art Automated Machine Learning Framework for Tabular Data.  Version 0.10.3.” MLJAR (2021). \url{https://github.com/mljar/mljar-supervised}.
 
-[8] Conrad, F., et al. “Benchmarking AutoML for Regression Tasks on Small Tabular Data in Materials Design.” Scientific Reports. 12, 19350 (2022). \url{https://doi.org/10.1038/s41598-022-23327-1}.
+[8] Conrad, F., et al., “Benchmarking AutoML for Regression Tasks on Small Tabular Data in Materials Design.” Scientific Reports 12, 19350 (2022). \url{https://doi.org/10.1038/s41598-022-23327-1}.
 
-[9] Shang, Z., et al. "FLAML: A Fast and Lightweight AutoML Library." 4th MLSys Conference. (2021). \url{https://doi.org/10.48550/arXiv.1911.04706}.
+[9] Shang, Z., et al., "FLAML: A Fast and Lightweight AutoML Library." 4th MLSys Conference (2021). \url{https://doi.org/10.48550/arXiv.1911.04706}.
 
-[10] Ryzhkov, A., et al. "LightAutoML: AutoML Solution for a Large Financial Services Ecosystem." arXiv:2109.01528. (2021). \url{https://doi.org/10.48550/arXiv.2109.01528}.
+[10] Ryzhkov, A., et al., "LightAutoML: AutoML Solution for a Large Financial Services Ecosystem." arXiv:2109.01528 (2021). \url{https://doi.org/10.48550/arXiv.2109.01528}.
 
-[11] Akalin, A., "Computational Genomics With R." Chapman and Hall/CRC. 1, Section 3.3, (2020). \url{compgenomr.github.io/book/relationship-between-variables-linear-models-and-correlation.html}.
+[11] Akalin, A., "Computational Genomics With R." Chapman and Hall/CRC, Vol. 1, Section 3.3, (2020). \url{https://compgenomr.github.io/book/relationship-between-variables-linear-models-and-correlation.html}.
 
-[12] Pedregosa, F., et al. "Scikit-learn: Machine Learning in Python." Journal of Machine Learning Research. 12, 2825 (2011). \url{https://doi.org/10.48550/arXiv.1201.0490}.
+[12] Pedregosa, F., et al., "Scikit-learn: Machine Learning in Python." Journal of Machine Learning Research 12, 2825 (2011). \url{https://doi.org/10.48550/arXiv.1201.0490}.
 
-[13] Chen, T., et al. "XGBoost: A Scalable Tree Boosting System." 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. (2016). \url{https://doi.org/10.1145/2939672.2939785}.
+[13] Chen, T., et al., "XGBoost: A Scalable Tree Boosting System." 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (2016). \url{https://doi.org/10.1145/2939672.2939785}.
 
-[14] Ke, G., et al. "LightGBM: A Highly Efficient Gradient Boosting Decision Tree." Advances in Neural Information Processing Systems. 30, 3149 (2017). \url{https://doi.org/10.48550/arXiv.1706.08359}.
+[14] Ke, G., et al., "LightGBM: A Highly Efficient Gradient Boosting Decision Tree." Advances in Neural Information Processing Systems 30, 3149 (2017). \url{https://doi.org/10.48550/arXiv.1706.08359}.
 
-[15] Prokhorenkova, L., et al. "CatBoost: Unbiased Boosting with Categorical Features." Advances in Neural Information Processing Systems. 32, 6639 (2018). \url{https://doi.org/10.48550/arXiv.1706.09516}.
+[15] Prokhorenkova, L., et al., "CatBoost: Unbiased Boosting with Categorical Features." Advances in Neural Information Processing Systems 32, 6639 (2018). \url{https://doi.org/10.48550/arXiv.1706.09516}.
 
-[16] Head, T. et al. "Scikit-Optimize: Sequential Model-Based Optimization." Zenodo. (2020). \url{https://doi.org/10.5281/zenodo.1170575}.
+[16] Head, T. et al., "Scikit-Optimize: Sequential Model-Based Optimization." Zenodo (2020). \url{https://doi.org/10.5281/zenodo.1170575}.
 
-[17] Ms. Nancy Al Aswad. Lung Cancer (dataset). \url{https://kaggle.com/datasets/nancyalaswad90/lung-cancer}.
+[17] Ms. Nancy Al Aswad, "Lung Cancer" (dataset). \url{https://kaggle.com/datasets/nancyalaswad90/lung-cancer}.
 
-[18] Mansoor Iqbal. Chronic KIdney Disease Dataset (dataset). \url{https://kaggle.com/datasets/mansoordaku/ckdisease}.
+[18] Mansoor Iqbal, "Chronic KIdney Disease Dataset" (dataset). \url{https://kaggle.com/datasets/mansoordaku/ckdisease}.
 
-[19] UCI Machine Learning. Pima Indians Diabetes Dataset (dataset). \url{https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database}.
+[19] UCI Machine Learning, "Pima Indians Diabetes Dataset" (dataset). \url{https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database}.
 
-[20] Izzet Turkalp Akbasli. Brain stroke prediction dataset (dataset). \url{https://www.kaggle.com/datasets/zzettrkalpakbal/full-filled-brain-stroke-dataset}.
+[20] Izzet Turkalp Akbasli, "Brain stroke prediction dataset" (dataset). \url{https://www.kaggle.com/datasets/zzettrkalpakbal/full-filled-brain-stroke-dataset}.
 
-[21] fedesoriano. Stroke Prediction Dataset (dataset). \url{www.kaggle.com/fedesoriano/stroke-prediction-dataset}.
+[21] fedesoriano, "Stroke Prediction Dataset" (dataset). \url{www.kaggle.com/fedesoriano/stroke-prediction-dataset}.
 
-[22] Rob Mulla. Eye State Classification EEG Dataset (dataset). \url{https://www.kaggle.com/datasets/robikscube/eye-state-classification-eeg-dataset}.
+[22] Rob Mulla, "Eye State Classification EEG Dataset" (dataset). \url{https://www.kaggle.com/datasets/robikscube/eye-state-classification-eeg-dataset}.
 
 [23] SmartDx Website. \url{https://smartdx.vercel.app/}.
 
