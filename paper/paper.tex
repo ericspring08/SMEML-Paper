@@ -78,7 +78,7 @@
 
 
 \begin{abstract}
-  Automated Machine Learning or AutoML has emerged as a popular field of research. We performed a literature review of existing AutoML papers and conducted a survey on five popular AutoML frameworks. Many of these frameworks optimize a form of model selection, but they all require every model to be run and evaluated. We propose a novel framework, SMEML (Smart Model Elimination Machine Learning), that automatically eliminates models that are unlikely to be performant. SMEML demonstrates the ability to generate a model with near equal accuracy to a "dumb" brute-force framework, but in a fraction of the time. We also believe this innovation is particularly relevant to machine learning in healthcare because of the necessity for efficient diesease prediction. 
+  Automated Machine Learning or AutoML has emerged as a popular field of research. We perform a literature review of existing AutoML papers and conduct a survey on five popular AutoML frameworks. Many of these frameworks optimize a form of model selection, but they all require every model to be run and evaluated. We propose a novel framework, SMEML (Smart Model Elimination Machine Learning), that automatically eliminates models that are unlikely to be performant. SMEML demonstrates the ability to generate a model with near equal accuracy to a "dumb" brute-force framework, but in a fraction of the time. We also believe this innovation is particularly relevant to machine learning in healthcare because of the necessity for efficient diesease prediction. 
 \end{abstract}
 
 
@@ -121,7 +121,7 @@ When considering a specific dataset, the distribution, relationship between data
 
 We considered 28 different models, including all supervised and semi-supervised sklearn [12] classification models and common boosting models such as XGBoost [13], LightGBM [14], and Catboost [15].
 
-To implement the model elimination process, we train a multilabel-regression boosting model called the SME Model-Ranker on 268 kaggle datasets. We choose medical datasets and focus our approach on binary classification. We extract the attributes in Table 2 from each dataset: this is the input for the boosting model. We then run a "dumb", brute-force framework that trains every model every each dataset. The accuracy of every model is ranked, and every model is treated as a label with its value being its rank. We train the SME to predict the rank of each model, given the extracted attributes. SME produces a median spearman correlation of 0.7301 between the predicted rank and the actual rank and a median p-value of 1.032e-05. Furthermore, we guarantee that we can predict a top two model within the predicted top eight 90.12\% of the time.
+To implement the model elimination process, we train a multilabel-regression boosting model called the SME Model-Ranker on 268 kaggle datasets. We choose medical datasets and focus our approach on binary classification. We extract the attributes in Table 2 from each dataset: which are the inputs for the boosting model. We then run a "dumb", brute-force framework that trains every model every each dataset. The accuracy of every model is ranked, and every model is treated as a label with its value being its rank. We train the SME to predict the rank of each model, given the extracted attributes. SME produces a median spearman correlation of 0.7301 between the predicted rank and the actual rank and a median p-value of 1.032e-05. Furthermore, we guarantee that we can predict a top two model within the predicted top eight 90.12\% of the time.
 
 When a user inputs a dataset into SMEML, it first extracts the attributes from the dataset and then feeds them into the SME to get the predicted rank of each model. Since we have determined that we can predict a top two model within the predicted top eight quite confidently, we can eliminate the bottom 20 models from the list. We run Bayseian optimization using scikit-optimize [16] on the top eight models to get the best hyperparamters for each model. We select the top models that have significantly better performance than other models. These models are stacked together to form the final model. This process is shown in Figure 1.
 \begin{table}
@@ -184,11 +184,11 @@ When a user inputs a dataset into SMEML, it first extracts the attributes from t
 \caption{Illustration of the SMEML Process}
 \end{figure}
 
-\section{Experiments}
+\section{Evaluation}
 \subsection{Experiment Design}
 To evaluate our framework, we choose 5 different datasets of diverse size. We ran SMEML on each dataset for 20 iterations of tuning. We compared this against a "dumb" mode which simply runs every model on the dataset. We used the accuracy and time to train as our metrics. All experiments are run on an Ubuntu server with Intel Xeon E5520 @ 2.27GHz and 24GB of RAM.
 
-\subsection{Results}
+\subsection{Experiment Results}
 \begin{table}
   \caption{Comparing experiment results for SMEML and dumb mode}
   \label{model-options-table}
