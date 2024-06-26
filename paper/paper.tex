@@ -84,7 +84,7 @@
 
 \section{Introduction}
 
-Machine learning (ML) is a type of artificial intelligence (AI) that uses searching and trend-determining to make predictions. ML algorithms are trained and tested on a given dataset to become "smarter". Once they've learned the patterns typical of that data, they can make predictions based on similar data. These algorithms also require additional processes, however, like hyperparamater tuning, and can be modified in conjunction with one another, like in ensemble learning. This makes the process complex and time-inefficient. To do this on a larger scale and at greater speeds, recent research and effort have been put into developing AutoML frameworks [1].
+Machine learning (ML) algorithms require complicated processes like hyperparamater tuning, and can be modified in conjunction with one another, like in ensemble learning. To do this on a larger scale and at greater speeds, recent research and effort have been put into developing AutoML frameworks. These frameworks create comfortable environments for models to excel in. They handle missing values, preprocess data, and optimize training to ensure the best results [1].
 
 One sector of the global industry that has the most potential for beneficial integration of AutoML frameworks is healthcare, particularly in developing countries. These countries have severe shortages of healthcare workers and limited tools for diagnosis. For example, Africa has 2.3 healthcare workers per 1000 individuals, while the Americas have 24.8 healthcare workers per 1000 [2]. The World Health Organization (WHO) emphasized that this deficit is growing every year and will likely reach 18 million personnel by 2030 [3]. Medical AIs typically automate repetitive tasks, making time consumption a primary concern [4]. This coupled with a lack of adequate resources makes designing faster diagnostic systems for developing countries' medical sectors a pivotal issue. 
 
@@ -213,7 +213,7 @@ To evaluate our framework, we choose 5 different datasets of diverse size. We ra
 Several observations were made from running these datasets. First, accuracy did not change for 4 of the 6 benchmarks. The other two benchmarks on eye states and diabetes prediction represented a loss of accuracy for SMEML by 0.13\% and 1.95\%, respectively. Training time, however, favored SMEML in every trial. SMEML outperformed the dummy framework by 173.96 seconds in its worst performance on the lung cancer trial and by 383.94 seconds in its best performance on the eye state dataset. Relative to the dummy's performance, a percent decrease in time to run for SMEML of at least 46.78\% could be seen, with a decrease of up to 69.22\% observerd as well. SMEML's worst performance by percent decrease was also the performance in which it returned perfect accuracy. 
 \section{Discussion}
 \subsection{Summary}
-SMEML consistently achieves comparable accuracy to its dumb counterpart while significantly reducing the time required to train the model. Notably, SMEML's performance is not limited by the size of the dataset, achieving its best runtimes--first, third, and fourth fastest overall--on 'large' datasets (those exceeding 1000 rows). This efficiency is important in third world medicine where there is a constant influx of new patient data that must be processed quickly. A practical demonstration of this software's real-world application can be found on our SmartDx website [23]. Source code can be found at [24]. 
+SMEML consistently achieves comparable accuracy to its dumb counterpart while significantly reducing the time required to train the model. Notably, SMEML's performance is not limited by the size of the dataset, achieving its best runtimes--first, third, and fourth fastest overall--on 'large' datasets (those exceeding 1000 rows). SMEML also chose several different kinds of algorithms rather than defaulting to industry-standard boosting algorithms [23]. This efficiency and versatility is important in third world medicine where there is a constant influx of new patient data that must be processed quickly. A practical demonstration of this software's real-world application can be found on our SmartDx website [24]. Source code can be found at [25].
 \subsection{Limitations}
 Our implementation of SMEML has limitations. These include a small training set due to lack of available datasets, finite computing power, time constraints, and a lack of access to paticular scientific literature. Our framework only improves on the model selection process and does not address the various other aspects of AutoML. Therefore, SMEML is not comparable to other full-featured AutoML frameworks.
 \subsection{Future Work}
@@ -273,9 +273,11 @@ We would like to thank St. Mark's School of Texas for supporting this research.
 
 [22] Rob Mulla, "Eye State Classification EEG Dataset" (dataset). \url{https://www.kaggle.com/datasets/robikscube/eye-state-classification-eeg-dataset}.
 
-[23] SmartDx Website. \url{https://smartdx.vercel.app/}.
+[23] Mayr, A. et al., "The Evolution of Boosting Algorithms From Machine Learning to Statistical Modelling." Methods Inf Med 2014; 53(06): 419-427. \url{https://doi.org/10.48550/arXiv.1403.1452}. 
 
-[24] Github Repository. \url{https://github.com/ericspring08/SMEML-Paper}.
+[24] SmartDx Website. \url{https://smartdx.vercel.app/}. 
+
+[25] Github Repository. \url{https://github.com/ericspring08/SMEML-Paper}.
 }
 
 \end{document}
