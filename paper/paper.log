@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  26 JUN 2024 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Homebrew) (preloaded format=pdflatex 2023.6.22)  26 JUN 2024 19:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -537,13 +537,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+Underfull \vbox (badness 4608) has occurred while \output is active []
+
  [1
 
 
-{/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Underfull \vbox (badness 7740) has occurred while \output is active []
-
- [2]
+{/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2]
 <smeml-flowchart.png, id=59, 963.6pt x 433.62pt>
 File: smeml-flowchart.png Graphic file (type png)
 <use smeml-flowchart.png>
@@ -575,15 +575,15 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: CE14C9C72C7A3DBADE6C2E1264C4BE62;1089.
  ) 
 Here is how much of TeX's memory you used:
- 14791 strings out of 476025
- 242604 string characters out of 5779036
- 1870388 words of memory out of 5000000
+ 14794 strings out of 476025
+ 242631 string characters out of 5779036
+ 1869388 words of memory out of 5000000
  34832 multiletter control sequences out of 15000+600000
- 550368 words of font info for 181 fonts, out of 8000000 for 9000
+ 550498 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,15n,76p,1269b,483s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,76p,1301b,483s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20230313_2/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper.pdf (6 pages, 228472 bytes).
+Output written on paper.pdf (6 pages, 228487 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  154 compressed objects within 2 object streams
