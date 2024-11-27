@@ -1,5 +1,5 @@
 # Smart Model Elimination Machine Learning With Potential Medical Application
-*This work in in submission to [Journal of Emerging Investigators](https://emerginginvestigators.org/)*
+*This work in in submission to [National High School Journal of Science](https://nhsjs.com/?mainpage)*
 ## Authors
 Eric Su Zhang<sup>1</sup>, Benjamin Joseph Michael Standefer<sup>1</sup>, Stewart Mayer<sup>2</sup>
 1. St. Mark’s School of Texas, Dallas, Texas
