@@ -1,0 +1,7 @@
+Dataset,Accuracy_SMEML,Accuracy_Dumb,Time_to_Train_SMEML (sec),Time_to_Train_Dumb (sec),Size (RxC)
+Lung Cancer Prediction,0.9839,0.9839,143.07,317.04,309x16
+Chronic Kidney Disease Dataset,1.0,1.0,419.64,788.46,400x26
+Pima Indians Diabetes Dataset,0.7857,0.8052,161.99,374.01,768x8
+Brain Stroke Prediction Dataset,0.9458,0.9458,114.16,370.95,4892x11
+Stroke Prediction Dataset,0.9393,0.9393,172.67,385.23,5110x12
+Eye State Classification,0.9536,0.9549,312.57,696.51,14980x15
